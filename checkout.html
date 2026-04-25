@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROAMSOME | Checkout</title>
+  <meta name="description" content="Complete your ROAMSOME subscription checkout with delivery details, order summary and payment UI.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <div data-site-header></div>
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Checkout</span>
+            <h1>Secure your next delivery</h1>
+            <p>Complete your subscription setup with delivery details, payment information and a final order check.</p>
+          </div>
+          <p class="success-message hidden" data-checkout-success>Your ROAMSOME subscription is confirmed and your first delivery slot has been secured.</p>
+          <div class="checkout-grid">
+            <article class="checkout-card">
+              <form class="checkout-form" data-checkout-form>
+                <div class="checkout-stack">
+                  <input type="text" name="full_name" placeholder="Full name" aria-label="Full name" required>
+                  <input type="email" name="email" placeholder="Email address" aria-label="Email address" required>
+                  <input type="text" name="address" placeholder="Delivery address" aria-label="Delivery address" required>
+                  <div class="split-grid">
+                    <input type="text" name="city" placeholder="City" aria-label="City" required>
+                    <input type="text" name="postcode" placeholder="Postcode" aria-label="Postcode" required>
+                  </div>
+                  <select name="delivery_slot" aria-label="Delivery slot" required>
+                    <option value="">Choose a delivery window</option>
+                    <option>Tuesday 08:00 - 12:00</option>
+                    <option>Tuesday 12:00 - 18:00</option>
+                    <option>Thursday 08:00 - 12:00</option>
+                    <option>Thursday 12:00 - 18:00</option>
+                  </select>
+                  <input type="text" name="card_name" placeholder="Name on card" aria-label="Name on card" required>
+                  <div class="split-grid">
+                    <input type="text" name="card_number" placeholder="Card number" aria-label="Card number" required>
+                    <input type="text" name="expiry" placeholder="MM/YY" aria-label="Card expiry" required>
+                  </div>
+                  <input type="text" name="cvc" placeholder="CVC" aria-label="Card security code" required>
+                  <button class="btn" type="submit">Complete Subscription</button>
+                </div>
+              </form>
+            </article>
+            <div data-checkout-summary></div>
+          </div>
+          <div data-checkout-related></div>
+        </div>
+      </section>
+    </main>
+    <div data-site-footer></div>
+    <div data-sticky-subscribe></div>
+  </div>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
