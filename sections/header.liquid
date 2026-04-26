@@ -1,0 +1,50 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand-mark brand-mark-header" href="{{ routes.root_url }}" aria-label="{{ shop.name }} home">
+      {% if settings.logo != blank %}
+        <img src="{{ settings.logo | image_url: width: 240 }}" alt="{{ shop.name }}">
+      {% else %}
+        <img src="{{ 'header-logo.png' | asset_url }}" alt="{{ shop.name }}">
+      {% endif %}
+    </a>
+
+    {% assign main_menu_handle = section.settings.menu %}
+    {% assign main_menu_links = linklists[main_menu_handle].links %}
+    <nav class="nav-links" id="site-nav">
+      {% if main_menu_links != blank %}
+        {% for link in main_menu_links %}
+          <a href="{{ link.url }}" class="{% if link.current or link.child_current %}active{% endif %}">{{ link.title }}</a>
+        {% endfor %}
+      {% else %}
+        <a href="{{ routes.root_url }}">Home</a>
+        <a href="{{ routes.all_products_collection_url }}">Shop</a>
+        <a href="/pages/how-it-works">How It Works</a>
+        <a href="/pages/about">About</a>
+        <a href="/pages/destinations">Destinations</a>
+        <a href="/blogs/news">Blog</a>
+        <a href="/pages/faq">FAQ</a>
+        <a href="/pages/contact">Contact</a>
+      {% endif %}
+    </nav>
+
+    <div class="header-actions">
+      <a class="cart-link" href="{{ routes.cart_url }}" data-cart-open aria-label="View cart">
+        <span>🧺</span>
+        <span class="cart-count" data-cart-count>{{ cart.item_count }}</span>
+      </a>
+      <a class="btn" href="{{ section.settings.cta_link | default: settings.global_cta_link | default: routes.all_products_collection_url }}">{{ section.settings.cta_text | default: settings.global_cta_text }}</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>☰</button>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Main menu", "default": "main-menu" },
+    { "type": "text", "id": "cta_text", "label": "CTA text", "default": "Subscribe Now" },
+    { "type": "url", "id": "cta_link", "label": "CTA link" }
+  ]
+}
+{% endschema %}

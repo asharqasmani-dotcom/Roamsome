@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page-content",
+      "settings": {
+        "eyebrow": "Page"
+      }
+    }
+  },
+  "order": ["main"]
+}

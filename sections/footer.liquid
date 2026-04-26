@@ -1,0 +1,85 @@
+<footer class="footer section">
+  {% assign footer_menu_handle = section.settings.footer_menu %}
+  {% assign support_menu_handle = section.settings.support_menu %}
+  {% assign footer_links = linklists[footer_menu_handle].links %}
+  {% assign support_links = linklists[support_menu_handle].links %}
+  <div class="container footer-grid">
+    <div class="footer-meta">
+      <a class="brand-mark brand-mark-footer" href="{{ routes.root_url }}" aria-label="{{ shop.name }} home">
+        {% if settings.footer_logo != blank %}
+          <img src="{{ settings.footer_logo | image_url: width: 240 }}" alt="{{ shop.name }}">
+        {% else %}
+          <img src="{{ 'footer-logo.png' | asset_url }}" alt="{{ shop.name }}">
+        {% endif %}
+      </a>
+      <p>{{ settings.footer_text }}</p>
+      <div class="trust-points">
+        {% if section.blocks.size > 0 %}
+          {% for block in section.blocks %}
+            {% if block.type == 'trust_point' %}
+              <span class="mini-pill">{{ block.settings.text }}</span>
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          <span class="mini-pill">Limited weekly deliveries</span>
+          <span class="mini-pill">Pause or cancel anytime</span>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <h4>{{ section.settings.explore_heading }}</h4>
+      {% if footer_links != blank %}
+        {% for link in footer_links %}
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        {% endfor %}
+      {% else %}
+        <a href="{{ routes.all_products_collection_url }}">Subscription Plans</a>
+        <a href="/pages/destinations">Past Boxes</a>
+        <a href="/blogs/news">Blog</a>
+        <a href="/pages/about">About</a>
+      {% endif %}
+    </div>
+
+    <div class="footer-links">
+      <h4>{{ section.settings.contact_heading }}</h4>
+      <a href="tel:{{ settings.phone_number | remove: ' ' }}">{{ settings.phone_number }}</a>
+      <a href="mailto:{{ settings.support_email }}">{{ settings.support_email }}</a>
+      {% if support_links != blank %}
+        {% for link in support_links %}
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        {% endfor %}
+      {% else %}
+        <a href="/pages/faq">FAQs</a>
+        <a href="/pages/contact">Get in touch</a>
+      {% endif %}
+      <div class="footer-socials">
+        {% if settings.social_instagram != blank %}<a href="{{ settings.social_instagram }}" aria-label="Instagram">IG</a>{% endif %}
+        {% if settings.social_facebook != blank %}<a href="{{ settings.social_facebook }}" aria-label="Facebook">FB</a>{% endif %}
+        {% if settings.social_tiktok != blank %}<a href="{{ settings.social_tiktok }}" aria-label="TikTok">TT</a>{% endif %}
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "blocks": [
+    {
+      "type": "trust_point",
+      "name": "Trust point",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Limited weekly deliveries" }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "text", "id": "explore_heading", "label": "Explore heading", "default": "Explore" },
+    { "type": "text", "id": "contact_heading", "label": "Contact heading", "default": "Contact" },
+    { "type": "link_list", "id": "footer_menu", "label": "Footer menu", "default": "footer" },
+    { "type": "link_list", "id": "support_menu", "label": "Support menu" }
+  ],
+  "max_blocks": 4
+}
+{% endschema %}

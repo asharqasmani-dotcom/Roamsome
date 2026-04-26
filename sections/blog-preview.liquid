@@ -1,0 +1,104 @@
+{% assign source_blog = blogs[section.settings.blog] %}
+<section class="section{% if section.settings.soft_background %} section-soft{% endif %}">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.text }}</p>
+    </div>
+    {% if source_blog != blank and source_blog.articles_count > 0 %}
+      <div class="blog-grid">
+        {% for article in source_blog.articles limit: section.settings.posts_to_show %}
+          {% render 'article-card', article: article %}
+        {% endfor %}
+      </div>
+    {% elsif section.blocks.size > 0 %}
+      <div class="blog-grid">
+        {% for block in section.blocks limit: section.settings.posts_to_show %}
+          <article class="blog-card">
+            {% if block.settings.image != blank %}
+              <div class="meal-image blog-card-image" style="background-image:url('{{ block.settings.image | image_url: width: 1200 }}')"></div>
+            {% else %}
+              <div class="meal-image blog-card-image" style="background:linear-gradient(135deg, rgba(253,113,60,0.14), rgba(246,244,231,0.92));"></div>
+            {% endif %}
+            <div class="blog-card-body">
+              <div class="kicker">{{ block.settings.category }}</div>
+              <h3>{{ block.settings.title }}</h3>
+              <p>{{ block.settings.text }}</p>
+              <div class="summary-line">{{ block.settings.read_time }}</div>
+              <a class="btn" href="{{ block.settings.button_link | default: '/blogs/news' }}">{{ block.settings.button_label }}</a>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <article class="summary-card">
+        <h3>Add a Shopify blog</h3>
+        <p>Select a blog in the theme customizer so posts automatically appear here.</p>
+      </article>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Blog preview",
+  "settings": [
+    { "type": "checkbox", "id": "soft_background", "label": "Use soft background", "default": true },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "From the blog" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Stories behind the ROAMSOME experience" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Read more about travel-inspired meals, destination-led cooking and the rituals that make a premium box feel transportive." },
+    { "type": "blog", "id": "blog", "label": "Blog" },
+    { "type": "range", "id": "posts_to_show", "label": "Posts to show", "min": 2, "max": 6, "step": 1, "default": 3 }
+  ],
+  "blocks": [
+    {
+      "type": "fallback_article",
+      "name": "Fallback article",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "category", "label": "Category", "default": "Travel-inspired meals" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Bringing Travel Home Through Dinner" },
+        { "type": "textarea", "id": "text", "label": "Excerpt", "default": "How a premium weeknight meal can recreate the feeling of arrival, discovery and place without leaving your kitchen." },
+        { "type": "text", "id": "read_time", "label": "Read time", "default": "4 min read" },
+        { "type": "text", "id": "button_label", "label": "Button label", "default": "Read More" },
+        { "type": "url", "id": "button_link", "label": "Button link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog preview",
+      "blocks": [
+        {
+          "type": "fallback_article",
+          "settings": {
+            "category": "Travel-inspired meals",
+            "title": "Bringing Travel Home Through Dinner",
+            "text": "How a premium weeknight meal can recreate the feeling of arrival, discovery and place without leaving your kitchen.",
+            "read_time": "4 min read"
+          }
+        },
+        {
+          "type": "fallback_article",
+          "settings": {
+            "category": "Global cuisines",
+            "title": "What Makes Global Cuisine Feel Authentic at Home",
+            "text": "A closer look at ingredients, technique and storytelling when building premium boxes inspired by world cuisines.",
+            "read_time": "5 min read"
+          }
+        },
+        {
+          "type": "fallback_article",
+          "settings": {
+            "category": "Cooking experiences",
+            "title": "The Art of Slower Weeknight Cooking",
+            "text": "Why premium home cooking is less about speed for its own sake and more about creating a calm, memorable rhythm at the end of the day.",
+            "read_time": "4 min read"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

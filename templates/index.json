@@ -1,0 +1,152 @@
+{
+  "sections": {
+    "hero": {
+      "type": "home-hero",
+      "settings": {
+        "eyebrow": "UK food subscription",
+        "heading": "Explore the world from your kitchen",
+        "text": "Travel-inspired meal kits delivered to your door every week with premium ingredients, globally inspired recipes and a clean, flexible subscription experience.",
+        "primary_button_label": "Start Your Journey",
+        "secondary_button_label": "Explore Past Boxes",
+        "urgency_text": "Limited weekly slots available"
+      },
+      "blocks": {
+        "chip1": { "type": "meta_chip", "settings": { "text": "Fresh ingredients" } },
+        "chip2": { "type": "meta_chip", "settings": { "text": "Chef-led recipes" } },
+        "chip3": { "type": "meta_chip", "settings": { "text": "Pause or cancel anytime" } },
+        "slide1": { "type": "slide", "settings": { "title": "Premium ingredients, real weeknight ease", "text": "Fresh produce, chef-led recipes and flexible UK delivery", "alt": "Two people preparing a travel-inspired meal together in a premium modern kitchen" } },
+        "slide2": { "type": "slide", "settings": { "title": "Premium meal kits, beautifully prepared", "text": "Organised ingredients, chef-led recipes and destination-inspired cooking at home", "alt": "A premium ROAMSOME meal kit box opened on a clean kitchen worktop" } }
+      },
+      "block_order": ["chip1", "chip2", "chip3", "slide1", "slide2"]
+    },
+    "steps": {
+      "type": "home-steps",
+      "blocks": {
+        "step1": { "type": "step", "settings": { "title": "Choose your plan", "text": "Select the subscription rhythm that fits your household and let ROAMSOME handle the weekly surprise-country reveal." } },
+        "step2": { "type": "step", "settings": { "title": "Receive fresh ingredients", "text": "Get pre-portioned ingredients, chef tips and recipe cards delivered chilled anywhere across mainland UK." } },
+        "step3": { "type": "step", "settings": { "title": "Cook and discover the destination", "text": "Create premium dishes inspired by a surprise country experience revealed only when your curated box arrives." } }
+      },
+      "block_order": ["step1", "step2", "step3"]
+    },
+    "story": {
+      "type": "story-card-section",
+      "blocks": {
+        "story1": { "type": "story", "settings": { "eyebrow": "A surprise country experience", "title": "A surprise country experience", "text": "Every delivery is built around one destination, with premium ingredients, a recipe journey and cultural cues that make the evening feel transportive from the first step to the final plate." } }
+      },
+      "block_order": ["story1"]
+    },
+    "features": {
+      "type": "icon-feature-grid",
+      "blocks": {
+        "feature1": { "type": "feature", "settings": { "icon": "✦", "title": "Premium ingredients", "text": "Fresh produce, premium proteins and thoughtful pantry elements selected for flavour and quality." } },
+        "feature2": { "type": "feature", "settings": { "icon": "🌍", "title": "Globally inspired recipes", "text": "Every box is shaped by destination-led cooking so your week feels varied, exciting and memorable without needing to choose from a menu." } },
+        "feature3": { "type": "feature", "settings": { "icon": "⏱", "title": "Easy to cook, flexible to manage", "text": "Short prep times, clear instructions and a subscription you can pause, skip or cancel anytime." } }
+      },
+      "block_order": ["feature1", "feature2", "feature3"]
+    },
+    "collection": {
+      "type": "featured-collection",
+      "blocks": {
+        "p1": {
+          "type": "fallback_product",
+          "settings": {
+            "badge": "Most Flexible",
+            "kicker": "Ideal for first-time subscribers",
+            "title": "Explorer Plan",
+            "text": "A lighter weekly ritual for curious cooks who want a compact surprise-country experience at home.",
+            "price": "£29.00"
+          }
+        },
+        "p2": {
+          "type": "fallback_product",
+          "settings": {
+            "badge": "Most Popular",
+            "kicker": "Best seller across the UK",
+            "title": "Voyager Plan",
+            "text": "Our signature subscription with three globally inspired dinners curated as one surprise country journey each week.",
+            "price": "£42.00"
+          }
+        },
+        "p3": {
+          "type": "fallback_product",
+          "settings": {
+            "badge": "Premium Choice",
+            "kicker": "For committed home hosts",
+            "title": "Grand Tour Plan",
+            "text": "A full week of premium discovery for households who want a richer surprise-country experience with extra hosting energy.",
+            "price": "£65.00"
+          }
+        }
+      },
+      "block_order": ["p1", "p2", "p3"]
+    },
+    "destinations": {
+      "type": "destinations-archive",
+      "blocks": {
+        "d1": { "type": "destination", "settings": { "flag": "🇮🇹", "country": "Italy", "title": "Sicily Summer Table", "text": "Bright citrus, basil, roasted vegetables and silky pasta inspired by long warm evenings on the coast.", "tag_1": "Past box", "tag_2": "Fresh herbs", "tag_3": "Mediterranean warmth" } },
+        "d2": { "type": "destination", "settings": { "flag": "🇯🇵", "country": "Japan", "title": "Kyoto Comfort Club", "text": "A calm, umami-rich route featuring noodles, miso depth and balanced textures for relaxed evening cooking.", "tag_1": "Past box", "tag_2": "Umami", "tag_3": "Comfort cooking" } },
+        "d3": { "type": "destination", "settings": { "flag": "🇲🇽", "country": "Mexico", "title": "Mexico City Night Market", "text": "Layered spice, charred peppers and vibrant toppings designed to bring street-market energy to your kitchen.", "tag_1": "Past box", "tag_2": "Vibrant", "tag_3": "Shared plates" } }
+      },
+      "block_order": ["d1", "d2", "d3"]
+    },
+    "upcoming": {
+      "type": "upcoming-box-info",
+      "blocks": {
+        "a1": { "type": "allergen", "settings": { "text": "May include milk" } },
+        "a2": { "type": "allergen", "settings": { "text": "May include eggs" } },
+        "a3": { "type": "allergen", "settings": { "text": "May include wheat and gluten" } },
+        "a4": { "type": "allergen", "settings": { "text": "May include sesame" } },
+        "a5": { "type": "allergen", "settings": { "text": "Prepared in a kitchen that handles nuts" } }
+      },
+      "block_order": ["a1", "a2", "a3", "a4", "a5"]
+    },
+    "testimonials": {
+      "type": "testimonials-marquee",
+      "blocks": {
+        "chip1": { "type": "chip", "settings": { "text": "★★★★★ Rated Excellent" } },
+        "chip2": { "type": "chip", "settings": { "text": "Flexible subscription" } },
+        "chip3": { "type": "chip", "settings": { "text": "Limited weekly deliveries" } },
+        "t1": { "type": "testimonial", "settings": { "quote": "Roamsome makes our weeknights feel like a mini city break. The ingredients arrive beautifully packed and every box feels genuinely special.", "name": "Amelia H.", "location": "Clapham, London" } },
+        "t2": { "type": "testimonial", "settings": { "quote": "We tried it for convenience and stayed for the quality. The recipes are easy to follow but the final dishes feel restaurant level.", "name": "Oliver P.", "location": "Didsbury, Manchester" } },
+        "t3": { "type": "testimonial", "settings": { "quote": "The travel angle is brilliant. We love discovering a new country every week without sacrificing freshness or simplicity.", "name": "Sana R.", "location": "Edgbaston, Birmingham" } }
+      },
+      "block_order": ["chip1", "chip2", "chip3", "t1", "t2", "t3"]
+    },
+    "blog_preview": {
+      "type": "blog-preview",
+      "blocks": {
+        "b1": {
+          "type": "fallback_article",
+          "settings": {
+            "category": "Travel-inspired meals",
+            "title": "Bringing Travel Home Through Dinner",
+            "text": "How a premium weeknight meal can recreate the feeling of arrival, discovery and place without leaving your kitchen.",
+            "read_time": "4 min read"
+          }
+        },
+        "b2": {
+          "type": "fallback_article",
+          "settings": {
+            "category": "Global cuisines",
+            "title": "What Makes Global Cuisine Feel Authentic at Home",
+            "text": "A closer look at ingredients, technique and storytelling when building premium boxes inspired by world cuisines.",
+            "read_time": "5 min read"
+          }
+        },
+        "b3": {
+          "type": "fallback_article",
+          "settings": {
+            "category": "Cooking experiences",
+            "title": "The Art of Slower Weeknight Cooking",
+            "text": "Why premium home cooking is less about speed for its own sake and more about creating a calm, memorable rhythm at the end of the day.",
+            "read_time": "4 min read"
+          }
+        }
+      },
+      "block_order": ["b1", "b2", "b3"]
+    },
+    "newsletter": { "type": "newsletter-signup" },
+    "cta": { "type": "cta-banner" }
+  },
+  "order": ["hero", "steps", "story", "features", "collection", "destinations", "upcoming", "testimonials", "blog_preview", "newsletter", "cta"]
+}

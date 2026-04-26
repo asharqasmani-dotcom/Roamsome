@@ -1,0 +1,32 @@
+<section class="page-hero">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+      <h1>{{ blog.title }}</h1>
+      {% if blog.articles_count > 0 %}<p>{{ section.settings.text }}</p>{% endif %}
+    </div>
+    {% paginate blog.articles by section.settings.posts_per_page %}
+      <div class="blog-grid">
+        {% for article in blog.articles %}
+          {% render 'article-card', article: article %}
+        {% else %}
+          <article class="summary-card"><p>Add blog posts in Shopify Admin to populate this page.</p></article>
+        {% endfor %}
+      </div>
+      {% if paginate.pages > 1 %}
+        <div class="pagination-wrapper">{{ paginate | default_pagination }}</div>
+      {% endif %}
+    {% endpaginate %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main blog",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Blog" },
+    { "type": "textarea", "id": "text", "label": "Intro text", "default": "Read about travel-inspired meals, global cuisines and the slower, more memorable cooking experiences that shape the ROAMSOME ritual." },
+    { "type": "range", "id": "posts_per_page", "label": "Posts per page", "min": 3, "max": 12, "step": 1, "default": 6 }
+  ]
+}
+{% endschema %}

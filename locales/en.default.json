@@ -1,0 +1,46 @@
+{
+  "accessibility": {
+    "skip_to_text": "Skip to content"
+  },
+  "general": {
+    "continue_shopping": "Continue shopping",
+    "view_all": "View all",
+    "learn_more": "Learn more",
+    "read_more": "Read more"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "quantity": "Quantity",
+      "subscribe": "Subscription options",
+      "related": "Related products"
+    }
+  },
+  "sections": {
+    "cart_drawer": {
+      "title": "Your cart",
+      "empty": "Your basket is ready for take-off.",
+      "subtotal": "Subtotal",
+      "view_cart": "View cart",
+      "checkout": "Checkout"
+    },
+    "contact_form": {
+      "success": "Thanks for reaching out. A ROAMSOME team member will get back to you shortly."
+    }
+  },
+  "blogs": {
+    "article": {
+      "read_more": "Read more"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Your ROAMSOME order",
+      "subtotal": "Subtotal",
+      "checkout": "Continue to checkout",
+      "empty": "Your cart is currently empty."
+    }
+  }
+}

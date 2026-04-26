@@ -1,0 +1,36 @@
+<section class="page-hero">
+  <div class="container{% if section.settings.show_image %} page-hero-grid{% endif %}">
+    <article class="hero-card page-hero-copy">
+      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+      <h1>{{ section.settings.heading }}</h1>
+      <p>{{ section.settings.text }}</p>
+      {% if section.blocks.size > 0 %}
+        <div class="hero-meta" style="margin-top:22px;">
+          {% for block in section.blocks %}
+            <span class="meta-chip">{{ block.settings.text }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </article>
+    {% if section.settings.show_image %}
+      <div class="page-hero-image"{% if section.settings.image != blank %} style="background-image:url('{{ section.settings.image | image_url: width: 1600 }}')"{% endif %}></div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Rich hero",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Page title" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Page heading" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Supporting page copy." },
+    { "type": "checkbox", "id": "show_image", "label": "Show image", "default": true },
+    { "type": "image_picker", "id": "image", "label": "Image" }
+  ],
+  "blocks": [
+    { "type": "chip", "name": "Meta chip", "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "Flexible weekly billing" }] }
+  ],
+  "presets": [{ "name": "Rich hero" }]
+}
+{% endschema %}

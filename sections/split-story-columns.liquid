@@ -1,0 +1,38 @@
+<section class="section{% if section.settings.soft_background %} section-soft{% endif %}">
+  <div class="container split-grid">
+    {% for block in section.blocks %}
+      <article class="story-card">
+        <span class="eyebrow">{{ block.settings.eyebrow }}</span>
+        <h2>{{ block.settings.title }}</h2>
+        {% if block.settings.intro != blank %}<p>{{ block.settings.intro }}</p>{% endif %}
+        <ul class="detail-list">
+          {% if block.settings.item_1 != blank %}<li>{{ block.settings.item_1 }}</li>{% endif %}
+          {% if block.settings.item_2 != blank %}<li>{{ block.settings.item_2 }}</li>{% endif %}
+          {% if block.settings.item_3 != blank %}<li>{{ block.settings.item_3 }}</li>{% endif %}
+          {% if block.settings.item_4 != blank %}<li>{{ block.settings.item_4 }}</li>{% endif %}
+        </ul>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Split story columns",
+  "settings": [
+    { "type": "checkbox", "id": "soft_background", "label": "Use soft background", "default": true }
+  ],
+  "blocks": [
+    { "type": "column", "name": "Column", "settings": [
+      { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Delivery and freshness" },
+      { "type": "text", "id": "title", "label": "Title", "default": "Built for premium quality on a real-life schedule" },
+      { "type": "textarea", "id": "intro", "label": "Intro" },
+      { "type": "text", "id": "item_1", "label": "Item 1", "default": "Tracked UK delivery windows" },
+      { "type": "text", "id": "item_2", "label": "Item 2", "default": "Fresh ingredients and chilled packaging" },
+      { "type": "text", "id": "item_3", "label": "Item 3", "default": "Clear allergen and dietary information" },
+      { "type": "text", "id": "item_4", "label": "Item 4", "default": "Simple skips and pauses before cut-off" }
+    ] }
+  ],
+  "presets": [{ "name": "Split story columns", "blocks": [{ "type": "column" }, { "type": "column", "settings": { "eyebrow": "Why subscribers stay", "title": "Flexible by design", "item_1": "Swap plans based on your week", "item_2": "Pause or cancel anytime", "item_3": "Curated surprise-country storytelling", "item_4": "Chef tips and destination storytelling" } }] }]
+}
+{% endschema %}

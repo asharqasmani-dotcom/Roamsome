@@ -1,0 +1,100 @@
+<section class="hero">
+  <div class="container hero-grid">
+    <article class="hero-card hero-copy map-accent">
+      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+      <h1>{{ section.settings.heading }}</h1>
+      <p>{{ section.settings.text }}</p>
+      <div class="actions">
+        {% if section.settings.primary_button_label != blank %}
+          <a class="btn" href="{{ section.settings.primary_button_link | default: routes.all_products_collection_url }}">{{ section.settings.primary_button_label }}</a>
+        {% endif %}
+        {% if section.settings.secondary_button_label != blank %}
+          <a class="btn-secondary" href="{{ section.settings.secondary_button_link | default: '/pages/destinations' }}">{{ section.settings.secondary_button_label }}</a>
+        {% endif %}
+      </div>
+      <div class="urgency-line"><span class="urgency-dot"></span>{{ section.settings.urgency_text }}</div>
+      <div class="hero-meta" style="margin-top:22px;">
+        {% for block in section.blocks %}
+          {% if block.type == 'meta_chip' %}
+            <span class="meta-chip">{{ block.settings.text }}</span>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </article>
+    <div class="hero-visual hero-slider" data-hero-slider>
+      {% assign slide_index = 0 %}
+      {% for block in section.blocks %}
+        {% if block.type == 'slide' %}
+          <div class="hero-slide{% if slide_index == 0 %} is-active{% endif %}">
+            <div class="hero-slide-media">
+              {% assign slide_image = block.settings.image %}
+              {% if slide_image != blank %}
+                <img src="{{ slide_image | image_url: width: 1600 }}" alt="{{ block.settings.alt | escape }}">
+              {% elsif slide_index == 0 %}
+                <img src="{{ 'hero-kitchen.png' | asset_url }}" alt="{{ block.settings.alt | escape }}">
+              {% else %}
+                <img src="{{ 'hero-meal-kit.png' | asset_url }}" alt="{{ block.settings.alt | escape }}">
+              {% endif %}
+            </div>
+            <div class="floating-card bottom">
+              <strong>{{ block.settings.title }}</strong>
+              <span>{{ block.settings.text }}</span>
+            </div>
+          </div>
+          {% assign slide_index = slide_index | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+      <div class="hero-slider-dots" aria-label="Hero slideshow navigation">
+        {% assign dot_index = 0 %}
+        {% for block in section.blocks %}
+          {% if block.type == 'slide' %}
+            <button type="button"{% if dot_index == 0 %} class="is-active"{% endif %} aria-label="Show slide {{ dot_index | plus: 1 }}" data-hero-dot="{{ dot_index }}"></button>
+            {% assign dot_index = dot_index | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Home hero",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "UK food subscription" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Explore the world from your kitchen" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Travel-inspired meal kits delivered to your door every week with premium ingredients, globally inspired recipes and a clean, flexible subscription experience." },
+    { "type": "text", "id": "primary_button_label", "label": "Primary button label", "default": "Start Your Journey" },
+    { "type": "url", "id": "primary_button_link", "label": "Primary button link" },
+    { "type": "text", "id": "secondary_button_label", "label": "Secondary button label", "default": "Explore Past Boxes" },
+    { "type": "url", "id": "secondary_button_link", "label": "Secondary button link" },
+    { "type": "text", "id": "urgency_text", "label": "Urgency text", "default": "Limited weekly slots available" }
+  ],
+  "blocks": [
+    { "type": "meta_chip", "name": "Meta chip", "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "Fresh ingredients" }] },
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "alt", "label": "Alt text", "default": "ROAMSOME hero image" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Premium ingredients, real weeknight ease" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Fresh produce, chef-led recipes and flexible UK delivery" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Home hero",
+      "blocks": [
+        { "type": "meta_chip", "settings": { "text": "Fresh ingredients" } },
+        { "type": "meta_chip", "settings": { "text": "Chef-led recipes" } },
+        { "type": "meta_chip", "settings": { "text": "Pause or cancel anytime" } },
+        { "type": "slide", "settings": { "title": "Premium ingredients, real weeknight ease", "text": "Fresh produce, chef-led recipes and flexible UK delivery", "alt": "Two people preparing a travel-inspired meal together in a premium modern kitchen" } },
+        { "type": "slide", "settings": { "title": "Premium meal kits, beautifully prepared", "text": "Organised ingredients, chef-led recipes and destination-inspired cooking at home", "alt": "A premium ROAMSOME meal kit box opened on a clean kitchen worktop" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

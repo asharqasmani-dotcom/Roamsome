@@ -1,0 +1,109 @@
+[
+  {
+    "name": "Theme settings",
+    "theme_info": {
+      "name": "ROAMSOME Shopify Theme",
+      "version": "1.0.0",
+      "author": "OpenAI Codex",
+      "documentation_url": "https://help.shopify.com/manual/online-store/themes/theme-structure",
+      "support_url": "https://help.shopify.com/"
+    },
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Header logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "footer_logo",
+        "label": "Footer logo"
+      },
+      {
+        "type": "font_picker",
+        "id": "heading_font",
+        "label": "Heading font",
+        "default": "montserrat_n7"
+      },
+      {
+        "type": "font_picker",
+        "id": "body_font",
+        "label": "Body font",
+        "default": "montserrat_n4"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary color",
+        "default": "#fd713c"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Soft background color",
+        "default": "#f6f4e7"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Body text color",
+        "default": "#262626"
+      },
+      {
+        "type": "color",
+        "id": "color_muted",
+        "label": "Muted text color",
+        "default": "#6b6b6b"
+      },
+      {
+        "type": "text",
+        "id": "global_cta_text",
+        "label": "Global CTA text",
+        "default": "Subscribe Now"
+      },
+      {
+        "type": "url",
+        "id": "global_cta_link",
+        "label": "Global CTA link"
+      },
+      {
+        "type": "text",
+        "id": "footer_text",
+        "label": "Footer description",
+        "default": "Travel-inspired meal kits for curious UK kitchens. Premium ingredients, globally inspired recipes, and flexible weekly delivery."
+      },
+      {
+        "type": "text",
+        "id": "phone_number",
+        "label": "Phone number",
+        "default": "+44 20 1234 5678"
+      },
+      {
+        "type": "text",
+        "id": "support_email",
+        "label": "Support email",
+        "default": "hello@roamsome.co.uk"
+      },
+      {
+        "type": "url",
+        "id": "social_instagram",
+        "label": "Instagram link"
+      },
+      {
+        "type": "url",
+        "id": "social_facebook",
+        "label": "Facebook link"
+      },
+      {
+        "type": "url",
+        "id": "social_tiktok",
+        "label": "TikTok link"
+      }
+    ]
+  }
+]

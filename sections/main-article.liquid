@@ -1,0 +1,44 @@
+<section class="page-hero">
+  <div class="container">
+    <article class="blog-post-layout">
+      {% if article.image %}
+        <div class="page-hero-image blog-post-hero" style="background-image:url('{{ article.image | image_url: width: 1600 }}')"></div>
+      {% endif %}
+      <div class="blog-post-copy">
+        <span class="eyebrow">{% if article.tags.size > 0 %}{{ article.tags.first }}{% else %}{{ blog.title }}{% endif %}</span>
+        <h1>{{ article.title }}</h1>
+        <p class="summary-line">{{ article.published_at | date: '%d %b %Y' }}</p>
+        {% if article.excerpt != blank %}<p class="article-excerpt">{{ article.excerpt }}</p>{% endif %}
+        <div class="summary-card article-content">{{ article.content }}</div>
+      </div>
+    </article>
+
+    {% if blog.articles_count > 1 %}
+      <section class="product-related">
+        <div class="section-heading">
+          <span class="eyebrow">{{ section.settings.related_eyebrow }}</span>
+          <h2>{{ section.settings.related_heading }}</h2>
+          <p>{{ section.settings.related_text }}</p>
+        </div>
+        <div class="blog-grid">
+          {% for related_article in blog.articles limit: 3 %}
+            {% if related_article.id != article.id %}
+              {% render 'article-card', article: related_article %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main article",
+  "settings": [
+    { "type": "text", "id": "related_eyebrow", "label": "Related eyebrow", "default": "More from the blog" },
+    { "type": "text", "id": "related_heading", "label": "Related heading", "default": "Related reading" },
+    { "type": "textarea", "id": "related_text", "label": "Related text", "default": "Explore more stories from ROAMSOME on travel-inspired meals, global cuisines and cooking experiences." }
+  ]
+}
+{% endschema %}

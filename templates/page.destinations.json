@@ -1,0 +1,43 @@
+{
+  "sections": {
+    "hero": {
+      "type": "rich-hero",
+      "settings": {
+        "eyebrow": "Previous destinations",
+        "heading": "Curated routes from past ROAMSOME boxes",
+        "text": "Explore previous country experiences, plated moments and destination-led dishes that show how the surprise format unfolds from week to week.",
+        "show_image": true
+      },
+      "blocks": {
+        "chip1": { "type": "chip", "settings": { "text": "Past box archive" } },
+        "chip2": { "type": "chip", "settings": { "text": "Country inspiration" } },
+        "chip3": { "type": "chip", "settings": { "text": "Curated surprise format" } }
+      },
+      "block_order": ["chip1", "chip2", "chip3"]
+    },
+    "destinations": {
+      "type": "destinations-archive",
+      "blocks": {
+        "d1": { "type": "destination", "settings": { "flag": "🇮🇹", "country": "Italy", "title": "Sicily Summer Table", "text": "Bright citrus, basil, roasted vegetables and silky pasta inspired by long warm evenings on the coast.", "tag_1": "Past box", "tag_2": "Fresh herbs", "tag_3": "Mediterranean warmth" } },
+        "d2": { "type": "destination", "settings": { "flag": "🇯🇵", "country": "Japan", "title": "Kyoto Comfort Club", "text": "A calm, umami-rich route featuring noodles, miso depth and balanced textures for relaxed evening cooking.", "tag_1": "Past box", "tag_2": "Umami", "tag_3": "Comfort cooking" } },
+        "d3": { "type": "destination", "settings": { "flag": "🇲🇽", "country": "Mexico", "title": "Mexico City Night Market", "text": "Layered spice, charred peppers and vibrant toppings designed to bring street-market energy to your kitchen.", "tag_1": "Past box", "tag_2": "Vibrant", "tag_3": "Shared plates" } },
+        "d4": { "type": "destination", "settings": { "flag": "🇰🇷", "country": "South Korea", "title": "Seoul Weekend Table", "text": "Savory marinades, crisp pickles and bold finishing sauces for a polished, high-contrast dinner experience.", "tag_1": "Past box", "tag_2": "Bold flavours", "tag_3": "Modern plating" } },
+        "d5": { "type": "destination", "settings": { "flag": "🇲🇦", "country": "Morocco", "title": "Marrakech Spice Route", "text": "Slow warmth, fragrant spice blends and rich textures inspired by courtyard dinners and market stalls.", "tag_1": "Past box", "tag_2": "Warm spices", "tag_3": "Story-led" } },
+        "d6": { "type": "destination", "settings": { "flag": "🇵🇹", "country": "Portugal", "title": "Lisbon Supper Club", "text": "Paprika warmth, citrus lift and comforting roasted elements designed for easy hosting at home.", "tag_1": "Past box", "tag_2": "Coastal", "tag_3": "Family style" } }
+      },
+      "block_order": ["d1", "d2", "d3", "d4", "d5", "d6"]
+    },
+    "upcoming": {
+      "type": "upcoming-box-info",
+      "blocks": {
+        "a1": { "type": "allergen", "settings": { "text": "May include milk" } },
+        "a2": { "type": "allergen", "settings": { "text": "May include eggs" } },
+        "a3": { "type": "allergen", "settings": { "text": "May include wheat and gluten" } },
+        "a4": { "type": "allergen", "settings": { "text": "May include sesame" } },
+        "a5": { "type": "allergen", "settings": { "text": "Prepared in a kitchen that handles nuts" } }
+      },
+      "block_order": ["a1", "a2", "a3", "a4", "a5"]
+    }
+  },
+  "order": ["hero", "destinations", "upcoming"]
+}

@@ -1,0 +1,30 @@
+<section class="section">
+  <div class="container">
+    <div class="cta-banner">
+      <div class="split-grid">
+        <div>
+          <span class="eyebrow" style="background:rgba(255,255,255,0.16); color:#fff;">{{ section.settings.eyebrow }}</span>
+          <h2>{{ section.settings.heading }}</h2>
+          <p>{{ section.settings.text }}</p>
+        </div>
+        <div class="actions" style="justify-content:flex-end; align-items:center;">
+          <a class="btn-secondary" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">{{ section.settings.button_label }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CTA banner",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Final CTA" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Start your food journey today" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Discover destination-inspired dinners, premium ingredients and a weekly subscription designed to fit real UK households." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Subscribe Now" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "presets": [{ "name": "CTA banner" }]
+}
+{% endschema %}

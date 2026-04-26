@@ -1,0 +1,103 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="{{ settings.color_primary }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {% if settings.favicon != blank %}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 64, height: 64 }}">
+    {% endif %}
+
+    {% if settings.heading_font %}
+      {{ settings.heading_font | font_face: font_display: 'swap' }}
+    {% endif %}
+    {% if settings.body_font %}
+      {{ settings.body_font | font_face: font_display: 'swap' }}
+    {% endif %}
+
+    <title>
+      {{ page_title }}
+      {% if current_tags %} &ndash; tagged {{ current_tags | join: ', ' }}{% endif %}
+      {% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}
+      {% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {{ content_for_header }}
+
+    <style>
+      :root {
+        --color-primary: {{ settings.color_primary }};
+        --color-secondary: {{ settings.color_secondary }};
+        --color-white: #ffffff;
+        --color-black: #000000;
+        --color-text: {{ settings.color_text }};
+        --color-muted: {{ settings.color_muted }};
+        --color-border: rgba(0, 0, 0, 0.08);
+        --color-surface: rgba(255, 255, 255, 0.88);
+        --shadow-soft: 0 20px 40px rgba(0, 0, 0, 0.08);
+        --shadow-hover: 0 24px 50px rgba(0, 0, 0, 0.14);
+        --radius-card: 28px;
+        --radius-pill: 999px;
+        --hero-panel-height: clamp(420px, 42vw, 520px);
+        --grid-card-min-height: 320px;
+        --review-card-min-height: 280px;
+        --media-ratio: 4 / 3;
+        --content-width: min(1180px, calc(100vw - 40px));
+        --section-space: clamp(64px, 9vw, 108px);
+        --font-heading: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};
+        --font-body: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }};
+      }
+      body {
+        font-family: var(--font-body);
+      }
+      .section-heading h2,
+      .page-hero h1,
+      .hero-copy h1,
+      .product-purchase-card h1,
+      .blog-post-copy h1,
+      .cta-banner h2,
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: var(--font-heading);
+      }
+    </style>
+
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+  </head>
+  <body class="template-{{ template.name | handle }}{% if template.suffix %} template-{{ template.suffix | handle }}{% endif %}{% if template.name == 'index' %} home-page{% endif %}" data-cart-count="{{ cart.item_count }}">
+    <a class="skip-to-content-link visually-hidden" href="#MainContent">{{ 'accessibility.skip_to_text' | t }}</a>
+
+    {% section 'announcement-bar' %}
+    {% section 'header' %}
+
+    <main id="MainContent" class="site-shell" role="main">
+      {{ content_for_layout }}
+    </main>
+
+    {% section 'footer' %}
+    {% render 'cart-drawer' %}
+
+    <script>
+      window.theme = window.theme || {};
+      window.theme.routes = {
+        cart: '{{ routes.cart_url }}',
+        cartAdd: '{{ routes.cart_add_url }}',
+        cartChange: '{{ routes.cart_change_url }}',
+        cartUpdate: '{{ routes.cart_update_url }}',
+        predictiveSearch: '{{ routes.predictive_search_url }}'
+      };
+      window.theme.moneyFormat = {{ shop.money_format | json }};
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<section class="page-hero main-page-content">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">{{ section.settings.eyebrow | default: page.title }}</span>
+      <h1>{{ page.title }}</h1>
+      {% if section.settings.text != blank %}<p>{{ section.settings.text }}</p>{% endif %}
+    </div>
+    <article class="summary-card policy-content">
+      <div class="rte">{{ page.content }}</div>
+    </article>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main page content",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Page" },
+    { "type": "textarea", "id": "text", "label": "Intro text" }
+  ]
+}
+{% endschema %}

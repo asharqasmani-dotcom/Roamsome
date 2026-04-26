@@ -1,0 +1,52 @@
+<section class="page-hero">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+      <h1>{{ section.settings.heading }}</h1>
+      <p>{{ section.settings.text }}</p>
+    </div>
+    <div class="contact-grid">
+      <article class="contact-card">
+        <div class="contact-stack">
+          <div>
+            <h3>{{ section.settings.contact_details_heading }}</h3>
+            <p class="contact-meta">Phone: <a href="tel:{{ settings.phone_number | remove: ' ' }}">{{ settings.phone_number }}</a></p>
+            <p class="contact-meta">Email: <a href="mailto:{{ settings.support_email }}">{{ settings.support_email }}</a></p>
+          </div>
+          <div>
+            <h3>{{ section.settings.support_hours_heading }}</h3>
+            <p class="contact-meta">{{ section.settings.support_hours }}</p>
+          </div>
+        </div>
+      </article>
+      <article class="contact-card">
+        {% form 'contact', class: 'contact-form' %}
+          <div class="contact-stack">
+            <input type="text" name="contact[name]" placeholder="Your name" aria-label="Your name" required>
+            <input type="email" name="contact[email]" placeholder="Email address" aria-label="Email address" required>
+            <textarea name="contact[body]" placeholder="How can we help?" aria-label="Message" required></textarea>
+            <button class="btn" type="submit">{{ section.settings.button_label }}</button>
+          </div>
+          {% if form.posted_successfully? %}
+            <p class="success-message">{{ 'sections.contact_form.success' | t }}</p>
+          {% endif %}
+        {% endform %}
+      </article>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main contact",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Contact" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "We’re here to help with your weekly journey" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Get in touch about delivery windows, subscriptions, allergen guidance or anything else related to your ROAMSOME experience." },
+    { "type": "text", "id": "contact_details_heading", "label": "Contact details heading", "default": "Contact details" },
+    { "type": "text", "id": "support_hours_heading", "label": "Support hours heading", "default": "Support hours" },
+    { "type": "text", "id": "support_hours", "label": "Support hours", "default": "Monday to Friday, 8:00 to 18:00" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Send Message" }
+  ]
+}
+{% endschema %}

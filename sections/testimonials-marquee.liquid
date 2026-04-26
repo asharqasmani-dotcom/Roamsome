@@ -1,0 +1,54 @@
+<section class="section{% if section.settings.soft_background %} section-soft{% endif %}">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.text }}</p>
+    </div>
+    <div class="rating-row" style="margin-bottom:28px;">
+      {% for block in section.blocks %}
+        {% if block.type == 'chip' %}
+          <span class="meta-chip">{{ block.settings.text }}</span>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="testimonial-marquee">
+      <div class="testimonial-track">
+        {% capture cards %}
+          {% for block in section.blocks %}
+            {% if block.type == 'testimonial' %}
+              <article class="testimonial-card testimonial-slide">
+                <div class="rating">★★★★★</div>
+                <p>“{{ block.settings.quote }}”</p>
+                <div class="testimonial-footer">{{ block.settings.name }} <span class="summary-line">• {{ block.settings.location }}</span></div>
+              </article>
+            {% endif %}
+          {% endfor %}
+        {% endcapture %}
+        {{ cards }}
+        {{ cards }}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials marquee",
+  "settings": [
+    { "type": "checkbox", "id": "soft_background", "label": "Use soft background", "default": false },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Trust" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Trusted by food lovers across the UK" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "4.9 stars from subscribers who want their weekly meals to feel premium, practical and genuinely exciting." }
+  ],
+  "blocks": [
+    { "type": "chip", "name": "Rating chip", "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "★★★★★ Rated Excellent" }] },
+    { "type": "testimonial", "name": "Testimonial", "settings": [
+      { "type": "textarea", "id": "quote", "label": "Quote", "default": "Roamsome makes our weeknights feel like a mini city break. The ingredients arrive beautifully packed and every box feels genuinely special." },
+      { "type": "text", "id": "name", "label": "Name", "default": "Amelia H." },
+      { "type": "text", "id": "location", "label": "Location", "default": "Clapham, London" }
+    ] }
+  ],
+  "presets": [{ "name": "Testimonials marquee", "blocks": [{ "type": "chip" }, { "type": "chip", "settings": { "text": "Flexible subscription" } }, { "type": "chip", "settings": { "text": "Limited weekly deliveries" } }, { "type": "testimonial" }, { "type": "testimonial", "settings": { "quote": "We tried it for convenience and stayed for the quality. The recipes are easy to follow but the final dishes feel restaurant level.", "name": "Oliver P.", "location": "Didsbury, Manchester" } }, { "type": "testimonial", "settings": { "quote": "The travel angle is brilliant. We love discovering a new country every week without sacrificing freshness or simplicity.", "name": "Sana R.", "location": "Edgbaston, Birmingham" } }, { "type": "testimonial", "settings": { "quote": "I have paused and restarted around holidays with no hassle. It feels premium, flexible and genuinely worth it.", "name": "Georgia W.", "location": "Leith, Edinburgh" } }] }]
+}
+{% endschema %}

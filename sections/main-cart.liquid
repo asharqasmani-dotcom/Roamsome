@@ -1,0 +1,68 @@
+<section class="page-hero">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+      <h1>{{ 'cart.general.title' | t }}</h1>
+      <p>{{ section.settings.text }}</p>
+    </div>
+    {% if cart.item_count > 0 %}
+      <form action="{{ routes.cart_url }}" method="post">
+        <div class="main-cart-grid">
+          <article class="summary-card">
+            <h3>Your cart</h3>
+            <div class="cart-line-items">
+              {% for item in cart.items %}
+                <div class="cart-line-item">
+                  <div class="cart-line-item__image">
+                    {% if item.image %}
+                      <img src="{{ item.image | image_url: width: 300 }}" alt="{{ item.product.title }}">
+                    {% endif %}
+                  </div>
+                  <div class="cart-line-item__meta">
+                    <strong>{{ item.product.title }}</strong>
+                    {% if item.variant.title != 'Default Title' %}<div class="summary-line">{{ item.variant.title }}</div>{% endif %}
+                    {% if item.selling_plan_allocation != blank %}<div class="summary-line">{{ item.selling_plan_allocation.selling_plan.name }}</div>{% endif %}
+                    <div class="cart-line-item__price">{{ item.final_line_price | money }}</div>
+                    <a class="cart-line-item__remove" href="{{ item.url_to_remove }}">Remove</a>
+                  </div>
+                  <div>
+                    <label class="visually-hidden" for="CartItem-{{ item.index | plus: 1 }}">Quantity</label>
+                    <input class="cart__qty-input" id="CartItem-{{ item.index | plus: 1 }}" type="number" name="updates[]" value="{{ item.quantity }}" min="0">
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </article>
+          <article class="summary-card">
+            <h3>Order summary</h3>
+            <div class="summary-row"><span>{{ 'cart.general.subtotal' | t }}</span><strong>{{ cart.total_price | money }}</strong></div>
+            <ul class="check-list" style="margin:18px 0 22px;">
+              <li>Limited weekly deliveries</li>
+              <li>Pause or cancel anytime</li>
+              <li>Secure payment at checkout</li>
+            </ul>
+            <div class="cart__footer-actions">
+              <button class="btn-secondary" type="submit" name="update">Update cart</button>
+              <button class="btn" type="submit" name="checkout">{{ 'cart.general.checkout' | t }}</button>
+            </div>
+          </article>
+        </div>
+      </form>
+    {% else %}
+      <article class="summary-card">
+        <p>{{ 'cart.general.empty' | t }}</p>
+        <a class="btn" href="{{ routes.all_products_collection_url }}">{{ 'general.continue_shopping' | t }}</a>
+      </article>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main cart",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Cart" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Adjust plan quantities, review your delivery summary and continue to secure checkout." }
+  ]
+}
+{% endschema %}

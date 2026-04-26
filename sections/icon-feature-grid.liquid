@@ -1,0 +1,38 @@
+<section class="section{% if section.settings.soft_background %} section-soft{% endif %}">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+      <h2>{{ section.settings.heading }}</h2>
+      {% if section.settings.text != blank %}<p>{{ section.settings.text }}</p>{% endif %}
+    </div>
+    <div class="feature-grid">
+      {% for block in section.blocks %}
+        <article class="feature-card">
+          <div class="icon-badge">{{ block.settings.icon }}</div>
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Icon feature grid",
+  "settings": [
+    { "type": "checkbox", "id": "soft_background", "label": "Use soft background", "default": false },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Why ROAMSOME" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Premium enough to impress, simple enough for real life" },
+    { "type": "textarea", "id": "text", "label": "Text" }
+  ],
+  "blocks": [
+    { "type": "feature", "name": "Feature", "settings": [
+      { "type": "text", "id": "icon", "label": "Icon", "default": "✦" },
+      { "type": "text", "id": "title", "label": "Title", "default": "Premium ingredients" },
+      { "type": "textarea", "id": "text", "label": "Text", "default": "Fresh produce, premium proteins and thoughtful pantry elements selected for flavour and quality." }
+    ] }
+  ],
+  "presets": [{ "name": "Icon feature grid", "blocks": [{ "type": "feature" }, { "type": "feature", "settings": { "icon": "🌍", "title": "Globally inspired recipes", "text": "Every box is shaped by destination-led cooking so your week feels varied, exciting and memorable without needing to choose from a menu." } }, { "type": "feature", "settings": { "icon": "⏱", "title": "Easy to cook, flexible to manage", "text": "Short prep times, clear instructions and a subscription you can pause, skip or cancel anytime." } }] }]
+}
+{% endschema %}

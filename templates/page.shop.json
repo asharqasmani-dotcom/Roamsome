@@ -1,0 +1,63 @@
+{
+  "sections": {
+    "hero": {
+      "type": "rich-hero",
+      "settings": {
+        "eyebrow": "Shop subscriptions",
+        "heading": "Choose your weekly route",
+        "text": "Select a plan that suits your routine and appetite for discovery. Each ROAMSOME box is a curated surprise-country experience revealed on delivery.",
+        "show_image": true
+      },
+      "blocks": {
+        "chip1": { "type": "chip", "settings": { "text": "Flexible weekly billing" } },
+        "chip2": { "type": "chip", "settings": { "text": "Pause or cancel anytime" } },
+        "chip3": { "type": "chip", "settings": { "text": "UK-wide delivery" } }
+      },
+      "block_order": ["chip1", "chip2", "chip3"]
+    },
+    "collection": {
+      "type": "featured-collection",
+      "settings": {
+        "soft_background": false,
+        "eyebrow": "Plans",
+        "heading": "Premium meal kit subscriptions for every kind of week",
+        "text": "Each plan includes fresh ingredients, globally inspired recipe cards, easy account controls and a curated reveal that keeps the experience premium and surprising.",
+        "products_to_show": 6
+      },
+      "blocks": {
+        "p1": {
+          "type": "fallback_product",
+          "settings": {
+            "badge": "Most Flexible",
+            "kicker": "Ideal for first-time subscribers",
+            "title": "Explorer Plan",
+            "text": "A lighter weekly ritual for curious cooks who want a compact surprise-country experience at home.",
+            "price": "£29.00"
+          }
+        },
+        "p2": {
+          "type": "fallback_product",
+          "settings": {
+            "badge": "Most Popular",
+            "kicker": "Best seller across the UK",
+            "title": "Voyager Plan",
+            "text": "Our signature subscription with three globally inspired dinners curated as one surprise country journey each week.",
+            "price": "£42.00"
+          }
+        },
+        "p3": {
+          "type": "fallback_product",
+          "settings": {
+            "badge": "Premium Choice",
+            "kicker": "For committed home hosts",
+            "title": "Grand Tour Plan",
+            "text": "A full week of premium discovery for households who want a richer surprise-country experience with extra hosting energy.",
+            "price": "£65.00"
+          }
+        }
+      },
+      "block_order": ["p1", "p2", "p3"]
+    }
+  },
+  "order": ["hero", "collection"]
+}

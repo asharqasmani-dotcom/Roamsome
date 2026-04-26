@@ -1,0 +1,38 @@
+<section class="section">
+  <div class="container">
+    <div class="newsletter-card">
+      <div class="split-grid">
+        <div>
+          <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+          <h2>{{ section.settings.heading }}</h2>
+          <p>{{ section.settings.text }}</p>
+        </div>
+        <div>
+          {% form 'customer', class: 'newsletter-form customer' %}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <input type="email" name="contact[email]" placeholder="{{ section.settings.placeholder }}" aria-label="Email address" required>
+            <button class="btn" type="submit">{{ section.settings.button_label }}</button>
+            {% if form.posted_successfully? %}
+              <p class="success-message">{{ section.settings.success_text }}</p>
+            {% endif %}
+          {% endform %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter signup",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Newsletter" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Get next week’s story before everyone else" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Join the ROAMSOME list for destination notes, chef tips and limited-route releases." },
+    { "type": "text", "id": "placeholder", "label": "Email placeholder", "default": "Enter your email address" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Get Weekly Preview" },
+    { "type": "textarea", "id": "success_text", "label": "Success text", "default": "You’re on the list. Next week’s destination notes will arrive in your inbox soon." }
+  ],
+  "presets": [{ "name": "Newsletter signup" }]
+}
+{% endschema %}

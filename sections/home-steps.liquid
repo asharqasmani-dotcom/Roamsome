@@ -1,0 +1,36 @@
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.text }}</p>
+    </div>
+    <div class="cards-grid three">
+      {% for block in section.blocks %}
+        <article class="step-card">
+          <div class="step-number">{{ forloop.index }}</div>
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Home steps",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "How it works" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Three simple steps to a more exciting weeknight" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "ROAMSOME combines premium sourcing, thoughtful prep and curated destination storytelling so dinner feels elevated without feeling complicated." }
+  ],
+  "blocks": [
+    { "type": "step", "name": "Step", "settings": [
+      { "type": "text", "id": "title", "label": "Title", "default": "Choose your plan" },
+      { "type": "textarea", "id": "text", "label": "Text", "default": "Select the subscription rhythm that fits your household and let ROAMSOME handle the weekly surprise-country reveal." }
+    ] }
+  ],
+  "presets": [{ "name": "Home steps", "blocks": [{ "type": "step" }, { "type": "step", "settings": { "title": "Receive fresh ingredients", "text": "Get pre-portioned ingredients, chef tips and recipe cards delivered chilled anywhere across mainland UK." } }, { "type": "step", "settings": { "title": "Cook and discover the destination", "text": "Create premium dishes inspired by a surprise country experience revealed only when your curated box arrives." } }] }]
+}
+{% endschema %}

@@ -1,0 +1,20 @@
+<article class="blog-card">
+  <a href="{{ article.url }}">
+    {% if article.image %}
+      <div class="meal-image blog-card-image" style="background-image:url('{{ article.image | image_url: width: 1200 }}')"></div>
+    {% else %}
+      <div class="meal-image blog-card-image" style="background:linear-gradient(135deg, rgba(253,113,60,0.14), rgba(246,244,231,0.92));"></div>
+    {% endif %}
+  </a>
+  <div class="blog-card-body">
+    {% if article.tags.size > 0 %}
+      <div class="kicker">{{ article.tags.first }}</div>
+    {% elsif article.blog.title != blank %}
+      <div class="kicker">{{ article.blog.title }}</div>
+    {% endif %}
+    <h3><a href="{{ article.url }}">{{ article.title }}</a></h3>
+    <p>{{ article.excerpt_or_content | strip_html | truncate: 140 }}</p>
+    <div class="summary-line">{{ article.published_at | date: '%d %b %Y' }}</div>
+    <a class="btn" href="{{ article.url }}">{{ 'blogs.article.read_more' | t }}</a>
+  </div>
+</article>

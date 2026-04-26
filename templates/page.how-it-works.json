@@ -1,0 +1,37 @@
+{
+  "sections": {
+    "hero": {
+      "type": "rich-hero",
+      "settings": {
+        "eyebrow": "How it works",
+        "heading": "Premium dinners, simplified into a smooth weekly flow",
+        "text": "From choosing your plan to revealing a surprise country experience at home, ROAMSOME is designed to feel effortless, premium and genuinely exciting.",
+        "show_image": true
+      }
+    },
+    "steps": {
+      "type": "icon-feature-grid",
+      "settings": {
+        "eyebrow": "How it works",
+        "heading": "Three smooth steps from signup to supper",
+        "text": "Choose your route, receive your box, then cook with confidence.",
+        "soft_background": false
+      },
+      "blocks": {
+        "one": { "type": "feature", "settings": { "icon": "🧭", "title": "1. Pick a journey", "text": "Choose 2, 3 or 5 meals per week and select the serving size that fits your household. We take care of the destination curation for you." } },
+        "two": { "type": "feature", "settings": { "icon": "📦", "title": "2. Receive your box", "text": "Your ingredients arrive chilled, organised and portioned for a cleaner, smoother cooking experience." } },
+        "three": { "type": "feature", "settings": { "icon": "🍳", "title": "3. Cook with confidence", "text": "Use chef-led recipe cards, destination notes and simple finishing tips to create standout dinners at home." } }
+      },
+      "block_order": ["one", "two", "three"]
+    },
+    "columns": {
+      "type": "split-story-columns",
+      "blocks": {
+        "col1": { "type": "column", "settings": { "eyebrow": "Delivery and freshness", "title": "Built for premium quality on a real-life schedule", "item_1": "Tracked UK delivery windows", "item_2": "Fresh ingredients and chilled packaging", "item_3": "Clear allergen and dietary information", "item_4": "Simple skips and pauses before cut-off" } },
+        "col2": { "type": "column", "settings": { "eyebrow": "Why subscribers stay", "title": "Flexible by design", "item_1": "Swap plans based on your week", "item_2": "Pause or cancel anytime", "item_3": "Curated surprise-country storytelling", "item_4": "Chef tips and destination storytelling" } }
+      },
+      "block_order": ["col1", "col2"]
+    }
+  },
+  "order": ["hero", "steps", "columns"]
+}

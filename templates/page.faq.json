@@ -1,0 +1,28 @@
+{
+  "sections": {
+    "hero": {
+      "type": "rich-hero",
+      "settings": {
+        "eyebrow": "FAQ",
+        "heading": "Answers for delivery, subscriptions and preferences",
+        "text": "Everything you need to know about how ROAMSOME works before you subscribe or while managing your plan.",
+        "show_image": false
+      }
+    },
+    "faqs": {
+      "type": "faq-grid-section",
+      "settings": {
+        "show_heading": false
+      },
+      "blocks": {
+        "faq1": { "type": "faq", "settings": { "question": "Where do you deliver?", "answer": "Roamsome currently delivers across mainland UK with chilled packaging and tracked delivery slots each week." } },
+        "faq2": { "type": "faq", "settings": { "question": "Can I change or skip my subscription?", "answer": "Yes. You can pause, skip or switch plans anytime before your weekly cut-off from your account area." } },
+        "faq3": { "type": "faq", "settings": { "question": "How do I know about allergens if the destination is a surprise?", "answer": "We publish allergen guidance ahead of delivery while keeping the destination and meal details curated until your box arrives." } },
+        "faq4": { "type": "faq", "settings": { "question": "Is there a commitment period?", "answer": "No long contract. Your subscription is weekly and flexible, with pause or cancel anytime controls." } },
+        "faq5": { "type": "faq", "settings": { "question": "How is pricing structured?", "answer": "Pricing depends on meals per week and serving size. Delivery is shown clearly during checkout before you confirm your order." } }
+      },
+      "block_order": ["faq1", "faq2", "faq3", "faq4", "faq5"]
+    }
+  },
+  "order": ["hero", "faqs"]
+}

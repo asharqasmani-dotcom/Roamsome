@@ -1,0 +1,29 @@
+{% liquid
+  assign card_product = product
+  assign product_description = card_product.description | strip_html | truncate: 120
+%}
+<article class="plan-card{% if featured %} plan-highlight{% endif %}">
+  <a href="{{ card_product.url }}" class="plan-card-image-link">
+    {% if card_product.featured_image %}
+      <div class="meal-image plan-card-image" style="background-image:url('{{ card_product.featured_image | image_url: width: 900 }}')"></div>
+    {% else %}
+      <div class="meal-image plan-card-image" style="background:linear-gradient(135deg, rgba(253,113,60,0.14), rgba(246,244,231,0.92));"></div>
+    {% endif %}
+  </a>
+  {% if badge_text != blank %}
+    <span class="plan-badge">{{ badge_text }}</span>
+  {% endif %}
+  {% if card_product.metafields.custom.highlight != blank %}
+    <div class="kicker">{{ card_product.metafields.custom.highlight }}</div>
+  {% elsif card_product.vendor != blank %}
+    <div class="kicker">{{ card_product.vendor }}</div>
+  {% endif %}
+  <h3><a href="{{ card_product.url }}">{{ card_product.title }}</a></h3>
+  {% if product_description != blank %}
+    <p>{{ product_description }}</p>
+  {% endif %}
+  <div class="price">{% render 'price', product: card_product %}</div>
+  <div class="inline-actions inline-actions-single">
+    <a class="btn" href="{{ card_product.url }}">View Product</a>
+  </div>
+</article>

@@ -1,0 +1,19 @@
+<div class="cart-drawer" data-cart-drawer hidden>
+  <div class="cart-drawer__overlay" data-cart-close></div>
+  <aside class="cart-drawer__panel" aria-label="{{ 'sections.cart_drawer.title' | t }}">
+    <div class="cart-drawer__header">
+      <h2>{{ 'sections.cart_drawer.title' | t }}</h2>
+      <button type="button" class="cart-drawer__close" data-cart-close aria-label="Close cart">&times;</button>
+    </div>
+    <div class="cart-drawer__body" data-cart-drawer-body>
+      <p>{{ 'sections.cart_drawer.empty' | t }}</p>
+    </div>
+    <div class="cart-drawer__footer" data-cart-drawer-footer>
+      <div class="summary-row total"><span>{{ 'sections.cart_drawer.subtotal' | t }}</span><strong data-cart-subtotal>{{ cart.total_price | money }}</strong></div>
+      <div class="inline-actions inline-actions-single">
+        <a class="btn-secondary" href="{{ routes.cart_url }}">{{ 'sections.cart_drawer.view_cart' | t }}</a>
+        <a class="btn" href="/checkout">{{ 'sections.cart_drawer.checkout' | t }}</a>
+      </div>
+    </div>
+  </aside>
+</div>

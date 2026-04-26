@@ -1,0 +1,15 @@
+{
+  "current": {
+    "sections": {},
+    "settings": {
+      "color_primary": "#fd713c",
+      "color_secondary": "#f6f4e7",
+      "color_text": "#262626",
+      "color_muted": "#6b6b6b",
+      "global_cta_text": "Subscribe Now",
+      "footer_text": "Travel-inspired meal kits for curious UK kitchens. Premium ingredients, globally inspired recipes, and flexible weekly delivery.",
+      "phone_number": "+44 20 1234 5678",
+      "support_email": "hello@roamsome.co.uk"
+    }
+  }
+}
