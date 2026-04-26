@@ -133,17 +133,19 @@
     <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
   </head>
   <body class="template-{{ template.name | handle }}{% if template.suffix %} template-{{ template.suffix | handle }}{% endif %}{% if template.name == 'index' %} home-page{% endif %}" data-cart-count="{{ cart.item_count }}">
-    <a class="skip-to-content-link visually-hidden" href="#MainContent">{{ 'accessibility.skip_to_text' | t }}</a>
+    <div id="ThemeRoot" data-theme-root>
+      <a class="skip-to-content-link visually-hidden" href="#MainContent">{{ 'accessibility.skip_to_text' | t }}</a>
 
-    {% section 'announcement-bar' %}
-    {% section 'header' %}
+      {% section 'announcement-bar' %}
+      {% section 'header' %}
 
-    <main id="MainContent" class="site-shell" role="main">
-      {{ content_for_layout }}
-    </main>
+      <main id="MainContent" class="site-shell" role="main">
+        {{ content_for_layout }}
+      </main>
 
-    {% section 'footer' %}
-    {% render 'cart-drawer' %}
+      {% section 'footer' %}
+      {% render 'cart-drawer' %}
+    </div>
 
     <script>
       window.theme = window.theme || {};
@@ -155,6 +157,88 @@
         predictiveSearch: '{{ routes.predictive_search_url }}'
       };
       window.theme.moneyFormat = {{ shop.money_format | json }};
+    </script>
+
+    <script>
+      (function () {
+        var snapshot = '';
+        var restoring = false;
+        var restoreAttempts = 0;
+        var maxRestoreAttempts = 3;
+
+        function getRoot() {
+          return document.getElementById('ThemeRoot');
+        }
+
+        function captureSnapshot() {
+          var root = getRoot();
+          if (root) snapshot = root.outerHTML;
+        }
+
+        function bodyLooksCorrupted() {
+          var root = getRoot();
+          var main = document.getElementById('MainContent');
+
+          if (root && main) return false;
+
+          var bodyText = String((document.body && document.body.textContent) || '').trim();
+          var bodyChildren = document.body ? document.body.children.length : 0;
+          var hasOnlyAppNodes = !!document.getElementById('seal-subs-loaded') || !!document.getElementById('web-pixels-manager-sandbox-container');
+
+          return !main || bodyText === '0' || (hasOnlyAppNodes && bodyChildren <= 3);
+        }
+
+        function restoreThemeRoot() {
+          if (restoring || !snapshot || restoreAttempts >= maxRestoreAttempts || !bodyLooksCorrupted()) return;
+          restoring = true;
+          restoreAttempts += 1;
+
+          try {
+            var mount = document.createElement('div');
+            mount.innerHTML = snapshot;
+            var restoredRoot = mount.firstElementChild;
+            if (!restoredRoot) return;
+
+            var currentRoot = getRoot();
+            if (currentRoot) currentRoot.remove();
+            document.body.insertBefore(restoredRoot, document.body.firstChild);
+
+            if (typeof window.ROAMSOME_THEME_INIT === 'function') {
+              window.ROAMSOME_THEME_INIT();
+            }
+          } finally {
+            restoring = false;
+          }
+        }
+
+        function scheduleIntegrityCheck(delay) {
+          window.setTimeout(function () {
+            if (bodyLooksCorrupted()) restoreThemeRoot();
+          }, delay);
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+          captureSnapshot();
+          scheduleIntegrityCheck(1200);
+        });
+
+        window.addEventListener('load', function () {
+          captureSnapshot();
+          scheduleIntegrityCheck(1500);
+        });
+
+        var observer = new MutationObserver(function () {
+          if (bodyLooksCorrupted()) restoreThemeRoot();
+        });
+
+        if (document.body) {
+          observer.observe(document.body, { childList: true, subtree: false });
+        } else {
+          document.addEventListener('DOMContentLoaded', function () {
+            observer.observe(document.body, { childList: true, subtree: false });
+          });
+        }
+      })();
     </script>
 
   </body>

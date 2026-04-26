@@ -1,4 +1,12 @@
 (function () {
+  function markBound(node, key) {
+    if (!node) return false;
+    var attr = 'data-theme-bound-' + key;
+    if (node.hasAttribute(attr)) return true;
+    node.setAttribute(attr, 'true');
+    return false;
+  }
+
   function money(cents) {
     if (window.Shopify && typeof window.Shopify.formatMoney === 'function') {
       return window.Shopify.formatMoney(cents, window.theme.moneyFormat);
@@ -36,6 +44,7 @@
     var toggle = document.querySelector('[data-menu-toggle]');
     var nav = document.querySelector('#site-nav');
     if (!toggle || !nav) return;
+    if (markBound(toggle, 'menu-toggle')) return;
 
     toggle.addEventListener('click', function () {
       var open = nav.classList.toggle('open');
@@ -44,6 +53,7 @@
     });
 
     nav.querySelectorAll('a').forEach(function (link) {
+      if (markBound(link, 'menu-link')) return;
       link.addEventListener('click', function () {
         nav.classList.remove('open');
         document.body.classList.remove('menu-open');
@@ -54,6 +64,7 @@
 
   function bindHeroSlider() {
     document.querySelectorAll('[data-hero-slider]').forEach(function (slider) {
+      if (markBound(slider, 'hero-slider')) return;
       var slides = Array.prototype.slice.call(slider.querySelectorAll('.hero-slide'));
       var dots = Array.prototype.slice.call(slider.querySelectorAll('[data-hero-dot]'));
       if (slides.length < 2) return;
@@ -82,6 +93,7 @@
       }
 
       dots.forEach(function (dot, index) {
+        if (markBound(dot, 'hero-dot')) return;
         dot.addEventListener('click', function () {
           show(index);
           reset();
@@ -143,6 +155,7 @@
   }
 
   function bindCartDrawer() {
+    if (markBound(document.documentElement, 'cart-drawer')) return;
     document.addEventListener('click', function (event) {
       var openTrigger = event.target.closest('[data-cart-open]');
       if (openTrigger) {
@@ -174,6 +187,7 @@
 
   function bindProductForms() {
     document.querySelectorAll('.js-product-form').forEach(function (form) {
+      if (markBound(form, 'product-form')) return;
       form.addEventListener('submit', function (event) {
         event.preventDefault();
         var submitButton = form.querySelector('[type="submit"]');
@@ -204,6 +218,7 @@
       var price = section.querySelector('[data-product-price]');
       var compare = section.querySelector('[data-product-compare]');
       if (!selector) return;
+      if (markBound(selector, 'variant-select')) return;
 
       selector.addEventListener('change', function () {
         var option = selector.options[selector.selectedIndex];
@@ -217,12 +232,16 @@
     });
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
+  function initTheme() {
     bindMenu();
     bindHeroSlider();
     bindCartDrawer();
     bindProductForms();
     bindVariantSelectors();
     updateCartCount(parseInt(document.body.getAttribute('data-cart-count') || '0', 10) || 0);
-  });
+  }
+
+  window.ROAMSOME_THEME_INIT = initTheme;
+
+  document.addEventListener('DOMContentLoaded', initTheme);
 })();
