@@ -120,5 +120,5 @@
     "newsletter": { "type": "newsletter-signup" },
     "cta": { "type": "cta-banner" }
   },
-  "order": ["hero", "steps", "story", "features", "collection", "destinations", "upcoming", "blog_preview", "newsletter", "cta"]
+  "order": ["hero", "steps", "story", "features", "collection", "upcoming", "blog_preview", "newsletter", "cta"]
 }
