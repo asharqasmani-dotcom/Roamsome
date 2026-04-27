@@ -29,94 +29,7 @@
       <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
 
-    <script>
-      (function () {
-        window.__ROAMSOME_ALLOW_DOCUMENT_WRITE__ = true;
-        window.__ROAMSOME_IS_SHOPIFY_PREVIEW__ = /[?&](preview_theme_id|pb|_fd)=/.test(window.location.search) || !!(window.Shopify && (window.Shopify.designMode || window.Shopify.inspectMode));
-        var nativeOpen = document.open ? document.open.bind(document) : null;
-        var nativeWrite = document.write.bind(document);
-        var nativeWriteln = document.writeln ? document.writeln.bind(document) : null;
-        var nativeClose = document.close ? document.close.bind(document) : null;
-
-        function appendLateWrite(html) {
-          if (!document.body) return;
-
-          var template = document.createElement('template');
-          template.innerHTML = html;
-
-          Array.prototype.slice.call(template.content.querySelectorAll('script')).forEach(function (oldScript) {
-            var replacement = document.createElement('script');
-
-            Array.prototype.slice.call(oldScript.attributes).forEach(function (attribute) {
-              replacement.setAttribute(attribute.name, attribute.value);
-            });
-
-            if (oldScript.textContent) replacement.textContent = oldScript.textContent;
-            oldScript.parentNode.replaceChild(replacement, oldScript);
-          });
-
-          document.body.appendChild(template.content);
-        }
-
-        function safeWrite() {
-          var html = Array.prototype.join.call(arguments, '');
-          var trimmed = String(html || '').trim();
-          var allowNativeWrite = window.__ROAMSOME_ALLOW_DOCUMENT_WRITE__ === true && document.readyState === 'loading';
-
-          if (allowNativeWrite) {
-            nativeWrite(html);
-            return;
-          }
-
-          if (!trimmed || trimmed === '0') {
-            console.warn('Blocked late document.write payload:', trimmed);
-            return;
-          }
-
-          try {
-            appendLateWrite(trimmed);
-          } catch (error) {
-            console.warn('Late document.write interception failed.', error);
-          }
-        }
-
-        document.write = safeWrite;
-
-        if (nativeOpen) {
-          document.open = function () {
-            if (window.__ROAMSOME_ALLOW_DOCUMENT_WRITE__ === true && document.readyState === 'loading') {
-              return nativeOpen();
-            }
-
-            console.warn('Blocked late document.open call.');
-            return document;
-          };
-        }
-
-        if (nativeWriteln) {
-          document.writeln = function () {
-            var html = Array.prototype.join.call(arguments, '') + '\n';
-            safeWrite(html);
-          };
-        }
-
-        if (nativeClose) {
-          document.close = function () {
-            if (window.__ROAMSOME_ALLOW_DOCUMENT_WRITE__ === true && document.readyState === 'loading') {
-              return nativeClose();
-            }
-
-            return document;
-          };
-        }
-      })();
-    </script>
-
     {{ content_for_header }}
-
-    <script>
-      window.__ROAMSOME_ALLOW_DOCUMENT_WRITE__ = false;
-    </script>
 
     <style>
       :root {
@@ -190,121 +103,26 @@
 
     <script>
       (function () {
-        var snapshot = '';
-        var restoring = false;
-        var restoreAttempts = 0;
-        var maxRestoreAttempts = 3;
-        var integrityInterval = null;
-        var observedBody = null;
-        var observer = new MutationObserver(function () {
-          if (bodyLooksCorrupted()) restoreThemeRoot();
-        });
-
-        function getRoot() {
-          return document.getElementById('ThemeRoot');
-        }
-
-        function captureSnapshot() {
-          var root = getRoot();
-          if (root) snapshot = root.outerHTML;
-        }
-
-        function rebindObserver() {
-          if (!document.body || observedBody === document.body) return;
-
-          observer.disconnect();
-          observer.observe(document.body, { childList: true, subtree: false });
-          observedBody = document.body;
-        }
-
-        function bodyLooksCorrupted() {
-          var root = getRoot();
-          var main = document.getElementById('MainContent');
-          var bodyHidden = !!(document.body && (document.body.hidden || document.body.getAttribute('aria-hidden') === 'true' || document.body.hasAttribute('inert')));
-          var htmlHidden = !!(document.documentElement && document.documentElement.hidden);
-
-          if (root && main && !bodyHidden && !htmlHidden) return false;
-
-          var bodyText = String((document.body && document.body.textContent) || '').trim();
-          var bodyChildren = document.body ? document.body.children.length : 0;
-          var hasOnlyAppNodes = !!document.getElementById('seal-subs-loaded') || !!document.getElementById('web-pixels-manager-sandbox-container');
-
-          return bodyHidden || htmlHidden || !main || bodyText === '0' || (hasOnlyAppNodes && bodyChildren <= 3);
-        }
-
-        function pruneCorruptedNodes() {
+        function unhidePage() {
           if (!document.body) return;
 
-          Array.prototype.slice.call(document.body.childNodes).forEach(function (node) {
-            if (node.nodeType === Node.TEXT_NODE && String(node.textContent || '').trim() === '0') {
-              node.remove();
-            }
-          });
+          document.documentElement.hidden = false;
+          document.body.hidden = false;
+          document.documentElement.removeAttribute('hidden');
+          document.body.removeAttribute('hidden');
+          document.body.removeAttribute('aria-hidden');
+          document.body.removeAttribute('inert');
+
+          document.documentElement.style.visibility = 'visible';
+          document.body.style.visibility = 'visible';
+          document.documentElement.style.display = 'block';
+          document.body.style.display = 'block';
+          document.body.style.opacity = '1';
         }
 
-        function restoreThemeRoot() {
-          if (restoring || !snapshot || restoreAttempts >= maxRestoreAttempts || !bodyLooksCorrupted()) return;
-          restoring = true;
-          restoreAttempts += 1;
-
-          try {
-            var mount = document.createElement('div');
-            mount.innerHTML = snapshot;
-            var restoredRoot = mount.firstElementChild;
-            if (!restoredRoot) return;
-
-            pruneCorruptedNodes();
-
-            var currentRoot = getRoot();
-            if (window.__ROAMSOME_IS_SHOPIFY_PREVIEW__) {
-              if (!currentRoot) {
-                document.body.insertBefore(restoredRoot, document.body.firstChild);
-              }
-            } else {
-              if (currentRoot) currentRoot.remove();
-              document.body.insertBefore(restoredRoot, document.body.firstChild);
-            }
-            captureSnapshot();
-            rebindObserver();
-
-            if (typeof window.ROAMSOME_THEME_INIT === 'function') {
-              window.ROAMSOME_THEME_INIT();
-            }
-          } finally {
-            restoring = false;
-          }
-        }
-
-        function scheduleIntegrityCheck(delay) {
-          window.setTimeout(function () {
-            if (bodyLooksCorrupted()) restoreThemeRoot();
-          }, delay);
-        }
-
-        function startIntegrityMonitor() {
-          if (integrityInterval) return;
-
-          integrityInterval = window.setInterval(function () {
-            rebindObserver();
-
-            if (!snapshot) captureSnapshot();
-            if (bodyLooksCorrupted()) restoreThemeRoot();
-          }, 1000);
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-          captureSnapshot();
-          rebindObserver();
-          startIntegrityMonitor();
-          scheduleIntegrityCheck(1200);
-        });
-
-        window.addEventListener('load', function () {
-          captureSnapshot();
-          rebindObserver();
-          startIntegrityMonitor();
-          scheduleIntegrityCheck(1500);
-        });
+        document.addEventListener('DOMContentLoaded', unhidePage);
+        window.addEventListener('load', unhidePage);
+        window.setInterval(unhidePage, 500);
       })();
     </script>
 
