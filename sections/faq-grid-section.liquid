@@ -1,4 +1,4 @@
-<section class="section">
+<section class="section faq-section">
   <div class="container">
     {% if section.settings.show_heading %}
       <div class="section-heading">
@@ -7,10 +7,13 @@
         <p>{{ section.settings.text }}</p>
       </div>
     {% endif %}
-    <div class="faq-grid">
+    <div class="faq-grid faq-grid--compact">
       {% for block in section.blocks %}
-        <article class="faq-item">
-          <h3>{{ block.settings.question }}</h3>
+        <article class="faq-item faq-card-compact">
+          <div class="faq-card-top">
+            <span class="faq-card-index">{{ forloop.index }}</span>
+            <h3>{{ block.settings.question }}</h3>
+          </div>
           <p>{{ block.settings.answer }}</p>
         </article>
       {% endfor %}
