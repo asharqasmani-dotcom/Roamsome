@@ -27,8 +27,12 @@
         document.body.removeAttribute('inert');
       }
 
+      document.body.removeAttribute('hidden');
+      document.documentElement.removeAttribute('hidden');
       document.documentElement.style.visibility = 'visible';
       document.body.style.visibility = 'visible';
+      document.documentElement.style.display = 'block';
+      document.body.style.display = 'block';
       document.body.style.opacity = '1';
     }
 

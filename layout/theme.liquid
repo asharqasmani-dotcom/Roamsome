@@ -32,6 +32,7 @@
     <script>
       (function () {
         window.__ROAMSOME_ALLOW_DOCUMENT_WRITE__ = true;
+        window.__ROAMSOME_IS_SHOPIFY_PREVIEW__ = /[?&](preview_theme_id|pb|_fd)=/.test(window.location.search) || !!(window.Shopify && (window.Shopify.designMode || window.Shopify.inspectMode));
         var nativeOpen = document.open ? document.open.bind(document) : null;
         var nativeWrite = document.write.bind(document);
         var nativeWriteln = document.writeln ? document.writeln.bind(document) : null;
@@ -189,6 +190,8 @@
 
     <script>
       (function () {
+        if (window.__ROAMSOME_IS_SHOPIFY_PREVIEW__) return;
+
         var snapshot = '';
         var restoring = false;
         var restoreAttempts = 0;
