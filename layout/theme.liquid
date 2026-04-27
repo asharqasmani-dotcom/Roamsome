@@ -31,14 +31,11 @@
 
     <script>
       (function () {
+        window.__ROAMSOME_ALLOW_DOCUMENT_WRITE__ = true;
         var nativeOpen = document.open ? document.open.bind(document) : null;
         var nativeWrite = document.write.bind(document);
         var nativeWriteln = document.writeln ? document.writeln.bind(document) : null;
         var nativeClose = document.close ? document.close.bind(document) : null;
-
-        function themeShellExists() {
-          return !!document.getElementById('ThemeRoot') || !!document.getElementById('MainContent');
-        }
 
         function appendLateWrite(html) {
           if (!document.body) return;
@@ -63,8 +60,9 @@
         function safeWrite() {
           var html = Array.prototype.join.call(arguments, '');
           var trimmed = String(html || '').trim();
+          var allowNativeWrite = window.__ROAMSOME_ALLOW_DOCUMENT_WRITE__ === true && document.readyState === 'loading';
 
-          if (document.readyState === 'loading' && !themeShellExists()) {
+          if (allowNativeWrite) {
             nativeWrite(html);
             return;
           }
@@ -85,7 +83,7 @@
 
         if (nativeOpen) {
           document.open = function () {
-            if (document.readyState === 'loading' && !themeShellExists()) {
+            if (window.__ROAMSOME_ALLOW_DOCUMENT_WRITE__ === true && document.readyState === 'loading') {
               return nativeOpen();
             }
 
@@ -103,7 +101,7 @@
 
         if (nativeClose) {
           document.close = function () {
-            if (document.readyState === 'loading' && !themeShellExists()) {
+            if (window.__ROAMSOME_ALLOW_DOCUMENT_WRITE__ === true && document.readyState === 'loading') {
               return nativeClose();
             }
 
@@ -114,6 +112,10 @@
     </script>
 
     {{ content_for_header }}
+
+    <script>
+      window.__ROAMSOME_ALLOW_DOCUMENT_WRITE__ = false;
+    </script>
 
     <style>
       :root {
