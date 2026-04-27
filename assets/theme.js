@@ -294,6 +294,11 @@
 
   function initTheme() {
     keepBodyVisible();
+
+    if (window.Shopify && (window.Shopify.designMode || window.Shopify.inspectMode)) {
+      return;
+    }
+
     bindMenu();
     bindHeroSlider();
     bindCartDrawer();
