@@ -75,10 +75,6 @@
             {% else %}
               <input type="hidden" name="id" value="{{ current_variant.id }}">
             {% endif %}
-            <div class="product-form__input">
-              <label for="Quantity-{{ section.id }}">{{ 'products.product.quantity' | t }}</label>
-              <input id="Quantity-{{ section.id }}" type="number" name="quantity" min="1" value="1">
-            </div>
             {% if product.selling_plan_groups.size > 0 %}
               <fieldset class="selling-plans" data-selling-plans>
                 <legend class="selling-plans__label">Purchase options</legend>
@@ -104,6 +100,10 @@
                 {% endfor %}
               </fieldset>
             {% endif %}
+            <div class="product-form__input">
+              <label for="Quantity-{{ section.id }}">{{ 'products.product.quantity' | t }}</label>
+              <input id="Quantity-{{ section.id }}" type="number" name="quantity" min="1" value="1">
+            </div>
             <div class="product-form__buttons">
               <button class="btn purchase-cta" type="submit" {% unless current_variant.available %}disabled{% endunless %}>{{ 'products.product.add_to_cart' | t }}</button>
             </div>
