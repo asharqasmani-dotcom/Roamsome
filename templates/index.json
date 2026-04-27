@@ -45,6 +45,15 @@
             "title": "Premium meal kits, beautifully prepared",
             "text": "Organised ingredients, chef-led recipes and destination-inspired cooking at home"
           }
+        },
+        "slide_GX6GEt": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/KXo88_kh4h0VSh0oRRo6WWq2DU6otH4wrU6BLe2YMRIGhiv-tTBLGGRztbWeHOl3lHpjzW0hSfHf00Rt6lDhI8pnH25VtTeucD-BgMGTHklGtIJmaVXfPq2rPQXsWRWAr8mRDCM7iSJK8MLN6vVSIGJaPID4c4HxEHJjo0aDop20C2nMztQqogy.jpg",
+            "alt": "A premium ROAMSOME meal kit box opened on a clean kitchen worktop",
+            "title": "Premium meal kits, beautifully prepared",
+            "text": "Organised ingredients, chef-led recipes and destination-inspired cooking at home"
+          }
         }
       },
       "block_order": [
@@ -52,7 +61,8 @@
         "chip2",
         "chip3",
         "slide1",
-        "slide2"
+        "slide2",
+        "slide_GX6GEt"
       ],
       "settings": {
         "eyebrow": "UK food subscription",
