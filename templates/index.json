@@ -72,18 +72,6 @@
       },
       "block_order": ["a1", "a2", "a3", "a4", "a5"]
     },
-    "testimonials": {
-      "type": "testimonials-marquee",
-      "blocks": {
-        "chip1": { "type": "chip", "settings": { "text": "★★★★★ Rated Excellent" } },
-        "chip2": { "type": "chip", "settings": { "text": "Flexible subscription" } },
-        "chip3": { "type": "chip", "settings": { "text": "Limited weekly deliveries" } },
-        "t1": { "type": "testimonial", "settings": { "quote": "Roamsome makes our weeknights feel like a mini city break. The ingredients arrive beautifully packed and every box feels genuinely special.", "name": "Amelia H.", "location": "Clapham, London" } },
-        "t2": { "type": "testimonial", "settings": { "quote": "We tried it for convenience and stayed for the quality. The recipes are easy to follow but the final dishes feel restaurant level.", "name": "Oliver P.", "location": "Didsbury, Manchester" } },
-        "t3": { "type": "testimonial", "settings": { "quote": "The travel angle is brilliant. We love discovering a new country every week without sacrificing freshness or simplicity.", "name": "Sana R.", "location": "Edgbaston, Birmingham" } }
-      },
-      "block_order": ["chip1", "chip2", "chip3", "t1", "t2", "t3"]
-    },
     "blog_preview": {
       "type": "blog-preview",
       "blocks": {
