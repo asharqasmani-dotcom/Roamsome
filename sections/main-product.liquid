@@ -80,17 +80,38 @@
               <input id="Quantity-{{ section.id }}" type="number" name="quantity" min="1" value="1">
             </div>
             {% if product.selling_plan_groups.size > 0 %}
-              <div class="product-form__input">
-                <label for="SellingPlan-{{ section.id }}">{{ 'products.product.subscribe' | t }}</label>
-                <select id="SellingPlan-{{ section.id }}" name="selling_plan">
-                  <option value="">One-time purchase</option>
-                  {% for group in product.selling_plan_groups %}
-                    {% for selling_plan in group.selling_plans %}
-                      <option value="{{ selling_plan.id }}">{{ group.name }} - {{ selling_plan.name }}</option>
-                    {% endfor %}
-                  {% endfor %}
-                </select>
-              </div>
+              <fieldset class="selling-plans" data-selling-plans>
+                <legend class="selling-plans__label">Purchase options</legend>
+                {% assign default_allocation = current_variant.selling_plan_allocations | first %}
+                {% assign default_plan_id = default_allocation.selling_plan.id %}
+                {% for allocation in current_variant.selling_plan_allocations %}
+                  {% assign plan = allocation.selling_plan %}
+                  {% assign saving = current_variant.price | minus: allocation.per_delivery_price %}
+                  <label class="selling-plan-card{% if plan.id == default_plan_id %} is-selected{% endif %}">
+                    <input type="radio" name="selling_plan" value="{{ plan.id }}"{% if plan.id == default_plan_id %} checked{% endif %}>
+                    <span class="selling-plan-card__indicator" aria-hidden="true"></span>
+                    <span class="selling-plan-card__body">
+                      <span class="selling-plan-card__title">
+                        {{ plan.name }}
+                        {% if saving > 0 %}<span class="selling-plan-card__badge">SAVE {{ saving | money_without_trailing_zeros }}</span>{% endif %}
+                      </span>
+                      {% if plan.description != blank %}
+                        <span class="selling-plan-card__sub">{{ plan.description }}</span>
+                      {% endif %}
+                    </span>
+                    <span class="selling-plan-card__price">{{ allocation.per_delivery_price | money }}</span>
+                  </label>
+                {% endfor %}
+                <label class="selling-plan-card{% unless default_allocation %} is-selected{% endunless %}">
+                  <input type="radio" name="selling_plan" value=""{% unless default_allocation %} checked{% endunless %}>
+                  <span class="selling-plan-card__indicator" aria-hidden="true"></span>
+                  <span class="selling-plan-card__body">
+                    <span class="selling-plan-card__title">One-time purchase</span>
+                    <span class="selling-plan-card__sub">Single delivery, no subscription</span>
+                  </span>
+                  <span class="selling-plan-card__price">{{ current_variant.price | money }}</span>
+                </label>
+              </fieldset>
             {% endif %}
             <div class="product-form__buttons">
               <button class="btn purchase-cta" type="submit" {% unless current_variant.available %}disabled{% endunless %}>{{ 'products.product.add_to_cart' | t }}</button>

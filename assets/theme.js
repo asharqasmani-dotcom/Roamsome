@@ -272,6 +272,21 @@
     });
   }
 
+  function bindSellingPlans() {
+    document.querySelectorAll('[data-selling-plans]').forEach(function (group) {
+      if (markBound(group, 'selling-plans')) return;
+      var cards = Array.prototype.slice.call(group.querySelectorAll('.selling-plan-card'));
+      function sync() {
+        cards.forEach(function (card) {
+          var input = card.querySelector('input[type="radio"]');
+          card.classList.toggle('is-selected', !!(input && input.checked));
+        });
+      }
+      group.addEventListener('change', sync);
+      sync();
+    });
+  }
+
   function bindVariantSelectors() {
     document.querySelectorAll('[data-product-section]').forEach(function (section) {
       var selector = section.querySelector('[data-variant-select]');
@@ -304,6 +319,7 @@
     bindCartDrawer();
     bindProductForms();
     bindVariantSelectors();
+    bindSellingPlans();
     updateCartCount(parseInt(document.body.getAttribute('data-cart-count') || '0', 10) || 0);
   }
 
