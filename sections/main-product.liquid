@@ -95,7 +95,6 @@
             <div class="product-form__buttons">
               <button class="btn purchase-cta" type="submit" {% unless current_variant.available %}disabled{% endunless %}>{{ 'products.product.add_to_cart' | t }}</button>
             </div>
-            {{ form | payment_button }}
           {% endform %}
         </article>
       </div>
