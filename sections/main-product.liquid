@@ -102,15 +102,6 @@
                     <span class="selling-plan-card__price">{{ allocation.per_delivery_price | money }}</span>
                   </label>
                 {% endfor %}
-                <label class="selling-plan-card{% unless default_allocation %} is-selected{% endunless %}">
-                  <input type="radio" name="selling_plan" value=""{% unless default_allocation %} checked{% endunless %}>
-                  <span class="selling-plan-card__indicator" aria-hidden="true"></span>
-                  <span class="selling-plan-card__body">
-                    <span class="selling-plan-card__title">One-time purchase</span>
-                    <span class="selling-plan-card__sub">Single delivery, no subscription</span>
-                  </span>
-                  <span class="selling-plan-card__price">{{ current_variant.price | money }}</span>
-                </label>
               </fieldset>
             {% endif %}
             <div class="product-form__buttons">
