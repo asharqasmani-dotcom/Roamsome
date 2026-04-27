@@ -127,6 +127,7 @@
         "story1"
       ],
       "settings": {
+        "use_background_image": true,
         "eyebrow": "Curated discovery",
         "heading": "Each week, a new country. No choices. Just discovery.",
         "text": "ROAMSOME is intentionally curated. There is no meal picking or menu building, just a beautifully designed country experience that arrives ready to reveal itself at your table."

@@ -899,6 +899,62 @@ button {
   line-height: 1.7;
 }
 
+.story-section--immersive {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(17, 13, 10, 0.68), rgba(17, 13, 10, 0.58)),
+    radial-gradient(circle at top right, rgba(253, 113, 60, 0.18), transparent 28%),
+    var(--story-section-bg);
+  background-size: cover;
+  background-position: center;
+}
+
+.story-section--immersive::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255, 248, 238, 0.08), transparent 40%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.08));
+  pointer-events: none;
+}
+
+.story-section--immersive .container {
+  position: relative;
+  z-index: 1;
+}
+
+.story-section--immersive .section-heading {
+  max-width: 760px;
+}
+
+.story-section--immersive .section-heading p {
+  color: rgba(255, 246, 236, 0.9);
+}
+
+.story-section--immersive .eyebrow {
+  background: rgba(255, 244, 232, 0.16);
+  color: #ffffff;
+  border: 1px solid rgba(255, 244, 232, 0.18);
+  backdrop-filter: blur(12px);
+}
+
+.story-section--immersive .story-card {
+  background: rgba(255, 250, 244, 0.9);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 26px 50px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(14px);
+}
+
+.story-section--immersive .story-card h3 {
+  color: rgba(32, 23, 17, 0.96);
+}
+
+.story-section--immersive .story-card p {
+  color: rgba(55, 43, 35, 0.88);
+}
+
 .blog-card-image {
   border-radius: 22px 22px 0 0;
 }
