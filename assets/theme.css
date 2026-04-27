@@ -896,7 +896,22 @@ button {
 
 .blog-card-body {
   display: grid;
+  grid-template-rows: auto auto 1fr auto auto;
   gap: 14px;
+  flex: 1 1 auto;
+}
+
+.blog-card-body h3,
+.blog-card-body p {
+  margin: 0;
+}
+
+.blog-card-body .summary-line {
+  margin-top: auto;
+}
+
+.blog-card-body .btn {
+  width: 100%;
 }
 
 .kicker {
