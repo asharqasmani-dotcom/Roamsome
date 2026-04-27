@@ -40,6 +40,24 @@ body {
   line-height: 1.6;
 }
 
+html[hidden],
+body[hidden] {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+body[aria-hidden="true"] {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+#MainContent,
+[data-theme-root] {
+  display: block;
+  visibility: visible;
+}
+
 body.menu-open {
   overflow: hidden;
 }

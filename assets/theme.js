@@ -7,6 +7,60 @@
     return false;
   }
 
+  function keepBodyVisible() {
+    function unhideBody() {
+      if (!document.body) return;
+
+      if (document.documentElement.hidden) {
+        document.documentElement.hidden = false;
+      }
+
+      if (document.body.hidden) {
+        document.body.hidden = false;
+      }
+
+      if (document.body.getAttribute('aria-hidden') === 'true') {
+        document.body.removeAttribute('aria-hidden');
+      }
+
+      if (document.body.hasAttribute('inert')) {
+        document.body.removeAttribute('inert');
+      }
+
+      document.documentElement.style.visibility = 'visible';
+      document.body.style.visibility = 'visible';
+      document.body.style.opacity = '1';
+    }
+
+    unhideBody();
+
+    if (markBound(document.documentElement, 'body-visible-guard')) return;
+
+    var bodyObserver = new MutationObserver(function () {
+      unhideBody();
+    });
+
+    var rootObserver = new MutationObserver(function () {
+      unhideBody();
+    });
+
+    document.addEventListener('visibilitychange', unhideBody);
+    window.addEventListener('pageshow', unhideBody);
+    window.setInterval(unhideBody, 500);
+
+    if (document.body) {
+      bodyObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['hidden', 'aria-hidden', 'inert', 'style', 'class']
+      });
+    }
+
+    rootObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['hidden', 'style', 'class']
+    });
+  }
+
   function money(cents) {
     if (window.Shopify && typeof window.Shopify.formatMoney === 'function') {
       return window.Shopify.formatMoney(cents, window.theme.moneyFormat);
@@ -235,6 +289,7 @@
   }
 
   function initTheme() {
+    keepBodyVisible();
     bindMenu();
     bindHeroSlider();
     bindCartDrawer();
