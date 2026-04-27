@@ -829,6 +829,67 @@ button {
   flex-direction: column;
 }
 
+.feature-card--image {
+  padding: 0;
+  display: flex;
+  align-items: stretch;
+  isolation: isolate;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(246, 244, 231, 0.96)),
+    var(--color-white);
+}
+
+.feature-card-media-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+}
+
+.feature-card-media-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.62)),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(246, 244, 231, 0.24));
+}
+
+.feature-card-media {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  filter: saturate(0.96) contrast(0.98);
+}
+
+.feature-card-copy {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin-top: auto;
+  padding: 24px;
+  display: grid;
+  gap: 12px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.9) 38%, rgba(255, 255, 255, 0.96));
+}
+
+.feature-card-copy h3 {
+  margin: 0;
+  color: rgba(22, 19, 15, 0.96);
+}
+
+.feature-card-copy p {
+  margin: 0;
+  color: rgba(34, 28, 22, 0.78);
+}
+
 .blog-card-image {
   border-radius: 22px 22px 0 0;
 }
@@ -1571,7 +1632,6 @@ button {
   .hero-copy,
   .page-hero-copy,
   .step-card,
-  .feature-card,
   .plan-card,
   .testimonial-card,
   .faq-item,
@@ -1581,6 +1641,18 @@ button {
   .contact-card,
   .story-card {
     padding: 22px;
+  }
+
+  .feature-card {
+    padding: 22px;
+  }
+
+  .feature-card--image {
+    padding: 0;
+  }
+
+  .feature-card-copy {
+    padding: 20px;
   }
 
   .hero-visual,

@@ -7,10 +7,31 @@
     </div>
     <div class="feature-grid">
       {% for block in section.blocks %}
-        <article class="feature-card">
-          <div class="icon-badge">{{ block.settings.icon }}</div>
-          <h3>{{ block.settings.title }}</h3>
-          <p>{{ block.settings.text }}</p>
+        {% liquid
+          assign feature_image = ''
+          if forloop.index == 1
+            assign feature_image = 'feature-premium-ingredients.png'
+          elsif forloop.index == 2
+            assign feature_image = 'feature-globally-inspired-recipes.png'
+          elsif forloop.index == 3
+            assign feature_image = 'feature-easy-flexible-manage.png'
+          endif
+        %}
+        <article class="feature-card feature-card--image">
+          {% if feature_image != blank %}
+            <div class="feature-card-media-wrap" aria-hidden="true">
+              <img
+                class="feature-card-media"
+                src="{{ feature_image | asset_url }}"
+                alt=""
+                loading="lazy"
+              >
+            </div>
+          {% endif %}
+          <div class="feature-card-copy">
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.text }}</p>
+          </div>
         </article>
       {% endfor %}
     </div>
