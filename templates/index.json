@@ -46,39 +46,11 @@
     },
     "collection": {
       "type": "featured-collection",
-      "blocks": {
-        "p1": {
-          "type": "fallback_product",
-          "settings": {
-            "badge": "Most Flexible",
-            "kicker": "Ideal for first-time subscribers",
-            "title": "Explorer Plan",
-            "text": "A lighter weekly ritual for curious cooks who want a compact surprise-country experience at home.",
-            "price": "£29.00"
-          }
-        },
-        "p2": {
-          "type": "fallback_product",
-          "settings": {
-            "badge": "Most Popular",
-            "kicker": "Best seller across the UK",
-            "title": "Voyager Plan",
-            "text": "Our signature subscription with three globally inspired dinners curated as one surprise country journey each week.",
-            "price": "£42.00"
-          }
-        },
-        "p3": {
-          "type": "fallback_product",
-          "settings": {
-            "badge": "Premium Choice",
-            "kicker": "For committed home hosts",
-            "title": "Grand Tour Plan",
-            "text": "A full week of premium discovery for households who want a richer surprise-country experience with extra hosting energy.",
-            "price": "£65.00"
-          }
-        }
+      "settings": {
+        "products_to_show": 6
       },
-      "block_order": ["p1", "p2", "p3"]
+      "blocks": {},
+      "block_order": []
     },
     "destinations": {
       "type": "destinations-archive",

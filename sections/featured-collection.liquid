@@ -1,4 +1,7 @@
 {% assign collection_to_show = collections[section.settings.collection] %}
+{% if collection_to_show == blank or collection_to_show.products_count == 0 %}
+  {% assign collection_to_show = collections.all %}
+{% endif %}
 <section class="section{% if section.settings.soft_background %} section-soft{% endif %}">
   <div class="container">
     <div class="section-heading">
