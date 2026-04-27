@@ -190,8 +190,6 @@
 
     <script>
       (function () {
-        if (window.__ROAMSOME_IS_SHOPIFY_PREVIEW__) return;
-
         var snapshot = '';
         var restoring = false;
         var restoreAttempts = 0;
@@ -222,14 +220,16 @@
         function bodyLooksCorrupted() {
           var root = getRoot();
           var main = document.getElementById('MainContent');
+          var bodyHidden = !!(document.body && (document.body.hidden || document.body.getAttribute('aria-hidden') === 'true' || document.body.hasAttribute('inert')));
+          var htmlHidden = !!(document.documentElement && document.documentElement.hidden);
 
-          if (root && main) return false;
+          if (root && main && !bodyHidden && !htmlHidden) return false;
 
           var bodyText = String((document.body && document.body.textContent) || '').trim();
           var bodyChildren = document.body ? document.body.children.length : 0;
           var hasOnlyAppNodes = !!document.getElementById('seal-subs-loaded') || !!document.getElementById('web-pixels-manager-sandbox-container');
 
-          return !main || bodyText === '0' || (hasOnlyAppNodes && bodyChildren <= 3);
+          return bodyHidden || htmlHidden || !main || bodyText === '0' || (hasOnlyAppNodes && bodyChildren <= 3);
         }
 
         function pruneCorruptedNodes() {
@@ -256,8 +256,14 @@
             pruneCorruptedNodes();
 
             var currentRoot = getRoot();
-            if (currentRoot) currentRoot.remove();
-            document.body.insertBefore(restoredRoot, document.body.firstChild);
+            if (window.__ROAMSOME_IS_SHOPIFY_PREVIEW__) {
+              if (!currentRoot) {
+                document.body.insertBefore(restoredRoot, document.body.firstChild);
+              }
+            } else {
+              if (currentRoot) currentRoot.remove();
+              document.body.insertBefore(restoredRoot, document.body.firstChild);
+            }
             captureSnapshot();
             rebindObserver();
 
