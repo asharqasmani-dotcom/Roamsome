@@ -354,6 +354,10 @@ button {
   font-weight: 700;
 }
 
+.cart-count[hidden] {
+  display: none;
+}
+
 .menu-toggle {
   display: none;
   width: 48px;

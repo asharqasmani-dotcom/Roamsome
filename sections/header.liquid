@@ -30,7 +30,7 @@
     <div class="header-actions">
       <a class="cart-link" href="{{ routes.cart_url }}" data-cart-open aria-label="View cart">
         <span>🧺</span>
-        <span class="cart-count" data-cart-count>{{ cart.item_count }}</span>
+        <span class="cart-count" data-cart-count{% if cart.item_count == 0 %} hidden aria-hidden="true"{% endif %}>{{ cart.item_count }}</span>
       </a>
       <a class="btn" href="{{ section.settings.cta_link | default: settings.global_cta_link | default: routes.all_products_collection_url }}">{{ section.settings.cta_text | default: settings.global_cta_text }}</a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>☰</button>

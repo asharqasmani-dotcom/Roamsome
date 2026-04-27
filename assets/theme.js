@@ -37,6 +37,8 @@
   function updateCartCount(count) {
     document.querySelectorAll('[data-cart-count]').forEach(function (node) {
       node.textContent = count;
+      node.hidden = !count;
+      node.setAttribute('aria-hidden', count ? 'false' : 'true');
     });
   }
 

@@ -29,12 +29,16 @@
       <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
 
-    {{ content_for_header }}
-
     <script>
       (function () {
+        var nativeOpen = document.open ? document.open.bind(document) : null;
         var nativeWrite = document.write.bind(document);
         var nativeWriteln = document.writeln ? document.writeln.bind(document) : null;
+        var nativeClose = document.close ? document.close.bind(document) : null;
+
+        function themeShellExists() {
+          return !!document.getElementById('ThemeRoot') || !!document.getElementById('MainContent');
+        }
 
         function appendLateWrite(html) {
           if (!document.body) return;
@@ -58,13 +62,12 @@
 
         function safeWrite() {
           var html = Array.prototype.join.call(arguments, '');
+          var trimmed = String(html || '').trim();
 
-          if (document.readyState === 'loading') {
+          if (document.readyState === 'loading' && !themeShellExists()) {
             nativeWrite(html);
             return;
           }
-
-          var trimmed = String(html || '').trim();
 
           if (!trimmed || trimmed === '0') {
             console.warn('Blocked late document.write payload:', trimmed);
@@ -80,14 +83,37 @@
 
         document.write = safeWrite;
 
+        if (nativeOpen) {
+          document.open = function () {
+            if (document.readyState === 'loading' && !themeShellExists()) {
+              return nativeOpen();
+            }
+
+            console.warn('Blocked late document.open call.');
+            return document;
+          };
+        }
+
         if (nativeWriteln) {
           document.writeln = function () {
             var html = Array.prototype.join.call(arguments, '') + '\n';
             safeWrite(html);
           };
         }
+
+        if (nativeClose) {
+          document.close = function () {
+            if (document.readyState === 'loading' && !themeShellExists()) {
+              return nativeClose();
+            }
+
+            return document;
+          };
+        }
       })();
     </script>
+
+    {{ content_for_header }}
 
     <style>
       :root {
@@ -165,6 +191,11 @@
         var restoring = false;
         var restoreAttempts = 0;
         var maxRestoreAttempts = 3;
+        var integrityInterval = null;
+        var observedBody = null;
+        var observer = new MutationObserver(function () {
+          if (bodyLooksCorrupted()) restoreThemeRoot();
+        });
 
         function getRoot() {
           return document.getElementById('ThemeRoot');
@@ -173,6 +204,14 @@
         function captureSnapshot() {
           var root = getRoot();
           if (root) snapshot = root.outerHTML;
+        }
+
+        function rebindObserver() {
+          if (!document.body || observedBody === document.body) return;
+
+          observer.disconnect();
+          observer.observe(document.body, { childList: true, subtree: false });
+          observedBody = document.body;
         }
 
         function bodyLooksCorrupted() {
@@ -188,6 +227,16 @@
           return !main || bodyText === '0' || (hasOnlyAppNodes && bodyChildren <= 3);
         }
 
+        function pruneCorruptedNodes() {
+          if (!document.body) return;
+
+          Array.prototype.slice.call(document.body.childNodes).forEach(function (node) {
+            if (node.nodeType === Node.TEXT_NODE && String(node.textContent || '').trim() === '0') {
+              node.remove();
+            }
+          });
+        }
+
         function restoreThemeRoot() {
           if (restoring || !snapshot || restoreAttempts >= maxRestoreAttempts || !bodyLooksCorrupted()) return;
           restoring = true;
@@ -199,9 +248,13 @@
             var restoredRoot = mount.firstElementChild;
             if (!restoredRoot) return;
 
+            pruneCorruptedNodes();
+
             var currentRoot = getRoot();
             if (currentRoot) currentRoot.remove();
             document.body.insertBefore(restoredRoot, document.body.firstChild);
+            captureSnapshot();
+            rebindObserver();
 
             if (typeof window.ROAMSOME_THEME_INIT === 'function') {
               window.ROAMSOME_THEME_INIT();
@@ -217,27 +270,30 @@
           }, delay);
         }
 
+        function startIntegrityMonitor() {
+          if (integrityInterval) return;
+
+          integrityInterval = window.setInterval(function () {
+            rebindObserver();
+
+            if (!snapshot) captureSnapshot();
+            if (bodyLooksCorrupted()) restoreThemeRoot();
+          }, 1000);
+        }
+
         document.addEventListener('DOMContentLoaded', function () {
           captureSnapshot();
+          rebindObserver();
+          startIntegrityMonitor();
           scheduleIntegrityCheck(1200);
         });
 
         window.addEventListener('load', function () {
           captureSnapshot();
+          rebindObserver();
+          startIntegrityMonitor();
           scheduleIntegrityCheck(1500);
         });
-
-        var observer = new MutationObserver(function () {
-          if (bodyLooksCorrupted()) restoreThemeRoot();
-        });
-
-        if (document.body) {
-          observer.observe(document.body, { childList: true, subtree: false });
-        } else {
-          document.addEventListener('DOMContentLoaded', function () {
-            observer.observe(document.body, { childList: true, subtree: false });
-          });
-        }
       })();
     </script>
 
