@@ -172,7 +172,7 @@ button {
 .page-hero h1,
 .hero-copy h1 {
   margin: 16px 0 12px;
-  color: var(--color-black);
+  color: var(--color-primary);
   line-height: 1.06;
   letter-spacing: -0.03em;
 }
@@ -1218,10 +1218,11 @@ button {
   box-shadow: var(--shadow-soft);
 }
 
+.story-card h2,
 .upcoming-card h2,
 .blog-post-copy h1 {
   margin: 0;
-  color: var(--color-black);
+  color: var(--color-primary);
 }
 
 .allergen-grid {
