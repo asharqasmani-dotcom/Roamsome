@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="home-page">
   <div class="site-shell">
     <div data-site-header></div>
 
@@ -23,7 +23,7 @@
             <p>Travel-inspired meal kits delivered to your door every week with premium ingredients, globally inspired recipes and a clean, flexible subscription experience.</p>
             <div class="actions">
               <a class="btn" href="shop.html">Start Your Journey</a>
-              <a class="btn-secondary" href="menu.html">View Weekly Menus</a>
+              <a class="btn-secondary" href="menu.html">Explore Past Boxes</a>
             </div>
             <div class="urgency-line"><span class="urgency-dot"></span>Limited weekly slots available</div>
             <div class="hero-meta" style="margin-top:22px;">
@@ -64,13 +64,13 @@
           <div class="section-heading">
             <span class="eyebrow">How it works</span>
             <h2>Three simple steps to a more exciting weeknight</h2>
-            <p>ROAMSOME combines premium sourcing, thoughtful prep and globally inspired menus so dinner feels elevated without feeling complicated.</p>
+            <p>ROAMSOME combines premium sourcing, thoughtful prep and curated destination storytelling so dinner feels elevated without feeling complicated.</p>
           </div>
           <div class="cards-grid three">
             <article class="step-card">
               <div class="step-number">1</div>
               <h3>Choose your plan</h3>
-              <p>Select the number of meals that fits your week and switch plans whenever your routine changes.</p>
+              <p>Select the subscription rhythm that fits your household and let ROAMSOME handle the weekly surprise-country reveal.</p>
             </article>
             <article class="step-card">
               <div class="step-number">2</div>
@@ -79,8 +79,8 @@
             </article>
             <article class="step-card">
               <div class="step-number">3</div>
-              <h3>Cook and explore new cuisines</h3>
-              <p>Create premium dishes inspired by destinations like Italy, Japan and Mexico in around 20 to 30 minutes.</p>
+              <h3>Cook and discover the destination</h3>
+              <p>Create premium dishes inspired by a surprise country experience revealed only when your curated box arrives.</p>
             </article>
           </div>
         </div>
@@ -89,11 +89,16 @@
       <section class="section section-soft">
         <div class="container">
           <div class="section-heading">
-            <span class="eyebrow">Weekly experience</span>
-            <h2>Country-based menus with premium ingredients and bright flavours</h2>
-            <p>Each week is curated to feel like a fresh itinerary for your table, with premium food photography, destination cues and balanced menu variety.</p>
+            <span class="eyebrow">Curated discovery</span>
+            <h2>Each week, a new country. No choices. Just discovery.</h2>
+            <p>ROAMSOME is intentionally curated. There is no meal picking or menu building, just a beautifully designed country experience that arrives ready to reveal itself at your table.</p>
           </div>
-          <div class="menu-grid" data-home-meals></div>
+          <div class="story-stack">
+            <article class="story-card">
+              <h3>A surprise country experience</h3>
+              <p>Every delivery is built around one destination, with premium ingredients, a recipe journey and cultural cues that make the evening feel transportive from the first step to the final plate.</p>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -112,7 +117,7 @@
             <article class="feature-card">
               <div class="icon-badge">🌍</div>
               <h3>Globally inspired recipes</h3>
-              <p>Every menu is shaped by destination-led cooking so your week feels varied, exciting and memorable.</p>
+              <p>Every box is shaped by destination-led cooking so your week feels varied, exciting and memorable without needing to choose from a menu.</p>
             </article>
             <article class="feature-card">
               <div class="icon-badge">⏱</div>
@@ -137,16 +142,26 @@
       <section class="section">
         <div class="container">
           <div class="section-heading">
-            <span class="eyebrow">Trust</span>
-            <h2>Trusted by food lovers across the UK</h2>
-            <p>4.9 stars from subscribers who want their weekly meals to feel premium, practical and genuinely exciting.</p>
+            <span class="eyebrow">Explore past boxes</span>
+            <h2>Previous destinations that built the ritual</h2>
+            <p>From bright Mediterranean tables to comfort-led city suppers, past ROAMSOME boxes show the kind of premium journeys subscribers have already experienced.</p>
           </div>
-          <div class="rating-row" style="margin-bottom:28px;">
-            <span class="meta-chip">★★★★★ Rated Excellent</span>
-            <span class="meta-chip">Flexible subscription</span>
-            <span class="meta-chip">Limited weekly deliveries</span>
+          <div class="menu-grid" data-home-past-boxes></div>
+        </div>
+      </section>
+
+      <section class="section section-soft">
+        <div class="container" data-home-upcoming></div>
+      </section>
+
+      <section class="section section-soft">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">From the blog</span>
+            <h2>Stories behind the ROAMSOME experience</h2>
+            <p>Read more about travel-inspired meals, destination-led cooking and the rituals that make a premium box feel transportive.</p>
           </div>
-          <div class="testimonial-grid" data-home-testimonials></div>
+          <div class="blog-grid" data-home-blogs></div>
         </div>
       </section>
 
@@ -156,15 +171,15 @@
             <div class="split-grid">
               <div>
                 <span class="eyebrow">Newsletter</span>
-                <h2>Get next week’s preview before everyone else</h2>
-                <p>Join the ROAMSOME list for menu reveals, chef tips and limited-route releases.</p>
+                <h2>Get next week’s story before everyone else</h2>
+                <p>Join the ROAMSOME list for destination notes, chef tips and limited-route releases.</p>
               </div>
               <div>
                 <form class="newsletter-form" data-newsletter-form>
                   <input type="email" name="email" placeholder="Enter your email address" aria-label="Email address" required>
                   <button class="btn" type="submit">Get Weekly Preview</button>
                 </form>
-                <p class="success-message hidden">You’re on the list. Next week’s menu preview will arrive in your inbox soon.</p>
+                <p class="success-message hidden">You’re on the list. Next week’s destination notes will arrive in your inbox soon.</p>
               </div>
             </div>
           </div>

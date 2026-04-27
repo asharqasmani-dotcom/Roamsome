@@ -83,6 +83,10 @@ button {
   padding-top: 0;
 }
 
+.home-page .section + .section {
+  padding-top: var(--section-space);
+}
+
 .section-soft {
   background: var(--color-secondary);
 }
@@ -550,6 +554,7 @@ button {
 .faq-grid,
 .menu-grid,
 .shop-grid,
+.blog-grid,
 .feature-grid,
 .stats-grid {
   display: grid;
@@ -561,6 +566,7 @@ button {
 .faq-grid,
 .menu-grid,
 .shop-grid,
+.blog-grid,
 .feature-grid,
 .stats-grid {
   grid-auto-rows: 1fr;
@@ -575,6 +581,7 @@ button {
 .menu-grid,
 .shop-grid,
 .plans-grid,
+.blog-grid,
 .testimonial-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -582,7 +589,8 @@ button {
 .card,
 .step-card,
 .meal-card,
-.feature-card {
+.feature-card,
+.blog-card {
   position: relative;
   overflow: hidden;
   border-radius: var(--radius-card);
@@ -596,6 +604,7 @@ button {
 .step-card:hover,
 .meal-card:hover,
 .feature-card:hover,
+.blog-card:hover,
 .plan-card:hover,
 .testimonial-card:hover,
 .story-card:hover {
@@ -607,6 +616,7 @@ button {
 .card-body,
 .step-card,
 .feature-card,
+.blog-card-body,
 .plan-card,
 .testimonial-card,
 .faq-item,
@@ -755,6 +765,20 @@ button {
 .plan-card-image {
   border-radius: 22px;
   overflow: hidden;
+}
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-card-image {
+  border-radius: 22px 22px 0 0;
+}
+
+.blog-card-body {
+  display: grid;
+  gap: 14px;
 }
 
 .kicker {
@@ -937,6 +961,76 @@ button {
 .product-related {
   display: grid;
   gap: 18px;
+}
+
+.surprise-story-card {
+  background:
+    linear-gradient(135deg, rgba(253, 113, 60, 0.08), rgba(255, 255, 255, 0.98)),
+    var(--color-white);
+}
+
+.upcoming-card {
+  display: grid;
+  gap: 18px;
+  padding: clamp(28px, 4vw, 42px);
+  border-radius: 34px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-soft);
+}
+
+.upcoming-card h2,
+.blog-post-copy h1 {
+  margin: 0;
+  color: var(--color-black);
+}
+
+.allergen-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.upcoming-note {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.blog-post-layout {
+  display: grid;
+  gap: 24px;
+}
+
+.blog-post-hero {
+  min-height: min(62vw, 520px);
+  border-radius: 34px;
+}
+
+.blog-post-copy {
+  display: grid;
+  gap: 16px;
+}
+
+.blog-post-copy > p {
+  margin: 0;
+  font-size: 1.04rem;
+}
+
+.blog-section-stack {
+  display: grid;
+  gap: 18px;
+}
+
+.blog-section-stack .summary-card h2 {
+  margin: 0 0 10px;
+}
+
+.blog-section-stack .summary-card p {
+  margin: 0 0 12px;
+}
+
+.blog-section-stack .summary-card p:last-child {
+  margin-bottom: 0;
 }
 
 .product-image-card,
@@ -1231,6 +1325,7 @@ button {
   .stats-grid,
   .menu-grid,
   .shop-grid,
+  .blog-grid,
   .plans-grid,
   .testimonial-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1310,6 +1405,7 @@ button {
   .stats-grid,
   .menu-grid,
   .shop-grid,
+  .blog-grid,
   .plans-grid,
   .testimonial-grid,
   .footer-grid {

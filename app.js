@@ -1,5 +1,12 @@
 (function () {
-  const data = window.ROAMSOME_DATA || { plans: [], meals: [], testimonials: [], faqs: [] };
+  const data = window.ROAMSOME_DATA || {
+    plans: [],
+    pastBoxes: [],
+    upcomingBoxInfo: { allergens: [] },
+    blogPosts: [],
+    testimonials: [],
+    faqs: []
+  };
   const storageKey = "roamsome-cart";
   const deliveryFee = 4.95;
   const navItems = [
@@ -7,7 +14,8 @@
     ["Shop", "shop.html"],
     ["How It Works", "how-it-works.html"],
     ["About", "about.html"],
-    ["Menu", "menu.html"],
+    ["Destinations", "menu.html"],
+    ["Blog", "blog.html"],
     ["FAQ", "faq.html"],
     ["Contact", "contact.html"]
   ];
@@ -39,6 +47,10 @@
 
   function getPlanById(planId) {
     return data.plans.find((plan) => plan.id === planId) || data.plans[1] || data.plans[0];
+  }
+
+  function getBlogPostBySlug(slug) {
+    return data.blogPosts.find((post) => post.slug === slug) || data.blogPosts[0];
   }
 
   function buildPurchaseOptions(plan) {
@@ -132,6 +144,7 @@
     if (!headerMount) return;
 
     const current = getPageFile();
+    const navCurrent = current === "blog-post.html" ? "blog.html" : current;
     headerMount.innerHTML = `
       <header class="site-header">
         <div class="header-inner">
@@ -142,7 +155,7 @@
             ${navItems
               .map(
                 ([label, href]) =>
-                  `<a href="${href}" class="${current === href ? "active" : ""}">${label}</a>`
+                  `<a href="${href}" class="${navCurrent === href ? "active" : ""}">${label}</a>`
               )
               .join("")}
           </nav>
@@ -196,8 +209,8 @@
           <div class="footer-links">
             <h4>Explore</h4>
             <a href="shop.html">Subscription Plans</a>
-            <a href="menu.html">Weekly Menu</a>
-            <a href="how-it-works.html">How It Works</a>
+            <a href="menu.html">Past Boxes</a>
+            <a href="blog.html">Blog</a>
             <a href="about.html">About</a>
           </div>
           <div class="footer-links">
@@ -235,12 +248,10 @@
             <p>${plan.description}</p>
             <div class="price"><strong>${formatMoney(plan.price)}</strong><span>/ week</span></div>
             <div class="mini-points">
-              <span class="mini-pill">${plan.mealsPerWeek} meals</span>
+              <span class="mini-pill">${plan.mealsPerWeek} meals per week</span>
               <span class="mini-pill">${plan.servings}</span>
+              <span class="mini-pill">Pause or cancel anytime</span>
             </div>
-            <ul>
-              ${plan.included.map((item) => `<li>${item}</li>`).join("")}
-            </ul>
             <div class="inline-actions">
               <a class="btn" href="product.html?plan=${plan.id}">View Plan</a>
               <button class="btn" type="button" data-add-plan="${plan.id}">Add to Cart</button>
@@ -251,63 +262,116 @@
       .join("");
   }
 
-  function renderRelatedPlansMarkup(currentPlanId, heading, intro) {
-    const relatedPlans = data.plans.filter((item) => item.id !== currentPlanId).slice(0, 2);
-    return `
-      <section class="product-related">
-        <div class="section-heading">
-          <span class="eyebrow">Related products</span>
-          <h2>${heading}</h2>
-          <p>${intro}</p>
-        </div>
-        <div class="plans-grid">
-          ${relatedPlans
-            .map(
-              (item) => `
-                <article class="plan-card">
-                  <div class="meal-image" style="background-image:url('${item.image}')"></div>
-                  <div class="kicker">${item.highlight}</div>
-                  <h3>${item.title}</h3>
-                  <p>${item.description}</p>
-                  <div class="price"><strong>${formatMoney(item.price)}</strong><span>/ week</span></div>
-                  <div class="mini-points">
-                    <span class="mini-pill">${item.mealsPerWeek} meals</span>
-                    <span class="mini-pill">${item.servings}</span>
-                  </div>
-                  <div class="inline-actions">
-                    <a class="btn" href="product.html?plan=${item.id}">View Product</a>
-                    <a class="btn" href="checkout.html?plan=${item.id}">Subscribe</a>
-                  </div>
-                </article>
-              `
-            )
-            .join("")}
-        </div>
-      </section>
-    `;
-  }
-
-  function renderMeals(selector, limit) {
+  function renderPastBoxes(selector, limit) {
     const mount = document.querySelector(selector);
     if (!mount) return;
-    mount.innerHTML = data.meals
-      .slice(0, limit || data.meals.length)
+    mount.innerHTML = data.pastBoxes
+      .slice(0, limit || data.pastBoxes.length)
       .map(
-        (meal) => `
+        (box) => `
           <article class="meal-card">
-            <div class="meal-image" style="background-image:url('${meal.image}')"></div>
+            <div class="meal-image" style="background-image:url('${box.image}')"></div>
             <div class="card-body">
-              <div class="kicker">${meal.flag} ${meal.country}</div>
-              <h3>${meal.title}</h3>
-              <p>${meal.description}</p>
+              <div class="kicker">${box.flag} ${box.country}</div>
+              <h3>${box.title}</h3>
+              <p>${box.description}</p>
               <div class="tag-list">
-                ${meal.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}
+                ${box.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}
               </div>
             </div>
           </article>
         `
       )
       .join("");
+  }
+
+  function renderUpcomingInfo(selector) {
+    const mount = document.querySelector(selector);
+    if (!mount) return;
+    const info = data.upcomingBoxInfo;
+    mount.innerHTML = `
+      <article class="upcoming-card">
+        <span class="eyebrow">${info.title}</span>
+        <h2>${info.title}</h2>
+        <p>${info.description}</p>
+        <div class="allergen-grid">
+          ${info.allergens.map((item) => `<span class="tag">${item}</span>`).join("")}
+        </div>
+        <p class="upcoming-note">${info.note}</p>
+      </article>
+    `;
+  }
+
+  function renderBlogCardsMarkup(posts) {
+    return posts
+      .map(
+        (post) => `
+          <article class="blog-card">
+            <div class="meal-image blog-card-image" style="background-image:url('${post.image}')"></div>
+            <div class="blog-card-body">
+              <div class="kicker">${post.category}</div>
+              <h3>${post.title}</h3>
+              <p>${post.excerpt}</p>
+              <div class="summary-line">${post.readTime}</div>
+              <a class="btn" href="blog-post.html?slug=${post.slug}">Read More</a>
+            </div>
+          </article>
+        `
+      )
+      .join("");
+  }
+
+  function renderBlogList() {
+    const mount = document.querySelector("[data-blog-list]");
+    if (!mount) return;
+    mount.innerHTML = renderBlogCardsMarkup(data.blogPosts);
+  }
+
+  function renderHomeBlogs() {
+    const mount = document.querySelector("[data-home-blogs]");
+    if (!mount) return;
+    mount.innerHTML = renderBlogCardsMarkup(data.blogPosts.slice(0, 3));
+  }
+
+  function renderBlogPost() {
+    const mount = document.querySelector("[data-blog-post]");
+    if (!mount) return;
+    const slug = new URLSearchParams(window.location.search).get("slug");
+    const post = getBlogPostBySlug(slug);
+
+    mount.innerHTML = `
+      <article class="blog-post-layout">
+        <div class="page-hero-image blog-post-hero" style="background-image:url('${post.image}')"></div>
+        <div class="blog-post-copy">
+          <span class="eyebrow">${post.category}</span>
+          <h1>${post.title}</h1>
+          <p class="summary-line">${post.readTime}</p>
+          <p>${post.excerpt}</p>
+          <div class="blog-section-stack">
+            ${post.sections
+              .map(
+                (section) => `
+                  <section class="summary-card">
+                    <h2>${section.heading}</h2>
+                    ${section.body.map((paragraph) => `<p>${paragraph}</p>`).join("")}
+                  </section>
+                `
+              )
+              .join("")}
+          </div>
+        </div>
+      </article>
+      <section class="product-related">
+        <div class="section-heading">
+          <span class="eyebrow">More from the blog</span>
+          <h2>Related reading</h2>
+          <p>Explore more stories from ROAMSOME on travel-inspired meals, global cuisines and cooking experiences.</p>
+        </div>
+        <div class="blog-grid">
+          ${renderBlogCardsMarkup(data.blogPosts.filter((item) => item.slug !== post.slug).slice(0, 2))}
+        </div>
+      </section>
+    `;
   }
 
   function renderTestimonials(selector) {
@@ -350,12 +414,48 @@
       .join("");
   }
 
+  function renderRelatedPlansMarkup(currentPlanId, heading, intro) {
+    const relatedPlans = data.plans.filter((item) => item.id !== currentPlanId).slice(0, 2);
+    return `
+      <section class="product-related">
+        <div class="section-heading">
+          <span class="eyebrow">Related products</span>
+          <h2>${heading}</h2>
+          <p>${intro}</p>
+        </div>
+        <div class="plans-grid">
+          ${relatedPlans
+            .map(
+              (item) => `
+                <article class="plan-card">
+                  <div class="meal-image" style="background-image:url('${item.image}')"></div>
+                  <div class="kicker">${item.highlight}</div>
+                  <h3>${item.title}</h3>
+                  <p>${item.description}</p>
+                  <div class="price"><strong>${formatMoney(item.price)}</strong><span>/ week</span></div>
+                  <div class="mini-points">
+                    <span class="mini-pill">${item.mealsPerWeek} meals</span>
+                    <span class="mini-pill">${item.servings}</span>
+                  </div>
+                  <div class="inline-actions">
+                    <a class="btn" href="product.html?plan=${item.id}">View Product</a>
+                    <a class="btn" href="checkout.html?plan=${item.id}">Subscribe</a>
+                  </div>
+                </article>
+              `
+            )
+            .join("")}
+        </div>
+      </section>
+    `;
+  }
+
   function renderProductPage() {
     const mount = document.querySelector("[data-product-detail]");
     if (!mount) return;
     const params = new URLSearchParams(window.location.search);
     const plan = getPlanById(params.get("plan"));
-    const mealPreview = data.meals.slice(0, Math.max(3, plan.mealsPerWeek));
+    const pastPreview = data.pastBoxes.slice(0, Math.max(3, plan.mealsPerWeek));
     const purchaseOptions = buildPurchaseOptions(plan);
     const defaultOption = purchaseOptions[0];
 
@@ -367,6 +467,11 @@
               <div class="meal-image" style="aspect-ratio: 4 / 2.9; border-radius: 24px; background-image:url('${plan.image}')"></div>
             </article>
             <div class="product-info-stack">
+              <article class="summary-card surprise-story-card">
+                <span class="eyebrow">Curated surprise</span>
+                <h3>Each week, a new country. No choices. Just discovery.</h3>
+                <p>Every ROAMSOME box is a fully curated route. We keep the destination secret so the delivery feels like a reveal, not a menu decision.</p>
+              </article>
               <article class="summary-card">
                 <h3>What's included</h3>
                 <ul class="detail-list">
@@ -386,14 +491,14 @@
                 <p>Each plan includes chef notes for plating, pantry swaps and finishing touches so home cooking still feels refined and destination-led.</p>
               </article>
               <article class="summary-card">
-                <h3>Weekly meal preview</h3>
+                <h3>Previous destinations</h3>
                 <div class="summary-list">
-                  ${mealPreview
+                  ${pastPreview
                     .map(
-                      (meal) => `
+                      (box) => `
                         <div class="summary-row">
-                          <span>${meal.flag} ${meal.title}</span>
-                          <span>${meal.country}</span>
+                          <span>${box.flag} ${box.title}</span>
+                          <span>${box.country}</span>
                         </div>
                       `
                     )
@@ -403,7 +508,7 @@
             </div>
           </div>
           <article class="detail-card product-purchase-card">
-            <div class="kicker">${plan.accent} inspired</div>
+            <div class="kicker">${plan.accent}</div>
             <h1>${plan.title}</h1>
             <p>${plan.description}</p>
             <div class="price"><strong data-product-price>${formatMoney(defaultOption.price)}</strong><span data-product-price-note>/ ${defaultOption.note.replace("Deliver ", "").toLowerCase()}</span></div>
@@ -632,7 +737,7 @@
         <article class="summary-card">
           <h3>Order confirmed</h3>
           <p>Your first ROAMSOME box is reserved. Confirmation and delivery timing will be sent to your email shortly.</p>
-          <a class="btn" href="menu.html">See next week’s menu</a>
+          <a class="btn" href="menu.html">Explore past destinations</a>
         </article>
       `;
     });
@@ -669,8 +774,9 @@
 
   function renderHomeHighlights() {
     renderPlans("[data-home-plans]", { featuredId: "voyager", showImages: true });
-    renderMeals("[data-home-meals]", 3);
-    renderTestimonials("[data-home-testimonials]");
+    renderPastBoxes("[data-home-past-boxes]", 3);
+    renderHomeBlogs();
+    renderUpcomingInfo("[data-home-upcoming]");
   }
 
   function initHeroSlider() {
@@ -722,13 +828,15 @@
   function initPages() {
     renderHomeHighlights();
     renderPlans("[data-shop-plans]", { featuredId: "voyager" });
-    renderMeals("[data-menu-grid]");
+    renderPastBoxes("[data-destination-grid]");
     renderFaqs("[data-faq-grid]");
-    renderFaqs("[data-home-faq]", 3);
     renderTestimonials("[data-testimonial-grid]");
     renderProductPage();
     renderCartPage();
     renderCheckoutPage();
+    renderBlogList();
+    renderBlogPost();
+    renderUpcomingInfo("[data-upcoming-box-info]");
   }
 
   document.addEventListener("DOMContentLoaded", () => {
