@@ -1126,6 +1126,25 @@ button {
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+.newsletter-card .split-grid {
+  align-items: start;
+}
+
+.newsletter-card .customer.newsletter-form {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+}
+
+.newsletter-card .customer.newsletter-form .btn {
+  min-width: 300px;
+  min-height: 56px;
+  white-space: nowrap;
+}
+
+.newsletter-card .customer.newsletter-form .success-message {
+  grid-column: 1 / -1;
+}
+
 .newsletter-form input,
 .contact-form input,
 .contact-form textarea,
@@ -1850,6 +1869,14 @@ button {
   .newsletter-form,
   .inline-actions {
     flex-direction: column;
+  }
+
+  .newsletter-card .customer.newsletter-form {
+    grid-template-columns: 1fr;
+  }
+
+  .newsletter-card .customer.newsletter-form .btn {
+    min-width: 0;
   }
 
   .plan-card .inline-actions {

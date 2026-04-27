@@ -289,7 +289,7 @@
     "cta": {
       "type": "cta-banner",
       "settings": {
-        "eyebrow": "Final CTA",
+        "eyebrow": "",
         "heading": "Start your food journey today",
         "text": "Discover destination-inspired dinners, premium ingredients and a weekly subscription designed to fit real UK households.",
         "button_label": "Subscribe Now",

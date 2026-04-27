@@ -3,7 +3,9 @@
     <div class="cta-banner">
       <div class="split-grid">
         <div>
-          <span class="eyebrow" style="background:rgba(255,255,255,0.16); color:#fff;">{{ section.settings.eyebrow }}</span>
+          {% if section.settings.eyebrow != blank %}
+            <span class="eyebrow" style="background:rgba(255,255,255,0.16); color:#fff;">{{ section.settings.eyebrow }}</span>
+          {% endif %}
           <h2>{{ section.settings.heading }}</h2>
           <p>{{ section.settings.text }}</p>
         </div>
