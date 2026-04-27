@@ -151,6 +151,14 @@
             "text": "Every box is shaped by destination-led cooking so your week feels varied, exciting and memorable without needing to choose from a menu."
           }
         },
+        "feature_eqfRbQ": {
+          "type": "feature",
+          "settings": {
+            "icon": "✦",
+            "title": "Premium ingredients",
+            "text": "Fresh produce, premium proteins and thoughtful pantry elements selected for flavour and quality."
+          }
+        },
         "feature3": {
           "type": "feature",
           "settings": {
@@ -163,6 +171,7 @@
       "block_order": [
         "feature1",
         "feature2",
+        "feature_eqfRbQ",
         "feature3"
       ],
       "settings": {
@@ -237,6 +246,7 @@
         "b1": {
           "type": "fallback_article",
           "settings": {
+            "image": "shopify://shop_images/cmF-l39DEF_WJMxwBIi8KumTl_l_C9S_pW4prKsEmZRXwl2iTqMW4gpURxBlmwLxHU3k8M--rztLcNRNmAj0HB7_xpKe2DDFnWj28CwEktqFbdMe2qeMV6MhqatgJC5FzTjQhVDXpi_GccO3M4WuLA-IJGKRH0acEq0XV8klSmVY1WrMEn4VMaq.jpg",
             "category": "Travel-inspired meals",
             "title": "Bringing Travel Home Through Dinner",
             "text": "How a premium weeknight meal can recreate the feeling of arrival, discovery and place without leaving your kitchen.",
@@ -248,6 +258,7 @@
         "b2": {
           "type": "fallback_article",
           "settings": {
+            "image": "shopify://shop_images/pvsZlLLRFcSHm7UFVEcILhsDzPPaf61kTPCr3a0C-BVu5KlBhSZp7eQDQmstyBXioLfpsePOMVl2kUK0SFDYi_7htOsur30qA3L-DUaPUvpm9gTr4A41Zxs8L9aGfX6AHs99XadtaH1B9uv2H5krMpH7QmfqhWrm2jhjBmjrAOdDR5VVFv25aYp.jpg",
             "category": "Global cuisines",
             "title": "What Makes Global Cuisine Feel Authentic at Home",
             "text": "A closer look at ingredients, technique and storytelling when building premium boxes inspired by world cuisines.",
@@ -259,6 +270,7 @@
         "b3": {
           "type": "fallback_article",
           "settings": {
+            "image": "shopify://shop_images/I5pzBo2xw5oCUr6MY0uGHqxL6Pva0aJAjVtGaBcsFfmz9x5JExA8ICeNJ4ghrDlfZfFqF_uMnfZHo3sycDEYQErNW_fGPHdq8IIZ9md-WO2HulwyOKE6zRYRNzGrPb524KDuFYnBpwTKbI3TueHvR8YdSXe3szC5u9lqzgeetAdM6cNqWqNtobp.jpg",
             "category": "Cooking experiences",
             "title": "The Art of Slower Weeknight Cooking",
             "text": "Why premium home cooking is less about speed for its own sake and more about creating a calm, memorable rhythm at the end of the day.",
