@@ -15,8 +15,11 @@
   --grid-card-min-height: 320px;
   --review-card-min-height: 280px;
   --media-ratio: 4 / 3;
-  --content-width: min(1180px, calc(100vw - 40px));
-  --section-space: clamp(64px, 9vw, 108px);
+  --page-gutter: clamp(20px, 4vw, 36px);
+  --content-max: 1180px;
+  --content-width: min(var(--content-max), calc(100vw - (var(--page-gutter) * 2)));
+  --section-space: clamp(56px, 8vw, 96px);
+  --section-heading-space: clamp(28px, 4vw, 44px);
 }
 
 *,
@@ -68,9 +71,11 @@ body.menu-open {
 }
 
 .announcement-bar__inner {
-  width: var(--content-width);
+  width: 100%;
+  max-width: var(--content-max);
   min-height: 44px;
   margin: 0 auto;
+  padding-inline: var(--page-gutter);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -115,8 +120,10 @@ button {
 }
 
 .container {
-  width: var(--content-width);
+  width: 100%;
+  max-width: var(--content-max);
   margin: 0 auto;
+  padding-inline: var(--page-gutter);
 }
 
 .section {
@@ -127,8 +134,8 @@ button {
   padding-top: 0;
 }
 
-.home-page .section + .section {
-  padding-top: var(--section-space);
+.section.section-soft + .section.section-soft {
+  padding-top: 0;
 }
 
 .section-soft {
@@ -158,7 +165,7 @@ button {
 
 .section-heading {
   max-width: 640px;
-  margin-bottom: 36px;
+  margin-bottom: var(--section-heading-space);
 }
 
 .section-heading h2,
@@ -276,8 +283,10 @@ button {
 }
 
 .header-inner {
-  width: var(--content-width);
+  width: 100%;
+  max-width: var(--content-max);
   margin: 0 auto;
+  padding-inline: var(--page-gutter);
   min-height: 82px;
   display: flex;
   align-items: center;
@@ -388,7 +397,7 @@ button {
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 38px 0 40px;
+  padding: clamp(40px, 5vw, 64px) 0 clamp(40px, 5vw, 64px);
 }
 
 .hero-grid,
@@ -962,7 +971,11 @@ button {
 }
 
 .page-hero {
-  padding: 38px 0 24px;
+  padding: clamp(40px, 5vw, 64px) 0 clamp(32px, 4vw, 48px);
+}
+
+.page-hero + .section {
+  padding-top: 0;
 }
 
 .page-hero-grid {
@@ -1394,8 +1407,9 @@ button {
 
 @media (max-width: 760px) {
   :root {
-    --content-width: min(100vw - 24px, 1180px);
-    --section-space: 56px;
+    --page-gutter: 16px;
+    --section-space: 48px;
+    --section-heading-space: 24px;
   }
 
   .site-header {
