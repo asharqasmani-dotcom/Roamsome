@@ -996,6 +996,34 @@ button {
   height: 100%;
 }
 
+.page-hero-image-media {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.page-hero-image--contain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(20px, 3vw, 32px);
+}
+
+.page-hero-image--contain::after {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.16)),
+    linear-gradient(135deg, rgba(253, 113, 60, 0.12), transparent 42%);
+}
+
+.page-hero-image--contain .page-hero-image-media {
+  object-fit: contain;
+  object-position: center bottom;
+}
+
 .split-grid,
 .product-layout,
 .contact-grid,
