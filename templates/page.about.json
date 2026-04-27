@@ -1,28 +1,67 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "rich-hero",
+      "custom_css": [],
       "settings": {
         "eyebrow": "About ROAMSOME",
         "heading": "Travel-inspired meal kits with a premium but simple point of view",
         "text": "ROAMSOME is a travel-inspired meal kit service bringing global cuisines to your home in a premium yet simple way.",
-        "show_image": true
+        "show_image": true,
+        "image": "shopify://shop_images/premium-meal-subscription-box-on-a-clean_Bgecqu0eQDWVaz5rw_57YA_tW8dtJXHQ7CYqDyHHIPQ3g_cover_hd.png"
       }
     },
     "stories": {
       "type": "story-card-section",
+      "blocks": {
+        "story1": {
+          "type": "story",
+          "settings": {
+            "eyebrow": "Brand story",
+            "title": "Built for people who love the feeling of discovering something new",
+            "text": "ROAMSOME began with a simple idea: dinner at home can feel as exciting as travel when the ingredients, stories and flavours are chosen with care. We wanted to create a food subscription brand that feels polished and premium without becoming intimidating or overly complex."
+          }
+        },
+        "story2": {
+          "type": "story",
+          "settings": {
+            "eyebrow": "Mission",
+            "title": "Make premium global cooking accessible for everyday UK homes",
+            "text": "Our mission is to help people cook with confidence, explore more cuisines and enjoy a flexible subscription that keeps pace with modern life. Every box is designed to reduce friction while increasing delight."
+          }
+        },
+        "story3": {
+          "type": "story",
+          "settings": {
+            "eyebrow": "Experience",
+            "title": "Carefully considered from destination curation to doorstep delivery",
+            "text": "We obsess over the full experience: the quality of produce, the pace of the recipes, the visual presentation of every destination reveal and the ease of managing your subscription. The result is a weekly ritual that feels calm, premium and memorable."
+          }
+        }
+      },
+      "block_order": [
+        "story1",
+        "story2",
+        "story3"
+      ],
       "settings": {
         "eyebrow": "Brand story",
         "heading": "Built for people who love the feeling of discovering something new",
         "text": "ROAMSOME began with a simple idea: dinner at home can feel as exciting as travel when the ingredients, stories and flavours are chosen with care."
-      },
-      "blocks": {
-        "story1": { "type": "story", "settings": { "eyebrow": "Brand story", "title": "Built for people who love the feeling of discovering something new", "text": "ROAMSOME began with a simple idea: dinner at home can feel as exciting as travel when the ingredients, stories and flavours are chosen with care. We wanted to create a food subscription brand that feels polished and premium without becoming intimidating or overly complex." } },
-        "story2": { "type": "story", "settings": { "eyebrow": "Mission", "title": "Make premium global cooking accessible for everyday UK homes", "text": "Our mission is to help people cook with confidence, explore more cuisines and enjoy a flexible subscription that keeps pace with modern life. Every box is designed to reduce friction while increasing delight." } },
-        "story3": { "type": "story", "settings": { "eyebrow": "Experience", "title": "Carefully considered from destination curation to doorstep delivery", "text": "We obsess over the full experience: the quality of produce, the pace of the recipes, the visual presentation of every destination reveal and the ease of managing your subscription. The result is a weekly ritual that feels calm, premium and memorable." } }
-      },
-      "block_order": ["story1", "story2", "story3"]
+      }
     }
   },
-  "order": ["hero", "stories"]
+  "order": [
+    "hero",
+    "stories"
+  ]
 }
