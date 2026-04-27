@@ -8,17 +8,19 @@
     <div class="section-heading">
       <span class="eyebrow">{{ section.settings.eyebrow }}</span>
       <h2>{{ section.settings.heading }}</h2>
-      <p>{{ section.settings.text }}</p>
+      {% if section.settings.text != blank %}<p>{{ section.settings.text }}</p>{% endif %}
     </div>
-    <div class="story-stack">
-      {% for block in section.blocks %}
-        <article class="story-card">
-          {% if block.settings.eyebrow != blank %}<span class="eyebrow">{{ block.settings.eyebrow }}</span>{% endif %}
-          <h3>{{ block.settings.title }}</h3>
-          <p>{{ block.settings.text }}</p>
-        </article>
-      {% endfor %}
-    </div>
+    {% if section.blocks.size > 0 %}
+      <div class="story-stack">
+        {% for block in section.blocks %}
+          <article class="story-card">
+            {% if block.settings.eyebrow != blank %}<span class="eyebrow">{{ block.settings.eyebrow }}</span>{% endif %}
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.text }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    {% endif %}
   </div>
 </section>
 
