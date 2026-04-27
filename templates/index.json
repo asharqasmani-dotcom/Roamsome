@@ -151,14 +151,6 @@
             "text": "Every box is shaped by destination-led cooking so your week feels varied, exciting and memorable without needing to choose from a menu."
           }
         },
-        "feature_eqfRbQ": {
-          "type": "feature",
-          "settings": {
-            "icon": "✦",
-            "title": "Premium ingredients",
-            "text": "Fresh produce, premium proteins and thoughtful pantry elements selected for flavour and quality."
-          }
-        },
         "feature3": {
           "type": "feature",
           "settings": {
@@ -171,7 +163,6 @@
       "block_order": [
         "feature1",
         "feature2",
-        "feature_eqfRbQ",
         "feature3"
       ],
       "settings": {
