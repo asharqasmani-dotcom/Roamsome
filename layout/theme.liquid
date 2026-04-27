@@ -29,6 +29,123 @@
       <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
 
+    <script>
+      // Defensive guards installed BEFORE Shopify's content_for_header so any
+      // app pixel / subscription script that tries to wipe the storefront is
+      // intercepted. Confirmed culprit on this store: the Seal Subscriptions
+      // app sets document.body.innerHTML = "0" after load.
+      (function () {
+        var nativeWrite = document.write.bind(document);
+        var nativeWriteln = document.writeln ? document.writeln.bind(document) : null;
+        var nativeOpen = document.open.bind(document);
+
+        function appendLateWrite(html) {
+          if (!document.body) return;
+          var template = document.createElement('template');
+          template.innerHTML = html;
+          Array.prototype.slice.call(template.content.querySelectorAll('script')).forEach(function (oldScript) {
+            var replacement = document.createElement('script');
+            Array.prototype.slice.call(oldScript.attributes).forEach(function (attribute) {
+              replacement.setAttribute(attribute.name, attribute.value);
+            });
+            if (oldScript.textContent) replacement.textContent = oldScript.textContent;
+            oldScript.parentNode.replaceChild(replacement, oldScript);
+          });
+          document.body.appendChild(template.content);
+        }
+
+        function safeWrite() {
+          var html = Array.prototype.join.call(arguments, '');
+          if (document.readyState === 'loading') {
+            nativeWrite(html);
+            return;
+          }
+          var trimmed = String(html || '').trim();
+          if (!trimmed || trimmed === '0') {
+            console.warn('Blocked late document.write payload:', trimmed);
+            return;
+          }
+          try { appendLateWrite(trimmed); } catch (error) {
+            console.warn('Late document.write interception failed.', error);
+          }
+        }
+
+        document.write = safeWrite;
+        if (nativeWriteln) {
+          document.writeln = function () {
+            safeWrite(Array.prototype.join.call(arguments, '') + '\n');
+          };
+        }
+        document.open = function () {
+          if (document.readyState === 'loading') {
+            return nativeOpen.apply(document, arguments);
+          }
+          console.warn('Blocked late document.open() call.');
+          return document;
+        };
+
+        function looksLikeWipe(value) {
+          var t = String(value == null ? '' : value).trim();
+          return !t || t === '0' || t.length < 8;
+        }
+
+        var elDesc = Object.getOwnPropertyDescriptor(Element.prototype, 'innerHTML');
+        if (elDesc && elDesc.set) {
+          var origSetInner = elDesc.set;
+          var origGetInner = elDesc.get;
+          Object.defineProperty(Element.prototype, 'innerHTML', {
+            configurable: true,
+            enumerable: elDesc.enumerable,
+            get: function () { return origGetInner.call(this); },
+            set: function (v) {
+              if (this === document.body && document.readyState !== 'loading' && looksLikeWipe(v)) {
+                console.warn('Blocked body.innerHTML wipe payload:', JSON.stringify(String(v).slice(0, 60)));
+                return;
+              }
+              return origSetInner.call(this, v);
+            }
+          });
+        }
+
+        var nodeTextDesc = Object.getOwnPropertyDescriptor(Node.prototype, 'textContent');
+        if (nodeTextDesc && nodeTextDesc.set) {
+          var origSetText = nodeTextDesc.set;
+          var origGetText = nodeTextDesc.get;
+          Object.defineProperty(Node.prototype, 'textContent', {
+            configurable: true,
+            enumerable: nodeTextDesc.enumerable,
+            get: function () { return origGetText.call(this); },
+            set: function (v) {
+              if (this === document.body && document.readyState !== 'loading' && looksLikeWipe(v)) {
+                console.warn('Blocked body.textContent wipe payload:', JSON.stringify(String(v).slice(0, 60)));
+                return;
+              }
+              return origSetText.call(this, v);
+            }
+          });
+        }
+
+        if (Element.prototype.replaceChildren) {
+          var origReplaceChildren = Element.prototype.replaceChildren;
+          Element.prototype.replaceChildren = function () {
+            if (this === document.body && document.readyState !== 'loading') {
+              var allTextOrEmpty = arguments.length === 0 || (
+                arguments.length === 1 &&
+                (typeof arguments[0] === 'string'
+                  ? looksLikeWipe(arguments[0])
+                  : (arguments[0] && arguments[0].nodeType === 3 && looksLikeWipe(arguments[0].nodeValue)))
+              );
+              if (allTextOrEmpty) {
+                console.warn('Blocked body.replaceChildren wipe.');
+                return;
+              }
+            }
+            return origReplaceChildren.apply(this, arguments);
+          };
+        }
+      })();
+    </script>
+
     {{ content_for_header }}
 
     <style>
