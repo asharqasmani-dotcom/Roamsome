@@ -275,17 +275,6 @@
         "posts_to_show": 3
       }
     },
-    "newsletter": {
-      "type": "newsletter-signup",
-      "settings": {
-        "eyebrow": "Newsletter",
-        "heading": "Get next week’s story before everyone else",
-        "text": "Join the ROAMSOME list for destination notes, chef tips and limited-route releases.",
-        "placeholder": "Enter your email address",
-        "button_label": "Get Weekly Preview",
-        "success_text": "You’re on the list. Next week’s destination notes will arrive in your inbox soon."
-      }
-    },
     "cta": {
       "type": "cta-banner",
       "settings": {
@@ -305,7 +294,6 @@
     "collection",
     "upcoming",
     "blog_preview",
-    "newsletter",
     "cta"
   ]
 }
