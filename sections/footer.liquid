@@ -61,9 +61,11 @@
     </div>
 
     <div class="footer-newsletter">
-      <span class="eyebrow">Newsletter</span>
-      <h4>Get next week's story before everyone else</h4>
-      <p>Join the ROAMSOME list for destination notes, chef tips and limited-route releases.</p>
+      <div class="footer-newsletter-copy">
+        <span class="eyebrow">Newsletter</span>
+        <h4>Get next week's story before everyone else</h4>
+        <p>Join the ROAMSOME list for destination notes, chef tips and limited-route releases.</p>
+      </div>
       {% form 'customer', class: 'newsletter-form customer footer-newsletter-form' %}
         <input type="hidden" name="contact[tags]" value="newsletter">
         <input type="email" name="contact[email]" placeholder="Enter your email address" aria-label="Email address" required>

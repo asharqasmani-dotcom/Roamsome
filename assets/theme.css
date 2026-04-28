@@ -1692,32 +1692,43 @@ button {
 .footer-newsletter {
   display: grid;
   align-content: start;
-  gap: 16px;
-  padding: 22px;
-  border-radius: 28px;
+  gap: 14px;
+  padding: 18px 20px;
+  border-radius: 24px;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-newsletter-copy {
+  display: grid;
+  gap: 8px;
 }
 
 .footer-newsletter .eyebrow {
   justify-self: start;
   background: rgba(255, 255, 255, 0.12);
   color: var(--color-white);
+  padding: 10px 16px;
 }
 
 .footer-newsletter h4 {
   margin: 0;
-  font-size: clamp(1.5rem, 2vw, 2rem);
-  line-height: 1.15;
+  max-width: 12ch;
+  font-size: clamp(1.2rem, 1.5vw, 1.55rem);
+  line-height: 1.08;
 }
 
 .footer-newsletter p {
   margin: 0;
+  max-width: 30ch;
+  font-size: 0.98rem;
+  line-height: 1.55;
 }
 
 .footer-newsletter-form {
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 12px;
+  align-items: center;
 }
 
 .footer-newsletter-form input {
@@ -1727,13 +1738,14 @@ button {
 }
 
 .footer-newsletter-form .btn {
-  width: 100%;
-  min-width: 0;
+  width: auto;
+  min-width: 220px;
   white-space: nowrap;
 }
 
 .footer-newsletter-form .success-message {
   margin: 0;
+  grid-column: 1 / -1;
 }
 
 .footer .mini-pill {
@@ -1806,6 +1818,10 @@ button {
   .footer-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 32px;
+  }
+
+  .footer-newsletter {
+    grid-column: 1 / -1;
   }
 
   .testimonial-slide {
@@ -1997,6 +2013,15 @@ button {
   }
 
   .newsletter-card .customer.newsletter-form .btn {
+    min-width: 0;
+  }
+
+  .footer-newsletter-form {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-newsletter-form .btn {
+    width: 100%;
     min-width: 0;
   }
 
