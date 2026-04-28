@@ -1095,16 +1095,16 @@ button {
 .plan-card h3 {
   margin: 0;
   color: rgba(36, 29, 22, 0.96);
-  font-size: clamp(2rem, 2.6vw, 2.5rem);
-  line-height: 1.08;
+  font-size: clamp(1.6rem, 2.1vw, 2rem);
+  line-height: 1.12;
   letter-spacing: -0.04em;
 }
 
 .plan-card p {
   margin: 0;
   color: rgba(67, 56, 46, 0.8);
-  font-size: 1.02rem;
-  line-height: 1.72;
+  font-size: 0.92rem;
+  line-height: 1.62;
 }
 
 .plan-card .price {
@@ -1112,11 +1112,11 @@ button {
 }
 
 .plan-card .price strong {
-  font-size: clamp(2.9rem, 4vw, 4rem);
+  font-size: clamp(2.3rem, 3.2vw, 3.2rem);
 }
 
 .plan-card .price span {
-  font-size: 1rem;
+  font-size: 0.92rem;
 }
 
 .newsletter-card {

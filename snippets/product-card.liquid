@@ -1,6 +1,6 @@
 {% liquid
   assign card_product = product
-  assign product_description = card_product.description | strip_html | truncate: 120
+  assign product_description = card_product.description | strip_html | truncate: 96
 %}
 <article class="plan-card{% if featured %} plan-highlight{% endif %}">
   <a href="{{ card_product.url }}" class="plan-card-image-link">
