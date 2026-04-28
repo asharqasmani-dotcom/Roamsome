@@ -1,15 +1,25 @@
 <section class="section section-soft">
   <div class="container">
     <article class="upcoming-card">
-      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
-      <h2>{{ section.settings.heading }}</h2>
-      <p>{{ section.settings.text }}</p>
-      <div class="allergen-grid">
-        {% for block in section.blocks %}
-          <span class="tag">{{ block.settings.text }}</span>
-        {% endfor %}
+      <div class="upcoming-card-copy">
+        <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+        <h2>{{ section.settings.heading }}</h2>
+        <p>{{ section.settings.text }}</p>
+        <div class="allergen-grid">
+          {% for block in section.blocks %}
+            <span class="tag">{{ block.settings.text }}</span>
+          {% endfor %}
+        </div>
+        <p class="upcoming-note">{{ section.settings.note }}</p>
       </div>
-      <p class="upcoming-note">{{ section.settings.note }}</p>
+      <div class="upcoming-card-visual" aria-hidden="true">
+        <img
+          class="upcoming-card-image"
+          src="{{ 'upcoming-box-info-background.png' | asset_url }}"
+          alt=""
+          loading="lazy"
+        >
+      </div>
     </article>
   </div>
 </section>

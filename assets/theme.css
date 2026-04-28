@@ -1329,12 +1329,48 @@ button {
 
 .upcoming-card {
   display: grid;
-  gap: 18px;
-  padding: clamp(28px, 4vw, 42px);
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  gap: clamp(24px, 3vw, 34px);
+  align-items: stretch;
+  padding: clamp(24px, 3vw, 30px);
   border-radius: 34px;
   background: rgba(255, 255, 255, 0.94);
   border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: var(--shadow-soft);
+}
+
+.upcoming-card-copy {
+  display: grid;
+  gap: 18px;
+  align-content: start;
+  padding: clamp(12px, 1vw, 18px);
+}
+
+.upcoming-card-copy > p:not(.upcoming-note) {
+  margin: 0;
+  max-width: 62ch;
+  color: rgba(50, 42, 34, 0.84);
+  font-size: 1.02rem;
+  line-height: 1.72;
+}
+
+.upcoming-card-visual {
+  position: relative;
+  min-height: 100%;
+  border-radius: 28px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(17, 13, 10, 0.08), rgba(17, 13, 10, 0.2)),
+    #f3ede4;
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.08);
+}
+
+.upcoming-card-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
 }
 
 .story-card h2,
@@ -1348,6 +1384,12 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+}
+
+.upcoming-card .tag {
+  background: rgba(255, 255, 255, 0.82);
+  border-color: rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.04);
 }
 
 .upcoming-note {
@@ -1672,6 +1714,10 @@ button {
 }
 
 @media (max-width: 1080px) {
+  .upcoming-card {
+    grid-template-columns: 1fr;
+  }
+
   .hero-grid,
   .page-hero-grid,
   .split-grid,
@@ -1805,6 +1851,10 @@ button {
     margin: -22px -22px 0;
     aspect-ratio: 5 / 4;
     min-height: 0;
+    padding: 0;
+  }
+
+  .upcoming-card-copy {
     padding: 0;
   }
 
