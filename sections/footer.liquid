@@ -59,22 +59,6 @@
         {% if settings.social_tiktok != blank %}<a href="{{ settings.social_tiktok }}" aria-label="TikTok">TT</a>{% endif %}
       </div>
     </div>
-
-    <div class="footer-newsletter">
-      <div class="footer-newsletter-copy">
-        <span class="eyebrow">Newsletter</span>
-        <h4>Get next week's preview</h4>
-        <p>Chef tips and destination notes.</p>
-      </div>
-      {% form 'customer', class: 'newsletter-form customer footer-newsletter-form' %}
-        <input type="hidden" name="contact[tags]" value="newsletter">
-        <input type="email" name="contact[email]" placeholder="Enter your email address" aria-label="Email address" required>
-        <button class="btn" type="submit">Get Weekly Preview</button>
-        {% if form.posted_successfully? %}
-          <p class="success-message">You're on the list. Next week's destination notes will arrive in your inbox soon.</p>
-        {% endif %}
-      {% endform %}
-    </div>
   </div>
 </footer>
 

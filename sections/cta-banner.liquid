@@ -1,7 +1,13 @@
 <section class="section">
   <div class="container">
     <div class="cta-banner">
-      <div class="split-grid">
+      <img
+        class="cta-banner-image"
+        src="{{ 'cta-banner-background.png' | asset_url }}"
+        alt=""
+        loading="lazy"
+      >
+      <div class="cta-banner-copy">
         <div>
           {% if section.settings.eyebrow != blank %}
             <span class="eyebrow" style="background:rgba(255,255,255,0.16); color:#fff;">{{ section.settings.eyebrow }}</span>
@@ -9,7 +15,7 @@
           <h2>{{ section.settings.heading }}</h2>
           <p>{{ section.settings.text }}</p>
         </div>
-        <div class="actions" style="justify-content:flex-end; align-items:center;">
+        <div class="actions">
           <a class="btn-secondary" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">{{ section.settings.button_label }}</a>
         </div>
       </div>

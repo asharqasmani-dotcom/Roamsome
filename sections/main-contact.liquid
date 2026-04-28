@@ -1,9 +1,19 @@
 <section class="page-hero">
   <div class="container">
-    <div class="section-heading">
-      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
-      <h1>{{ section.settings.heading }}</h1>
-      <p>{{ section.settings.text }}</p>
+    <div class="contact-hero-grid">
+      <div class="section-heading">
+        <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+        <h1>{{ section.settings.heading }}</h1>
+        <p>{{ section.settings.text }}</p>
+      </div>
+      <div class="contact-hero-visual" aria-hidden="true">
+        <img
+          class="contact-hero-image"
+          src="{{ 'contact-hero-image.png' | asset_url }}"
+          alt=""
+          loading="lazy"
+        >
+      </div>
     </div>
     <div class="contact-grid">
       <article class="contact-card">
