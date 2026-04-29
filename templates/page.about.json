@@ -14,10 +14,10 @@
       "custom_css": [],
       "settings": {
         "eyebrow": "About ROAMSOME",
-        "heading": "Travel-inspired meal kits with a premium but simple point of view",
-        "text": "ROAMSOME is a travel-inspired meal kit service bringing global cuisines to your home in a premium yet simple way.",
-        "image_fit": "contain",
+        "heading": "A new kind of dinner is arriving in Evesham this July.",
+        "text": "Roamsome brings you one beautifully curated recipe box each week, inspired by a different country around the world.<br><br>The destination?<br><br>A surprise until it arrives.<br><br>Every box includes premium ingredients, simple recipe cards, and an unforgettable meal experience — all from a local business based right here in Evesham.",
         "show_image": true,
+        "image_fit": "contain",
         "image": "shopify://shop_images/premium-meal-subscription-box-on-a-clean_Bgecqu0eQDWVaz5rw_57YA_tW8dtJXHQ7CYqDyHHIPQ3g_cover_hd.png"
       }
     },
@@ -55,9 +55,10 @@
         "story3"
       ],
       "settings": {
+        "use_background_image": false,
         "eyebrow": "Brand story",
-        "heading": "Built for people who love the feeling of discovering something new",
-        "text": "ROAMSOME began with a simple idea: dinner at home can feel as exciting as travel when the ingredients, stories and flavours are chosen with care."
+        "heading": "Why join now?",
+        "text": "Because local supporters should get the best perks first!\n<br><br>Join the launch list today and receive:\n<br>\n<br>✓ Priority access before public launch\n<br>✓ Early booking for limited delivery slots\n<br>✓ 10% off your first box with code LOCAL10\n<br>✓ First look at launch updates"
       }
     }
   },
