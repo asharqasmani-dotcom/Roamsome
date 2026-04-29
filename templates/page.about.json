@@ -14,8 +14,8 @@
       "custom_css": [],
       "settings": {
         "eyebrow": "About ROAMSOME",
-        "heading": "A new kind of dinner is arriving in Evesham this July.",
-        "text": "Roamsome brings you one beautifully curated recipe box each week, inspired by a different country around the world.<br><br>The destination?<br><br>A surprise until it arrives.<br><br>Every box includes premium ingredients, simple recipe cards, and an unforgettable meal experience — all from a local business based right here in Evesham.",
+        "heading": "Travel-inspired meal kits with a premium but simple point of view",
+        "text": "ROAMSOME is a travel-inspired meal kit service bringing global cuisines to your home in a premium yet simple way.",
         "show_image": true,
         "image_fit": "contain",
         "image": "shopify://shop_images/premium-meal-subscription-box-on-a-clean_Bgecqu0eQDWVaz5rw_57YA_tW8dtJXHQ7CYqDyHHIPQ3g_cover_hd.png"
@@ -23,30 +23,39 @@
     },
     "stories": {
       "type": "story-card-section",
+      "blocks": {
+        "story_BaHtAE": {
+          "type": "story",
+          "settings": {
+            "eyebrow": "Mission",
+            "title": "Make premium global cooking accessible for everyday UK homes",
+            "text": "Our mission is to help people cook with confidence, explore more cuisines and enjoy a flexible subscription that keeps pace with modern life. Every box is designed to reduce friction while increasing delight"
+          }
+        },
+        "story_B3ke4Q": {
+          "type": "story",
+          "settings": {
+            "eyebrow": "Experience",
+            "title": "Carefully considered from destination curation to doorstep delivery",
+            "text": "We obsess over the full experience: the quality of produce, the pace of the recipes, the visual presentation of every destination reveal and the ease of managing your subscription. The result is a weekly ritual that feels calm, premium and memorable"
+          }
+        }
+      },
+      "block_order": [
+        "story_BaHtAE",
+        "story_B3ke4Q"
+      ],
       "name": "CTA",
       "settings": {
         "use_background_image": false,
-        "eyebrow": "Local launch",
-        "heading": "Why join now?",
-        "text": "Because local supporters should get the best perks first!\n<br><br>Join the launch list today and receive:\n<br>\n<br>✓ Priority access before public launch\n<br>✓ Early booking for limited delivery slots\n<br>✓ 10% off your first box with code LOCAL10\n<br>✓ First look at launch updates"
-      }
-    },
-    "newsletter_signup_AtjLpx": {
-      "type": "newsletter-signup",
-      "name": "Newsletter signup",
-      "settings": {
-        "eyebrow": "Join the list",
-        "heading": "Be one of the first to travel with Roamsome",
-        "text": "Enter your email below to join the waitlist",
-        "placeholder": "Enter your email address",
-        "button_label": "Take me somewhere",
-        "success_text": "You’re on the list.<br><br>\nYour first destination is getting closer.<br><br>\nThank you for joining the Roamsome launch list.<br><br>\nYou’ll be among the first to hear when our weekly mystery recipe boxes become available this July.\nAnd because you joined early:\nYour local launch code is waiting\nLOCAL10\n10% off your first box. <br><br>\nWe’ll be in touch soon with your invitation to book.<br><br>\nUntil then… stay curious."
+        "eyebrow": "Our Story",
+        "heading": "Built for people who love the feeling of discovering something new",
+        "text": "Roamsome was created from the simple idea that great food can transport you.<br><br>\n\nWe believe dinner should feel like more than just another meal. It should spark curiosity, create connection, and turn an ordinary evening into something unforgettable.\n<br><br>\nThat’s why each week, Roamsome delivers a new recipe inspired by a different corner of the world. Each meal is thoughtfully curated to bring a little adventure to your table.\n<br><br>\nBecause sometimes the best journeys begin at home."
       }
     }
   },
   "order": [
     "hero",
-    "stories",
-    "newsletter_signup_AtjLpx"
+    "stories"
   ]
 }
