@@ -53,12 +53,8 @@
           {% elsif product.description != blank %}
             <p>{{ product.description | strip_html | truncate: 180 }}</p>
           {% endif %}
-          <div class="product-reviews">
-  {% render 'judgeme_widgets',
-    widget_type: 'judgeme_review_widget',
-    concierge_install: true,
-    product: product
-  %}
+          <div id="judgeme_product_reviews" class="jdgm-widget jdgm-review-widget" data-product-title="{{ product.title | escape }}" data-id="{{ product.id }}" data-auto-install="false">
+  {{ product.metafields.judgeme.widget }}
 </div>
           <div class="price">
             <strong data-product-price>{{ current_variant.price | money }}</strong>
