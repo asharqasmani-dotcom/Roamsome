@@ -1,8 +1,52 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
-      "type": "main-product"
+      "type": "main-product",
+      "settings": {
+        "eyebrow": "Plan detail",
+        "heading": "Subscription plan overview",
+        "text": "Review what’s included, delivery details, previous destination examples and flexible subscription benefits before checkout.",
+        "story_eyebrow": "Curated surprise",
+        "story_heading": "Each week, a new country. No choices. Just discovery.",
+        "story_text": "Every ROAMSOME box is a fully curated route. We keep the destination secret so the delivery feels like a reveal, not a menu decision.",
+        "includes_heading": "What’s included",
+        "delivery_heading": "Delivery details",
+        "delivery_text": "Delivered chilled every Tuesday or Thursday with tracking included across mainland UK.",
+        "related_eyebrow": "Related products",
+        "related_heading": "You may also like",
+        "related_text": "Explore other ROAMSOME subscription plans while you’re here."
+      }
+    },
+    "1777480651a5e0d93b": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_WJUXaH": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_WJUXaH"
+      ],
+      "settings": {}
     }
   },
-  "order": ["main"]
+  "order": [
+    "main",
+    "1777480651a5e0d93b"
+  ]
 }
