@@ -23,47 +23,30 @@
     },
     "stories": {
       "type": "story-card-section",
-      "blocks": {
-        "story1": {
-          "type": "story",
-          "settings": {
-            "eyebrow": "Brand story",
-            "title": "Built for people who love the feeling of discovering something new",
-            "text": "ROAMSOME began with a simple idea: dinner at home can feel as exciting as travel when the ingredients, stories and flavours are chosen with care. We wanted to create a food subscription brand that feels polished and premium without becoming intimidating or overly complex."
-          }
-        },
-        "story2": {
-          "type": "story",
-          "settings": {
-            "eyebrow": "Mission",
-            "title": "Make premium global cooking accessible for everyday UK homes",
-            "text": "Our mission is to help people cook with confidence, explore more cuisines and enjoy a flexible subscription that keeps pace with modern life. Every box is designed to reduce friction while increasing delight."
-          }
-        },
-        "story3": {
-          "type": "story",
-          "settings": {
-            "eyebrow": "Experience",
-            "title": "Carefully considered from destination curation to doorstep delivery",
-            "text": "We obsess over the full experience: the quality of produce, the pace of the recipes, the visual presentation of every destination reveal and the ease of managing your subscription. The result is a weekly ritual that feels calm, premium and memorable."
-          }
-        }
-      },
-      "block_order": [
-        "story1",
-        "story2",
-        "story3"
-      ],
+      "name": "CTA",
       "settings": {
         "use_background_image": false,
         "eyebrow": "Local launch",
         "heading": "Why join now?",
         "text": "Because local supporters should get the best perks first!\n<br><br>Join the launch list today and receive:\n<br>\n<br>✓ Priority access before public launch\n<br>✓ Early booking for limited delivery slots\n<br>✓ 10% off your first box with code LOCAL10\n<br>✓ First look at launch updates"
       }
+    },
+    "newsletter_signup_AtjLpx": {
+      "type": "newsletter-signup",
+      "name": "Newsletter signup",
+      "settings": {
+        "eyebrow": "Join the list",
+        "heading": "Be one of the first to travel with Roamsome",
+        "text": "Enter your email below to join the waitlist",
+        "placeholder": "Enter your email address",
+        "button_label": "Take me somewhere",
+        "success_text": "You’re on the list.<br><br>\nYour first destination is getting closer.<br><br>\nThank you for joining the Roamsome launch list.<br><br>\nYou’ll be among the first to hear when our weekly mystery recipe boxes become available this July.\nAnd because you joined early:\nYour local launch code is waiting\nLOCAL10\n10% off your first box. <br><br>\nWe’ll be in touch soon with your invitation to book.<br><br>\nUntil then… stay curious."
+      }
     }
   },
   "order": [
     "hero",
-    "stories"
+    "stories",
+    "newsletter_signup_AtjLpx"
   ]
 }
