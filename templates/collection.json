@@ -11,7 +11,6 @@
   "sections": {
     "main": {
       "type": "main-collection",
-      "disabled": true,
       "settings": {
         "eyebrow": "Collection",
         "products_per_page": 12
