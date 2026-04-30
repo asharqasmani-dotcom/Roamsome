@@ -12,7 +12,7 @@
       </div>
       <form method="get">
         <label class="visually-hidden" for="SortBy">Sort by</label>
-        <select id="SortBy" name="sort_by" class="sort-by-select" onchange="this.form.submit()"><form method="get" action="{{ collection.url }}?sort_by=price-ascending">
+        <select id="SortBy" name="sort_by" class="sort-by-select" onchange="this.form.submit()">
           {% for option in collection.sort_options %}
             <option value="{{ option.value }}" {% if option.value == collection.sort_by %}selected{% endif %}>{{ option.name }}</option>
           {% endfor %}
