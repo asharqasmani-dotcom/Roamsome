@@ -113,8 +113,6 @@
     },
     "story": {
       "type": "story-card-section",
-      "blocks": {},
-      "block_order": [],
       "settings": {
         "use_background_image": true,
         "eyebrow": "Curated discovery",
@@ -169,7 +167,7 @@
         "eyebrow": "Subscription plans",
         "heading": "Choose the plan that fits your week",
         "text": "From a lighter two-meal rhythm to a full five-meal culinary route, every subscription includes flexibility and premium delivery.",
-        "collection": "",
+        "collection": "frontpage",
         "products_to_show": 6
       }
     },
