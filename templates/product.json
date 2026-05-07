@@ -12,7 +12,7 @@
     "main": {
       "type": "main-product",
       "settings": {
-        "eyebrow": "Plan detail",
+        "eyebrow": "{{ product.title }}",
         "heading": "Subscription plan overview",
         "text": "Review what’s included, delivery details, previous destination examples and flexible subscription benefits before checkout.",
         "story_eyebrow": "Curated surprise",
@@ -20,7 +20,7 @@
         "story_text": "Every ROAMSOME box is a fully curated route. We keep the destination secret so the delivery feels like a reveal, not a menu decision.",
         "includes_heading": "What’s included",
         "delivery_heading": "Delivery details",
-        "delivery_text": "Delivered chilled every Tuesday or Thursday with tracking included across mainland UK.",
+        "delivery_text": "Free delivery every Friday with tracking included across mainland UK.",
         "related_eyebrow": "Related products",
         "related_heading": "You may also like",
         "related_text": "Explore other ROAMSOME subscription plans while you’re here."

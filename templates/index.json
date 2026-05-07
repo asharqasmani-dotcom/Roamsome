@@ -69,7 +69,7 @@
         "heading": "Explore the world from your kitchen",
         "text": "Travel-inspired meal kits delivered to your door every week with premium ingredients, globally inspired recipes and a clean, flexible subscription experience.",
         "primary_button_label": "Start Your Journey",
-        "primary_button_link": "",
+        "primary_button_link": "shopify://collections/food-boxes",
         "secondary_button_label": "Explore Past Boxes",
         "secondary_button_link": "",
         "urgency_text": "Limited weekly slots available"
@@ -282,6 +282,17 @@
         "button_label": "Subscribe Now",
         "button_link": ""
       }
+    },
+    "destinations_archive_98WV7L": {
+      "type": "destinations-archive",
+      "disabled": true,
+      "name": "Destinations archive",
+      "settings": {
+        "soft_background": false,
+        "eyebrow": "Explore past boxes",
+        "heading": "Previous destinations that built the ritual",
+        "text": "From bright Mediterranean tables to comfort-led city suppers, past ROAMSOME boxes show the kind of premium journeys subscribers have already experienced."
+      }
     }
   },
   "order": [
@@ -292,6 +303,7 @@
     "collection",
     "upcoming",
     "blog_preview",
-    "cta"
+    "cta",
+    "destinations_archive_98WV7L"
   ]
 }
