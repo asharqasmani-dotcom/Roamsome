@@ -12,7 +12,7 @@
     "main": {
       "type": "main-collection",
       "settings": {
-        "eyebrow": "Collection",
+        "eyebrow": "The Boxes",
         "products_per_page": 12
       }
     }
