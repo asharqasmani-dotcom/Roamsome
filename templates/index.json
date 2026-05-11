@@ -33,6 +33,7 @@
         "slide1": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/istockphoto-1241878649-612x612.jpg",
             "alt": "Two people preparing a travel-inspired meal together in a premium modern kitchen",
             "title": "Fresh ingredients, weekend adventure",
             "text": "Fresh produce, chef-led recipes and free UK delivery every Friday"
@@ -249,7 +250,7 @@
         "b3": {
           "type": "fallback_article",
           "settings": {
-            "image": "shopify://shop_images/I5pzBo2xw5oCUr6MY0uGHqxL6Pva0aJAjVtGaBcsFfmz9x5JExA8ICeNJ4ghrDlfZfFqF_uMnfZHo3sycDEYQErNW_fGPHdq8IIZ9md-WO2HulwyOKE6zRYRNzGrPb524KDuFYnBpwTKbI3TueHvR8YdSXe3szC5u9lqzgeetAdM6cNqWqNtobp.jpg",
+            "image": "shopify://shop_images/istockphoto-2201068820-612x612.jpg",
             "category": "Cooking experiences",
             "title": "The Art of Slower Weeknight Cooking",
             "text": "Why premium home cooking is less about speed for its own sake and more about creating a calm, memorable rhythm at the end of the day.",
