@@ -42,6 +42,7 @@
         "slide2": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/ramen-noodles-kitchen-and-cooking.jpg",
             "alt": "A premium ROAMSOME meal kit box opened on a clean kitchen worktop",
             "title": "Premium meal kits, beautifully prepared",
             "text": "Organised ingredients, chef-led recipes and destination-inspired cooking at home"
