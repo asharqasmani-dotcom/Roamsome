@@ -11,13 +11,70 @@
   "sections": {
     "main": {
       "type": "main-collection",
+      "disabled": true,
       "settings": {
         "eyebrow": "The Boxes",
         "products_per_page": 12
       }
+    },
+    "featured_collection_TkrGtX": {
+      "type": "featured-collection",
+      "blocks": {
+        "fallback_product_ddLpiW": {
+          "type": "fallback_product",
+          "settings": {
+            "badge": "Most Flexible",
+            "kicker": "Ideal for first-time subscribers",
+            "title": "Explorer Plan",
+            "text": "A lighter weekly ritual for curious cooks who want a compact surprise-country experience at home.",
+            "price": "£29.00",
+            "button_label": "View Product",
+            "button_link": ""
+          }
+        },
+        "fallback_product_fzLWX3": {
+          "type": "fallback_product",
+          "settings": {
+            "badge": "Most Popular",
+            "kicker": "Best seller across the UK",
+            "title": "Voyager Plan",
+            "text": "Our signature subscription with three globally inspired dinners curated as one surprise country journey each week.",
+            "price": "£42.00",
+            "button_label": "View Product",
+            "button_link": ""
+          }
+        },
+        "fallback_product_8VVYiR": {
+          "type": "fallback_product",
+          "settings": {
+            "badge": "Premium Choice",
+            "kicker": "For committed home hosts",
+            "title": "Grand Tour Plan",
+            "text": "A full week of premium discovery for households who want a richer surprise-country experience with extra hosting energy.",
+            "price": "£65.00",
+            "button_label": "View Product",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "fallback_product_ddLpiW",
+        "fallback_product_fzLWX3",
+        "fallback_product_8VVYiR"
+      ],
+      "name": "Featured collection",
+      "settings": {
+        "soft_background": true,
+        "eyebrow": "Subscription plans",
+        "heading": "Choose the plan that fits your week",
+        "text": "Choose from our weekly, bi-weekly and monthly options, every subscription includes flexibility and free delivery. All plans can be made for 2 or 4 people.\n<br><br>\nWe recommend selecting the Grand Tour Plan for weekly delivery so you never miss an international adventure!",
+        "collection": "food-boxes",
+        "products_to_show": 3
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "featured_collection_TkrGtX"
   ]
 }
