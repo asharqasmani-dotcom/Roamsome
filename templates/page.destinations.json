@@ -41,7 +41,8 @@
         "heading": "Curated routes from past ROAMSOME boxes",
         "text": "Explore previous country experiences, plated moments and destination-led dishes that show how the surprise format unfolds from week to week.",
         "show_image": true,
-        "image_fit": "cover"
+        "image_fit": "cover",
+        "image": "shopify://shop_images/AdobeStock_1801965850_b3a361d6-0055-40b4-b7bf-01e74b4d4ee4.jpg"
       }
     },
     "destinations": {
@@ -144,6 +145,12 @@
     "upcoming": {
       "type": "upcoming-box-info",
       "blocks": {
+        "allergen_kmxWPn": {
+          "type": "allergen",
+          "settings": {
+            "text": "Includes chicken"
+          }
+        },
         "a1": {
           "type": "allergen",
           "settings": {
@@ -152,6 +159,7 @@
         },
         "a2": {
           "type": "allergen",
+          "disabled": true,
           "settings": {
             "text": "May include eggs"
           }
@@ -176,6 +184,7 @@
         }
       },
       "block_order": [
+        "allergen_kmxWPn",
         "a1",
         "a2",
         "a3",
