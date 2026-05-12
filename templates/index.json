@@ -176,6 +176,12 @@
     "upcoming": {
       "type": "upcoming-box-info",
       "blocks": {
+        "allergen_tjNtPe": {
+          "type": "allergen",
+          "settings": {
+            "text": "Includes Chicken"
+          }
+        },
         "a1": {
           "type": "allergen",
           "settings": {
@@ -184,6 +190,7 @@
         },
         "a2": {
           "type": "allergen",
+          "disabled": true,
           "settings": {
             "text": "May include eggs"
           }
@@ -208,6 +215,7 @@
         }
       },
       "block_order": [
+        "allergen_tjNtPe",
         "a1",
         "a2",
         "a3",
@@ -230,7 +238,7 @@
             "image": "shopify://shop_images/cmF-l39DEF_WJMxwBIi8KumTl_l_C9S_pW4prKsEmZRXwl2iTqMW4gpURxBlmwLxHU3k8M--rztLcNRNmAj0HB7_xpKe2DDFnWj28CwEktqFbdMe2qeMV6MhqatgJC5FzTjQhVDXpi_GccO3M4WuLA-IJGKRH0acEq0XV8klSmVY1WrMEn4VMaq.jpg",
             "category": "Travel-inspired meals",
             "title": "Bringing Travel Home Through Dinner",
-            "text": "How a premium weeknight meal can recreate the feeling of arrival, discovery and place without leaving your kitchen.",
+            "text": "How a premium home cooked meal can recreate the feeling of arrival, discovery and place without leaving your kitchen.",
             "read_time": "4 min read",
             "button_label": "Read More",
             "button_link": ""
@@ -253,7 +261,7 @@
           "settings": {
             "image": "shopify://shop_images/istockphoto-2201068820-612x612.jpg",
             "category": "Cooking experiences",
-            "title": "The Art of Slower Weeknight Cooking",
+            "title": "The Art of Slower Weekend Cooking",
             "text": "Why premium home cooking is less about speed for its own sake and more about creating a calm, memorable rhythm at the end of the day.",
             "read_time": "4 min read",
             "button_label": "Read More",
