@@ -84,7 +84,7 @@
           "type": "step",
           "settings": {
             "title": "Choose your plan",
-            "text": "Select the subscription rhythm that fits your household and let ROAMSOME handle the weekly surprise-country reveal."
+            "text": "Select the subscription type that fits your household and let ROAMSOME handle the weekly surprise-country reveal."
           }
         },
         "step2": {
@@ -109,7 +109,7 @@
       ],
       "settings": {
         "eyebrow": "How it works",
-        "heading": "Three simple steps to a more exciting weeknight",
+        "heading": "Three simple steps to more exciting home cooking",
         "text": "ROAMSOME combines premium sourcing, thoughtful prep and curated destination storytelling so dinner feels elevated without feeling complicated."
       }
     },
