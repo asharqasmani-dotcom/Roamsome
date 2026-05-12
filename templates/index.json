@@ -30,15 +30,6 @@
             "text": "Pause or cancel anytime"
           }
         },
-        "slide1": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/AdobeStock_1850565483.jpg",
-            "alt": "Two people preparing a travel-inspired meal together in a premium modern kitchen",
-            "title": "Fresh ingredients, weekend adventure",
-            "text": "Fresh produce, chef-led recipes and free UK delivery every Friday"
-          }
-        },
         "slide2": {
           "type": "slide",
           "settings": {
@@ -51,10 +42,19 @@
         "slide_GX6GEt": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/colorful-fresh-vegetables-flatlay.jpg",
+            "image": "shopify://shop_images/AdobeStock_1850565483.jpg",
             "alt": "A premium ROAMSOME meal kit box opened on a clean kitchen worktop",
             "title": "Simple steps, surprise destinations",
             "text": "Organised ingredients, chef-led recipes and surprise destination-inspired cooking at home"
+          }
+        },
+        "slide1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/colorful-fresh-vegetables-flatlay.jpg",
+            "alt": "Two people preparing a travel-inspired meal together in a premium modern kitchen",
+            "title": "Fresh ingredients, weekend adventure",
+            "text": "Fresh produce, chef-led recipes and free UK delivery every Friday"
           }
         }
       },
@@ -62,9 +62,9 @@
         "chip1",
         "chip2",
         "chip3",
-        "slide1",
         "slide2",
-        "slide_GX6GEt"
+        "slide_GX6GEt",
+        "slide1"
       ],
       "settings": {
         "eyebrow": "UK food subscription",
