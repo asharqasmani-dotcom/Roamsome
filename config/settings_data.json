@@ -19,10 +19,43 @@
       "phone_number": "+44 20 1234 5678",
       "support_email": "hello@roamsome.co.uk"
     },
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {
+          "show_announcement": true,
+          "text": "Limited weekly slots available for new subscribers.",
+          "link_text": "Explore subscriptions",
+          "link": ""
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "menu": "main-menu",
+          "cta_text": "Subscribe Now",
+          "cta_link": ""
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "explore_heading": "Explore",
+          "contact_heading": "Contact",
+          "footer_menu": "footer",
+          "support_menu": ""
+        }
+      }
+    },
     "content_for_index": [],
     "blocks": {
       "14060646107696862457": {
         "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
+      },
+      "8713138290206253500": {
+        "type": "shopify://apps/sharely-social-icons/blocks/app-embed-block/99b5f0c9-c62e-4f61-8489-59098ba481f3",
         "disabled": false,
         "settings": {}
       }
