@@ -58,6 +58,11 @@
         "type": "shopify://apps/sharely-social-icons/blocks/app-embed-block/99b5f0c9-c62e-4f61-8489-59098ba481f3",
         "disabled": false,
         "settings": {}
+      },
+      "18131037017812181619": {
+        "type": "shopify://apps/mailchimp-email-sms/blocks/mailchimp_for_shopify_script/e3b67dce-fd41-4b61-b3cf-961c12344cde",
+        "disabled": false,
+        "settings": {}
       }
     }
   }
