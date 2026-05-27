@@ -1,0 +1,108 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "rich-hero",
+      "custom_css": [],
+      "settings": {
+        "eyebrow": "About ROAMSOME",
+        "heading": "A new kind of dinner is arriving on the 3rd July.",
+        "text": "Roamsome brings you one beautifully curated recipe box each week, inspired by a different country around the world.<br><br>The destination?<br><br>A surprise until it arrives.<br><br>Every box includes premium ingredients, simple recipe cards, and an unforgettable meal experience — all from a local business based right here in Worcestershire.",
+        "show_image": true,
+        "image_fit": "cover",
+        "image": "shopify://shop_images/AdobeStock_421831303.jpg"
+      }
+    },
+    "stories": {
+      "type": "story-card-section",
+      "name": "CTA",
+      "settings": {
+        "use_background_image": false,
+        "eyebrow": "Local launch",
+        "heading": "Why join now?",
+        "text": "Because local supporters should get the best perks first!\n<br><br>Join the launch list today and receive:\n<br>\n<br>✓ Early booking for limited delivery slots\n<br>✓ 10% off your first box with code LAUNCH10\n<br>✓ Be the first to experience a country reveal\n<br>✓ First look at launch updates"
+      }
+    },
+    "featured_collection_7Aizf6": {
+      "type": "featured-collection",
+      "blocks": {
+        "fallback_product_ekLmMX": {
+          "type": "fallback_product",
+          "settings": {
+            "badge": "Most Flexible",
+            "kicker": "Ideal for first-time subscribers",
+            "title": "Explorer Plan",
+            "text": "A lighter weekly ritual for curious cooks who want a compact surprise-country experience at home.",
+            "price": "£29.00",
+            "button_label": "View Product",
+            "button_link": ""
+          }
+        },
+        "fallback_product_qx7XKi": {
+          "type": "fallback_product",
+          "settings": {
+            "badge": "Most Popular",
+            "kicker": "Best seller across the UK",
+            "title": "Voyager Plan",
+            "text": "Our signature subscription with three globally inspired dinners curated as one surprise country journey each week.",
+            "price": "£42.00",
+            "button_label": "View Product",
+            "button_link": ""
+          }
+        },
+        "fallback_product_VhmFRA": {
+          "type": "fallback_product",
+          "settings": {
+            "badge": "Premium Choice",
+            "kicker": "For committed home hosts",
+            "title": "Grand Tour Plan",
+            "text": "A full week of premium discovery for households who want a richer surprise-country experience with extra hosting energy.",
+            "price": "£65.00",
+            "button_label": "View Product",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "fallback_product_ekLmMX",
+        "fallback_product_qx7XKi",
+        "fallback_product_VhmFRA"
+      ],
+      "name": "Featured collection",
+      "settings": {
+        "soft_background": true,
+        "eyebrow": "Subscription plans",
+        "heading": "Choose the plan that fits your week",
+        "text": "Choose from our weekly, bi-weekly and monthly options, every subscription includes flexibility and free delivery. All plans can be made for 2 or 4 people.\n<br><br>\nWe recommend selecting the Grand Tour Plan for weekly delivery so you never miss an international adventure!",
+        "collection": "food-boxes",
+        "products_to_show": 3
+      }
+    },
+    "newsletter_signup_AtjLpx": {
+      "type": "newsletter-signup",
+      "name": "Newsletter signup",
+      "settings": {
+        "eyebrow": "Join the list",
+        "heading": "Be one of the first to travel with Roamsome",
+        "text": "Enter your email below to join our email list for news and discounts.",
+        "placeholder": "Enter your email address",
+        "button_label": "Take me somewhere",
+        "success_text": "You’re on the list.<br><br>\nYour first destination is getting closer.<br><br>\nThank you for joining the Roamsome launch list.<br><br>\nYou’ll be among the first to hear when our weekly mystery recipe boxes become available this July.\nAnd because you joined early:\nYour local launch code is waiting\nLOCAL10\n for 10% off your first box. <br><br>\nWe’ll be in touch soon with your invitation to book.<br><br>\nUntil then… stay curious."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "stories",
+    "featured_collection_7Aizf6",
+    "newsletter_signup_AtjLpx"
+  ]
+}
