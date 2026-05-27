@@ -179,11 +179,31 @@
         "allergen_tjNtPe": {
           "type": "allergen",
           "settings": {
-            "text": "Includes chicken"
+            "text": "Protein: Contains chicken"
+          }
+        },
+        "allergen_awGDJ4": {
+          "type": "allergen",
+          "settings": {
+            "text": "Contains SULPHITES"
+          }
+        },
+        "allergen_aBKL4K": {
+          "type": "allergen",
+          "settings": {
+            "text": "Contains SOYA"
+          }
+        },
+        "allergen_b8JLxX": {
+          "type": "allergen",
+          "disabled": true,
+          "settings": {
+            "text": "May include milk"
           }
         },
         "a1": {
           "type": "allergen",
+          "disabled": true,
           "settings": {
             "text": "May include milk"
           }
@@ -198,13 +218,20 @@
         "a3": {
           "type": "allergen",
           "settings": {
-            "text": "May include wheat and gluten"
+            "text": "Contains WHEAT and GLUTEN"
+          }
+        },
+        "allergen_QrRUJy": {
+          "type": "allergen",
+          "disabled": true,
+          "settings": {
+            "text": "May include milk"
           }
         },
         "a4": {
           "type": "allergen",
           "settings": {
-            "text": "May include sesame"
+            "text": "Contains SESAME"
           }
         },
         "a5": {
@@ -216,9 +243,13 @@
       },
       "block_order": [
         "allergen_tjNtPe",
+        "allergen_awGDJ4",
+        "allergen_aBKL4K",
+        "allergen_b8JLxX",
         "a1",
         "a2",
         "a3",
+        "allergen_QrRUJy",
         "a4",
         "a5"
       ],
