@@ -363,7 +363,17 @@ button {
   background: var(--color-secondary);
   color: var(--color-black);
 }
-
+.account-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-secondary);
+  color: var(--color-black);
+}
 .cart-count {
   position: absolute;
   top: -4px;
@@ -2527,15 +2537,4 @@ main.site-shell {
     max-width: 180px;
   }
 
-  .account-link {
-  width: 100%;
-  max-width: var(--content-max);
-  margin: 0 auto;
-  padding-inline: var(--page-gutter);
-  min-height: 82px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
 }
