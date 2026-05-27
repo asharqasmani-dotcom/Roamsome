@@ -2526,4 +2526,16 @@ main.site-shell {
   .cart-line-item__image {
     max-width: 180px;
   }
+
+  .account-link {
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding-inline: var(--page-gutter);
+  min-height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
 }
