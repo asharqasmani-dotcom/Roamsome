@@ -52,10 +52,23 @@
         "heading": "Built for people who love the feeling of discovering something new",
         "text": "Roamsome was created from the simple idea that great food can transport you.<br><br>\n\nWe believe dinner should feel like more than just another meal. It should spark curiosity, create connection, and turn an ordinary evening into something unforgettable.\n<br><br>\nThat’s why each week, Roamsome delivers a new recipe inspired by a different corner of the world. Each meal is thoughtfully curated to bring a little adventure to your table.\n<br><br>\nBecause sometimes the best journeys begin at home."
       }
+    },
+    "newsletter_signup_63RfUx": {
+      "type": "newsletter-signup",
+      "name": "Newsletter signup",
+      "settings": {
+        "eyebrow": "Newsletter",
+        "heading": "Get next week’s story before everyone else",
+        "text": "Join the ROAMSOME list for destination notes, discounts and offers.",
+        "placeholder": "Enter your email address",
+        "button_label": "Get Weekly Preview",
+        "success_text": "You’re on the list. Next week’s essential info will arrive in your inbox soon."
+      }
     }
   },
   "order": [
     "hero",
-    "stories"
+    "stories",
+    "newsletter_signup_63RfUx"
   ]
 }
