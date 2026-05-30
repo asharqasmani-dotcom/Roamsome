@@ -197,11 +197,24 @@
         "text": "We keep the next destination secret on purpose. For upcoming deliveries, we only share essential allergen guidance so the experience stays curated and surprising.",
         "note": "Full destination and meal details are revealed when your box arrives."
       }
+    },
+    "newsletter_signup_zndghB": {
+      "type": "newsletter-signup",
+      "name": "Newsletter signup",
+      "settings": {
+        "eyebrow": "Newsletter",
+        "heading": "Get next week’s story before everyone else",
+        "text": "Join the ROAMSOME list for destination notes, discounts and offers.",
+        "placeholder": "Enter your email address",
+        "button_label": "Get Weekly Preview",
+        "success_text": "You’re on the list. Next week’s essential info will arrive in your inbox soon."
+      }
     }
   },
   "order": [
     "hero",
     "destinations",
-    "upcoming"
+    "upcoming",
+    "newsletter_signup_zndghB"
   ]
 }
