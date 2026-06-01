@@ -155,6 +155,7 @@
         "feature2",
         "feature3"
       ],
+      "disabled": true,
       "settings": {
         "soft_background": false,
         "eyebrow": "Why ROAMSOME",
