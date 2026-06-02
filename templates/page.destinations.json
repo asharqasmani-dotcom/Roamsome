@@ -148,13 +148,13 @@
         "allergen_kmxWPn": {
           "type": "allergen",
           "settings": {
-            "text": "Includes chicken"
+            "text": "Protein: Chicken"
           }
         },
         "a1": {
           "type": "allergen",
           "settings": {
-            "text": "May include milk"
+            "text": "Contains SULPHITES"
           }
         },
         "a2": {
@@ -167,13 +167,19 @@
         "a3": {
           "type": "allergen",
           "settings": {
-            "text": "May include wheat and gluten"
+            "text": "Contains SOYA"
           }
         },
         "a4": {
           "type": "allergen",
           "settings": {
-            "text": "May include sesame"
+            "text": "Contains WHEAT and GLUTEN"
+          }
+        },
+        "allergen_xEW8TD": {
+          "type": "allergen",
+          "settings": {
+            "text": "Contains SESAME"
           }
         },
         "a5": {
@@ -189,6 +195,7 @@
         "a2",
         "a3",
         "a4",
+        "allergen_xEW8TD",
         "a5"
       ],
       "settings": {
