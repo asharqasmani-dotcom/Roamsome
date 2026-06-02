@@ -73,6 +73,11 @@
         "type": "shopify://apps/essential-estimated/blocks/app-embed/02a895dd-b5b5-4103-8966-c6914aa8309e",
         "disabled": false,
         "settings": {}
+      },
+      "8660026769530893754": {
+        "type": "shopify://apps/s-estimated-delivery-date/blocks/omega-estimated-shipping-embed-app/054646a4-d5ab-4b85-b028-f3b169802e74",
+        "disabled": false,
+        "settings": {}
       }
     }
   }
