@@ -29,6 +29,10 @@
     "1777480651a5e0d93b": {
       "type": "apps",
       "blocks": {
+        "essential_estimated_app_block_bJxBVM": {
+          "type": "shopify://apps/essential-estimated/blocks/app-block/02a895dd-b5b5-4103-8966-c6914aa8309e",
+          "settings": {}
+        },
         "judge_me_reviews_review_widget_WJUXaH": {
           "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {
@@ -40,13 +44,19 @@
         }
       },
       "block_order": [
+        "essential_estimated_app_block_bJxBVM",
         "judge_me_reviews_review_widget_WJUXaH"
       ],
+      "settings": {}
+    },
+    "1780401242c8fe88ef": {
+      "type": "apps",
       "settings": {}
     }
   },
   "order": [
+    "1777480651a5e0d93b",
     "main",
-    "1777480651a5e0d93b"
+    "1780401242c8fe88ef"
   ]
 }
