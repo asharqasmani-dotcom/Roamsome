@@ -185,12 +185,14 @@
         },
         "allergen_awGDJ4": {
           "type": "allergen",
+          "disabled": true,
           "settings": {
             "text": "Contains SULPHITES"
           }
         },
         "allergen_aBKL4K": {
           "type": "allergen",
+          "disabled": true,
           "settings": {
             "text": "Contains SOYA"
           }
@@ -204,9 +206,8 @@
         },
         "a1": {
           "type": "allergen",
-          "disabled": true,
           "settings": {
-            "text": "May include milk"
+            "text": "Contains MILK"
           }
         },
         "a2": {
@@ -231,6 +232,7 @@
         },
         "a4": {
           "type": "allergen",
+          "disabled": true,
           "settings": {
             "text": "Contains SESAME"
           }
@@ -256,7 +258,7 @@
       ],
       "settings": {
         "eyebrow": "Upcoming Box Info",
-        "heading": "Upcoming Box Info",
+        "heading": "Upcoming Box Info - July 10th",
         "text": "We keep the next destination secret on purpose. For upcoming deliveries, we only share essential allergen guidance so the experience stays curated and surprising.",
         "note": "Full destination and meal details are revealed when your box arrives."
       }
