@@ -153,6 +153,7 @@
         },
         "a1": {
           "type": "allergen",
+          "disabled": true,
           "settings": {
             "text": "Contains SULPHITES"
           }
@@ -166,6 +167,7 @@
         },
         "a3": {
           "type": "allergen",
+          "disabled": true,
           "settings": {
             "text": "Contains SOYA"
           }
@@ -179,7 +181,7 @@
         "allergen_xEW8TD": {
           "type": "allergen",
           "settings": {
-            "text": "Contains SESAME"
+            "text": "Contains MILK"
           }
         },
         "a5": {
@@ -200,7 +202,7 @@
       ],
       "settings": {
         "eyebrow": "Upcoming Box Info",
-        "heading": "Upcoming Box Info",
+        "heading": "Upcoming Box Info - July 10th",
         "text": "We keep the next destination secret on purpose. For upcoming deliveries, we only share essential allergen guidance so the experience stays curated and surprising.",
         "note": "Full destination and meal details are revealed when your box arrives."
       }
