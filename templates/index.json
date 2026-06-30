@@ -337,6 +337,37 @@
         "heading": "Previous destinations that built the ritual",
         "text": "From bright Mediterranean tables to comfort-led city suppers, past ROAMSOME boxes show the kind of premium journeys subscribers have already experienced."
       }
+    },
+    "1782845202e52f19ee": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_bf39cf2_qmABqA": {
+          "type": "ai_gen_block_bf39cf2",
+          "settings": {
+            "video_url": "",
+            "video_file": "https://cdn.shopify.com/videos/c/o/v/4f0bb8fc8491477e86b1c2b04b9c9c88.mp4",
+            "autoplay": true,
+            "mute": false,
+            "loop": true,
+            "show_controls": false,
+            "aspect_ratio": "75",
+            "show_overlay": true,
+            "overlay_opacity": 0.3,
+            "heading": "Discover Global Flavors",
+            "subheading": "Premium meal kits inspired by cuisines from around the world",
+            "heading_size": 56,
+            "subheading_size": 20,
+            "heading_color": "#ffffff",
+            "subheading_color": "#f6f4e7",
+            "background_color": "#262626"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_bf39cf2_qmABqA"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -348,6 +379,7 @@
     "upcoming",
     "blog_preview",
     "cta",
-    "destinations_archive_98WV7L"
+    "destinations_archive_98WV7L",
+    "1782845202e52f19ee"
   ]
 }
