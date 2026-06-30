@@ -1,6 +1,397 @@
+{% doc %}
+  @prompt
+    Create a full-width video section for the homepage that supports both an embedded video (YouTube or Vimeo URL) and an uploaded MP4 file. The section should include customizable settings for autoplay, mute, loop, and an optional overlay with a heading and subheading text. Style it to match a premium, globally-inspired brand with a clean, modern look.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-video-section-{{ ai_gen_id }} {
+    display: block;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  .ai-video-container-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    padding-bottom: {{ block.settings.aspect_ratio }}%;
+    overflow: hidden;
+  }
+
+  .ai-video-player-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-video-iframe-{{ ai_gen_id }} {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  @media (min-aspect-ratio: 16/9) {
+    .ai-video-iframe-{{ ai_gen_id }} {
+      height: 56.25vw;
+    }
+  }
+
+  @media (max-aspect-ratio: 16/9) {
+    .ai-video-iframe-{{ ai_gen_id }} {
+      width: 177.78vh;
+    }
+  }
+
+  .ai-video-overlay-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, {{ block.settings.overlay_opacity }});
+    z-index: 2;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .ai-video-heading-{{ ai_gen_id }} {
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.heading_size }}px;
+    font-weight: 700;
+    margin: 0 0 16px 0;
+    max-width: 800px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .ai-video-subheading-{{ ai_gen_id }} {
+    color: {{ block.settings.subheading_color }};
+    font-size: {{ block.settings.subheading_size }}px;
+    font-weight: 400;
+    margin: 0;
+    max-width: 600px;
+    line-height: 1.5;
+  }
+
+  .ai-video-placeholder-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-video-placeholder-content-{{ ai_gen_id }} {
+    text-align: center;
+    color: #666;
+    padding: 40px;
+  }
+
+  .ai-video-placeholder-content-{{ ai_gen_id }} svg {
+    width: 80px;
+    height: 80px;
+    stroke: currentColor;
+  }
+
+  .ai-video-placeholder-content-{{ ai_gen_id }} p {
+    margin-top: 16px;
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-video-heading-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.heading_size }}px * 0.7);
+    }
+
+    .ai-video-subheading-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.subheading_size }}px * 0.85);
+    }
+  }
+{% endstyle %}
+
+<video-section-{{ ai_gen_id }}
+  class="ai-video-section-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-video-container-{{ ai_gen_id }}">
+    {% if block.settings.video_url != blank %}
+      {% liquid
+        assign video_url = block.settings.video_url
+        assign video_id = video_url.id
+
+        assign autoplay_param = ''
+        assign mute_param = ''
+        assign loop_param = ''
+        assign controls_param = ''
+
+        if block.settings.autoplay
+          assign autoplay_param = '&autoplay=1'
+        endif
+
+        if block.settings.mute
+          assign mute_param = '&muted=1'
+        endif
+
+        if block.settings.loop
+          assign loop_param = '&loop=1'
+        endif
+
+        if block.settings.show_controls == false
+          assign controls_param = '&controls=0'
+        endif
+      %}
+
+      {% if video_url.type == 'youtube' %}
+        <iframe
+          class="ai-video-iframe-{{ ai_gen_id }}"
+          src="https://www.youtube.com/embed/{{ video_id }}?playlist={{ video_id }}{{ autoplay_param }}{{ mute_param }}{{ loop_param }}{{ controls_param }}&rel=0&modestbranding=1&playsinline=1"
+          frameborder="0"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+        ></iframe>
+      {% elsif video_url.type == 'vimeo' %}
+        <iframe
+          class="ai-video-iframe-{{ ai_gen_id }}"
+          src="https://player.vimeo.com/video/{{ video_id }}?background=1{{ autoplay_param }}{{ mute_param }}{{ loop_param }}"
+          frameborder="0"
+          allow="autoplay; fullscreen"
+          allowfullscreen
+        ></iframe>
+      {% endif %}
+    {% elsif block.settings.video_file != blank %}
+      {% assign video_file_url = block.settings.video_file | file_url %}
+      <video
+        class="ai-video-player-{{ ai_gen_id }}"
+        {% if block.settings.autoplay %}autoplay{% endif %}
+        {% if block.settings.mute %}muted{% endif %}
+        {% if block.settings.loop %}loop{% endif %}
+        {% if block.settings.show_controls %}controls{% endif %}
+        playsinline
+      >
+        <source
+          src="{{ video_file_url }}"
+          type="video/mp4"
+        >
+        Your browser does not support the video tag.
+      </video>
+    {% else %}
+      <div class="ai-video-placeholder-{{ ai_gen_id }}">
+        <div class="ai-video-placeholder-content-{{ ai_gen_id }}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          <p>Add a video URL or upload an MP4 file</p>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if block.settings.show_overlay and block.settings.heading != blank or block.settings.subheading != blank %}
+      <div class="ai-video-overlay-{{ ai_gen_id }}">
+        {% if block.settings.heading != blank %}
+          <h2 class="ai-video-heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+        {% endif %}
+        {% if block.settings.subheading != blank %}
+          <p class="ai-video-subheading-{{ ai_gen_id }}">{{ block.settings.subheading }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</video-section-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class VideoSection{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.video = this.querySelector('.ai-video-player-{{ ai_gen_id }}');
+        
+        if (this.video && this.video.tagName === 'VIDEO') {
+          this.video.addEventListener('loadedmetadata', () => {
+            if (this.video.autoplay && this.video.muted) {
+              this.video.play().catch(() => {});
+            }
+          });
+        }
+      }
+    }
+
+    customElements.define('video-section-{{ ai_gen_id }}', VideoSection{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Video hero",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Video source"
+    },
+    {
+      "type": "paragraph",
+      "content": "Add either a video URL (YouTube or Vimeo) or upload an MP4 file. Video URL takes priority if both are provided."
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "label": "Video URL",
+      "accept": ["youtube", "vimeo"]
+    },
+    {
+      "type": "text",
+      "id": "video_file",
+      "label": "MP4 file URL"
+    },
+    {
+      "type": "header",
+      "content": "Video settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "mute",
+      "label": "Mute",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_controls",
+      "label": "Show controls",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "Aspect ratio",
+      "options": [
+        {
+          "value": "42.86",
+          "label": "21:9 (Cinematic)"
+        },
+        {
+          "value": "56.25",
+          "label": "16:9 (Widescreen)"
+        },
+        {
+          "value": "75",
+          "label": "4:3 (Standard)"
+        },
+        {
+          "value": "100",
+          "label": "1:1 (Square)"
+        }
+      ],
+      "default": "56.25"
+    },
+    {
+      "type": "header",
+      "content": "Overlay"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_overlay",
+      "label": "Show overlay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "default": 0.3
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Discover Global Flavors"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Premium meal kits inspired by cuisines from around the world"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 24,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "subheading_size",
+      "label": "Subheading size",
+      "min": 14,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading color",
+      "default": "#f6f4e7"
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#262626"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video hero"
+    }
+  ]
+}
 {% endschema %}
