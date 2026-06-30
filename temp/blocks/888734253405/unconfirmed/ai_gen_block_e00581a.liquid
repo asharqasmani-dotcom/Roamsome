@@ -1,6 +1,301 @@
+{% doc %}
+  @prompt
+    Create a video hero section that displays a vertical/portrait MP4 video in a centred narrow column on desktop (roughly 400px wide, centred with padding on either side), and full-width full-screen on mobile. Include these settings: video_file (text, MP4 URL), show_controls (checkbox, default true) to toggle native HTML5 video controls so users can unmute/pause, autoplay (checkbox, default true), loop (checkbox, default true), desktop background colour (colour picker), desktop video width (range), border radius (range), optional heading and subheading with colour pickers. Video must have playsinline attribute. Controls should be clearly visible over the video.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-video-hero-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    background-color: {{ block.settings.desktop_bg_color }};
+    padding: 0;
+    margin: 0;
+  }
+
+  .ai-video-hero__container-{{ ai_gen_id }} {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .ai-video-hero__video-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .ai-video-hero__video-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 0;
+  }
+
+  .ai-video-hero__content-{{ ai_gen_id }} {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+  }
+
+  .ai-video-hero__heading-{{ ai_gen_id }} {
+    font-size: 48px;
+    font-weight: 700;
+    margin: 0 0 16px 0;
+    color: {{ block.settings.heading_color }};
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .ai-video-hero__subheading-{{ ai_gen_id }} {
+    font-size: 20px;
+    margin: 0;
+    color: {{ block.settings.subheading_color }};
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .ai-video-hero__placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100vh;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ai-video-hero__placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 400px;
+    max-height: 400px;
+  }
+
+  .ai-video-hero__empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  @media screen and (min-width: 750px) {
+    .ai-video-hero__container-{{ ai_gen_id }} {
+      padding: 60px 20px;
+    }
+
+    .ai-video-hero__video-wrapper-{{ ai_gen_id }} {
+      width: {{ block.settings.desktop_video_width }}px;
+      height: auto;
+      aspect-ratio: 9 / 16;
+      margin: 0 auto;
+      border-radius: {{ block.settings.border_radius }}px;
+      overflow: hidden;
+    }
+
+    .ai-video-hero__video-{{ ai_gen_id }} {
+      border-radius: {{ block.settings.border_radius }}px;
+    }
+
+    .ai-video-hero__placeholder-{{ ai_gen_id }} {
+      width: {{ block.settings.desktop_video_width }}px;
+      height: auto;
+      aspect-ratio: 9 / 16;
+      margin: 0 auto;
+      border-radius: {{ block.settings.border_radius }}px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-video-hero__heading-{{ ai_gen_id }} {
+      font-size: 32px;
+    }
+
+    .ai-video-hero__subheading-{{ ai_gen_id }} {
+      font-size: 16px;
+    }
+  }
+{% endstyle %}
+
+<portrait-video-hero-{{ ai_gen_id }}
+  class="ai-video-hero-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-video-hero__container-{{ ai_gen_id }}">
+    <div class="ai-video-hero__video-wrapper-{{ ai_gen_id }}">
+      {% if block.settings.video_file != blank %}
+        <video
+          class="ai-video-hero__video-{{ ai_gen_id }}"
+          {% if block.settings.autoplay %}autoplay{% endif %}
+          {% if block.settings.loop %}loop{% endif %}
+          {% if block.settings.show_controls %}controls{% endif %}
+          muted
+          playsinline
+          preload="metadata"
+        >
+          <source src="{{ block.settings.video_file }}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      {% else %}
+        <div class="ai-video-hero__placeholder-{{ ai_gen_id }}">
+          {{ 'hero-apparel-1' | placeholder_svg_tag }}
+          <div class="ai-video-hero__empty-state-{{ ai_gen_id }}">
+            Next, add your MP4 video URL
+          </div>
+        </div>
+      {% endif %}
+
+      {% if block.settings.heading != blank or block.settings.subheading != blank %}
+        <div class="ai-video-hero__content-{{ ai_gen_id }}">
+          {% if block.settings.heading != blank %}
+            <h1 class="ai-video-hero__heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h1>
+          {% endif %}
+          {% if block.settings.subheading != blank %}
+            <p class="ai-video-hero__subheading-{{ ai_gen_id }}">{{ block.settings.subheading }}</p>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</portrait-video-hero-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class PortraitVideoHero{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.video = this.querySelector('.ai-video-hero__video-{{ ai_gen_id }}');
+        if (this.video) {
+          this.setupVideo();
+        }
+      }
+
+      setupVideo() {
+        this.video.addEventListener('loadedmetadata', () => {
+          if (this.video.autoplay && this.video.muted) {
+            this.video.play().catch(() => {
+              console.log('Autoplay prevented');
+            });
+          }
+        });
+      }
+    }
+
+    customElements.define('portrait-video-hero-{{ ai_gen_id }}', PortraitVideoHero{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Portrait video hero",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Video"
+    },
+    {
+      "type": "text",
+      "id": "video_file",
+      "label": "MP4 video URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_controls",
+      "label": "Show video controls",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop video",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Desktop style"
+    },
+    {
+      "type": "range",
+      "id": "desktop_video_width",
+      "label": "Video width",
+      "min": 300,
+      "max": 600,
+      "step": 20,
+      "unit": "px",
+      "default": 400
+    },
+    {
+      "type": "color",
+      "id": "desktop_bg_color",
+      "label": "Background color",
+      "default": "#f6f4e7"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    }
+  ],
+  "presets": [
+    {
+      "name": "Portrait video hero"
+    }
+  ]
+}
 {% endschema %}
