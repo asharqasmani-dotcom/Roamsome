@@ -347,7 +347,7 @@
             "video_url": "",
             "video_file": "https://cdn.shopify.com/videos/c/o/v/4f0bb8fc8491477e86b1c2b04b9c9c88.mp4",
             "autoplay": true,
-            "mute": false,
+            "mute": true,
             "loop": true,
             "show_controls": false,
             "aspect_ratio": "75",
