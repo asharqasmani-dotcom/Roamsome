@@ -82,6 +82,7 @@
       "blocks": {
         "ai_gen_block_0cad7d2_Qj4xyH": {
           "type": "ai_gen_block_0cad7d2",
+          "disabled": true,
           "settings": {
             "video_file": "https://cdn.shopify.com/videos/c/o/v/4f0bb8fc8491477e86b1c2b04b9c9c88.mp4",
             "desktop_video_width": 400,
@@ -95,10 +96,28 @@
             "subheading_color": "#ffffff"
           },
           "blocks": {}
+        },
+        "ai_gen_block_e00581a_KjLW6V": {
+          "type": "ai_gen_block_e00581a",
+          "settings": {
+            "video_file": "https://cdn.shopify.com/videos/c/o/v/4f0bb8fc8491477e86b1c2b04b9c9c88.mp4",
+            "show_controls": true,
+            "autoplay": true,
+            "loop": true,
+            "heading": "",
+            "heading_color": "#ffffff",
+            "subheading": "",
+            "subheading_color": "#ffffff",
+            "desktop_video_width": 400,
+            "desktop_bg_color": "#E1754E",
+            "border_radius": 12
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "ai_gen_block_0cad7d2_Qj4xyH"
+        "ai_gen_block_0cad7d2_Qj4xyH",
+        "ai_gen_block_e00581a_KjLW6V"
       ],
       "name": "Video",
       "settings": {}
