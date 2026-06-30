@@ -87,7 +87,7 @@
             "video_file": "https://cdn.shopify.com/videos/c/o/v/4f0bb8fc8491477e86b1c2b04b9c9c88.mp4",
             "desktop_video_width": 400,
             "desktop_border_radius": 0,
-            "desktop_background_color": "#E1754E",
+            "desktop_background_color": "#e1754e",
             "heading": "",
             "heading_size": 48,
             "heading_color": "#ffffff",
@@ -109,7 +109,7 @@
             "subheading": "",
             "subheading_color": "#ffffff",
             "desktop_video_width": 400,
-            "desktop_bg_color": "#E1754E",
+            "desktop_bg_color": "#e1754e",
             "border_radius": 12
           },
           "blocks": {}
@@ -382,11 +382,33 @@
         "heading": "Previous destinations that built the ritual",
         "text": "From bright Mediterranean tables to comfort-led city suppers, past ROAMSOME boxes show the kind of premium journeys subscribers have already experienced."
       }
+    },
+    "1782848624ad4940cc": {
+      "type": "apps",
+      "blocks": {
+        "trustpilot_trustpilot_review_collector_widget_g8kEmH": {
+          "type": "shopify://apps/trustpilot/blocks/trustpilot_review_collector_widget/af628f2e-96c9-437f-bc0a-e8f7ff3fa8b4",
+          "settings": {
+            "locale": "en-US",
+            "width": 100,
+            "height": 52,
+            "vertical_space": 10,
+            "font_family": "Helvetica Neue",
+            "font_color": "#191919",
+            "border_color": "#00b67a"
+          }
+        }
+      },
+      "block_order": [
+        "trustpilot_trustpilot_review_collector_widget_g8kEmH"
+      ],
+      "settings": {}
     }
   },
   "order": [
     "hero",
     "17828463559c7e94a5",
+    "1782848624ad4940cc",
     "steps",
     "story",
     "features",
