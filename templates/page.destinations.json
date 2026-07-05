@@ -50,15 +50,15 @@
       "blocks": {
         "d1": {
           "type": "destination",
-          "disabled": true,
           "settings": {
+            "image": "shopify://shop_images/49-_DSF9250.jpg",
             "flag": "🇮🇹",
-            "country": "Italy",
-            "title": "Sicily Summer Table",
-            "text": "Bright citrus, basil, roasted vegetables and silky pasta inspired by long warm evenings on the coast.",
-            "tag_1": "Past box",
-            "tag_2": "Fresh herbs",
-            "tag_3": "Mediterranean warmth"
+            "country": "Japan",
+            "title": "Chicken Teriyaki Donburi",
+            "text": "A cozy Japanese donburi layered with fluffy rice, umami-rich sauce, and hearty toppings for a balanced one-bowl meal.",
+            "tag_1": "Sticky rice",
+            "tag_2": "Umami glaze",
+            "tag_3": "Japanese comfort"
           }
         },
         "d2": {
@@ -139,7 +139,7 @@
         "soft_background": false,
         "eyebrow": "Explore past boxes",
         "heading": "Previous destinations that built the ritual",
-        "text": "Nothing to see here. Departure expected 3rd July!"
+        "text": "Our first ever box arrived at kitchens all over the UK this week! We can't wait to share more with you!"
       }
     },
     "upcoming": {
