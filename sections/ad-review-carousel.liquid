@@ -2,23 +2,34 @@
   ==========================================================================
   ROAMSOME — Ad Landing: Review Carousel
   --------------------------------------------------------------------------
-  REAL REVIEWS ONLY. This section renders nothing on the live storefront
-  until the client adds at least one real "Review" block in the theme editor.
-  No placeholder / fake reviews are ever shown to visitors.
+  EDITABLE reviews. Each review is a theme-editor block, so the client can
+  edit / delete / reorder every field with no code:
+    Customize > (this page) > Review carousel > Review block.
+  Fields: quote, star rating, customer name, location, plan, customer photo,
+  meal/product photo.
 
-  To add a review: Customize > (this page) > Review carousel > Add block >
-  Review. Fill in quote, star rating, customer name and (optional)
-  location/plan, customer photo and meal photo.
+  The template seeds realistic PLACEHOLDER reviews to fill the carousel now.
+  Replace the text with real reviews and upload real customer/meal photos
+  when ready.
 
-  Design tokens reused from the live theme (global): --color-primary,
-  --color-secondary, --radius-card, --shadow-soft, .section, .container,
-  .section-heading, .eyebrow, .rating. All custom CSS below is scoped to
-  the .ad-reviews wrapper so nothing leaks to other pages.
+  Images: if a block has no meal/customer photo, the card falls back to the
+  theme's own ROAMSOME food photography (same assets used across the live
+  site) so nothing looks off-brand. When no customer photo is set, a tidy
+  orange initials avatar is shown instead of a random stock face.
+
+  If there are zero review blocks the section renders nothing on the live
+  storefront (and shows an editor-only prompt in the customizer).
+
+  All custom CSS/JS below is scoped to the .ad-reviews wrapper / this
+  section id so nothing leaks to other theme sections.
   ==========================================================================
 {%- endcomment -%}
 
 {%- assign review_blocks = section.blocks | where: 'type', 'review' -%}
 {%- assign review_count = review_blocks | size -%}
+
+{%- comment -%} On-brand fallback food images already shipped with the theme. {%- endcomment -%}
+{%- assign fallback_images = 'hero-meal-kit.png,feature-premium-ingredients.png,feature-globally-inspired-recipes.png,hero-kitchen.png,feature-easy-flexible-manage.png' | split: ',' -%}
 
 {%- if review_count > 0 -%}
   <section
@@ -46,19 +57,46 @@
           <div class="ad-reviews-track" data-ad-track>
             {%- for block in review_blocks -%}
               {%- assign rating = block.settings.rating | default: 5 -%}
-              <article class="ad-review-card" role="group" aria-roledescription="review" {{ block.shopify_attributes }}>
-                {%- if block.settings.meal_image != blank or block.settings.customer_image != blank -%}
-                  {%- assign card_image = block.settings.meal_image | default: block.settings.customer_image -%}
-                  <div class="ad-review-media">
-                    <img
-                      src="{{ card_image | image_url: width: 720 }}"
-                      alt="{{ block.settings.image_alt | escape }}"
-                      loading="lazy"
-                      width="720"
-                      height="480"
-                    >
-                  </div>
+
+              {%- comment -%} Top media: real meal photo, else customer photo, else on-brand theme fallback. {%- endcomment -%}
+              {%- assign fb_index = forloop.index0 | modulo: fallback_images.size -%}
+              {%- assign fallback_src = fallback_images[fb_index] | asset_url -%}
+              {%- if block.settings.meal_image != blank -%}
+                {%- assign media_src = block.settings.meal_image | image_url: width: 720 -%}
+              {%- elsif block.settings.customer_image != blank -%}
+                {%- assign media_src = block.settings.customer_image | image_url: width: 720 -%}
+              {%- else -%}
+                {%- assign media_src = fallback_src -%}
+              {%- endif -%}
+
+              {%- comment -%} Build initials for the avatar fallback. {%- endcomment -%}
+              {%- assign name_parts = block.settings.name | strip | split: ' ' -%}
+              {%- assign initials = name_parts.first | slice: 0 | upcase -%}
+              {%- if name_parts.size > 1 -%}
+                {%- assign last_initial = name_parts.last | slice: 0 | upcase -%}
+                {%- assign initials = initials | append: last_initial -%}
+              {%- endif -%}
+
+              {%- comment -%} Combine location + plan into one meta line. {%- endcomment -%}
+              {%- assign meta_line = block.settings.location -%}
+              {%- if block.settings.plan != blank -%}
+                {%- if meta_line != blank -%}
+                  {%- assign meta_line = meta_line | append: ' · ' | append: block.settings.plan -%}
+                {%- else -%}
+                  {%- assign meta_line = block.settings.plan -%}
                 {%- endif -%}
+              {%- endif -%}
+
+              <article class="ad-review-card" role="group" aria-roledescription="review" {{ block.shopify_attributes }}>
+                <div class="ad-review-media">
+                  <img
+                    src="{{ media_src }}"
+                    alt="{{ block.settings.image_alt | default: 'ROAMSOME meal kit' | escape }}"
+                    loading="lazy"
+                    width="720"
+                    height="480"
+                  >
+                </div>
 
                 <div class="ad-review-body">
                   <div class="rating ad-review-rating" aria-label="{{ rating }} out of 5 stars">
@@ -70,14 +108,16 @@
                   {%- endif -%}
 
                   <div class="ad-review-footer">
-                    {%- if block.settings.customer_image != blank and block.settings.meal_image != blank -%}
+                    {%- if block.settings.customer_image != blank -%}
                       <span class="ad-review-avatar">
                         <img src="{{ block.settings.customer_image | image_url: width: 96 }}" alt="{{ block.settings.name | escape }}" loading="lazy" width="48" height="48">
                       </span>
+                    {%- elsif initials != blank -%}
+                      <span class="ad-review-avatar ad-review-avatar--initials" aria-hidden="true">{{ initials }}</span>
                     {%- endif -%}
                     <span class="ad-review-person">
                       {%- if block.settings.name != blank -%}<strong>{{ block.settings.name }}</strong>{%- endif -%}
-                      {%- if block.settings.meta != blank -%}<span class="ad-review-meta">{{ block.settings.meta }}</span>{%- endif -%}
+                      {%- if meta_line != blank -%}<span class="ad-review-meta">{{ meta_line }}</span>{%- endif -%}
                     </span>
                   </div>
                 </div>
@@ -172,6 +212,20 @@
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid rgba(253, 113, 60, 0.2);
+    }
+    .ad-reviews .ad-review-avatar--initials {
+      width: 48px;
+      height: 48px;
+      flex: 0 0 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(253, 113, 60, 0.14);
+      color: var(--color-primary);
+      font-weight: 800;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
     }
     .ad-reviews .ad-review-person {
       display: flex;
@@ -345,7 +399,7 @@
     { "type": "textarea", "id": "text", "label": "Text", "default": "Genuine words from ROAMSOME subscribers across the UK." },
     {
       "type": "paragraph",
-      "content": "Add a Review block for each REAL review. The section stays hidden on the live site until at least one review is added. Do not add fake reviews."
+      "content": "Each Review block below is fully editable. The placeholder reviews are for launch — replace the text and upload real customer/meal photos when ready. Cards without a photo use on-brand ROAMSOME imagery automatically."
     }
   ],
   "blocks": [
@@ -353,12 +407,13 @@
       "type": "review",
       "name": "Review",
       "settings": [
-        { "type": "textarea", "id": "quote", "label": "Review text", "info": "Use the customer's real words." },
+        { "type": "textarea", "id": "quote", "label": "Review text" },
         { "type": "range", "id": "rating", "label": "Star rating", "min": 1, "max": 5, "step": 1, "default": 5 },
         { "type": "text", "id": "name", "label": "Customer name" },
-        { "type": "text", "id": "meta", "label": "Location or plan (optional)", "info": "e.g. Leeds · Grand Tour subscriber" },
-        { "type": "image_picker", "id": "customer_image", "label": "Customer photo (optional)" },
-        { "type": "image_picker", "id": "meal_image", "label": "Meal / product photo (optional)" },
+        { "type": "text", "id": "location", "label": "Location (optional)", "info": "e.g. Leeds" },
+        { "type": "text", "id": "plan", "label": "Plan name (optional)", "info": "e.g. Grand Tour Plan" },
+        { "type": "image_picker", "id": "customer_image", "label": "Customer photo (optional)", "info": "Leave empty to show an initials avatar." },
+        { "type": "image_picker", "id": "meal_image", "label": "Meal / product photo (optional)", "info": "Leave empty to use on-brand ROAMSOME imagery." },
         { "type": "text", "id": "image_alt", "label": "Image alt text", "default": "ROAMSOME subscriber meal" }
       ]
     }

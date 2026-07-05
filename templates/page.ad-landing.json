@@ -37,8 +37,64 @@
     },
     "reviews": {
       "type": "ad-review-carousel",
-      "blocks": {},
-      "block_order": [],
+      "blocks": {
+        "r1": {
+          "type": "review",
+          "settings": {
+            "quote": "We loved opening the box and discovering the destination. Everything felt fresh, easy to follow, and much more exciting than our normal weekly meals.",
+            "rating": 5,
+            "name": "Sarah M.",
+            "location": "Leeds",
+            "plan": "Grand Tour Plan",
+            "image_alt": "ROAMSOME meal kit ingredients"
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "quote": "The recipe card was simple, the ingredients were beautifully packed, and dinner felt like a proper experience rather than just another meal kit.",
+            "rating": 5,
+            "name": "James R.",
+            "location": "Manchester",
+            "plan": "Voyager Plan",
+            "image_alt": "Fresh ROAMSOME ingredients"
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "quote": "The surprise country idea is brilliant. It made cooking at home feel fun again, and the portions were just right for us.",
+            "rating": 5,
+            "name": "Priya K.",
+            "location": "London",
+            "plan": "Discoverer Plan",
+            "image_alt": "Globally inspired ROAMSOME recipe"
+          }
+        },
+        "r4": {
+          "type": "review",
+          "settings": {
+            "quote": "ROAMSOME made our Friday night feel special. The ingredients were fresh, the recipe was clear, and we loved learning about the destination.",
+            "rating": 5,
+            "name": "Claire B.",
+            "location": "Bristol",
+            "plan": "Grand Tour Plan",
+            "image_alt": "ROAMSOME dinner prepared at home"
+          }
+        },
+        "r5": {
+          "type": "review",
+          "settings": {
+            "quote": "It is such a lovely idea. The box looked premium, the food tasted great, and we liked that we could pause or cancel if needed.",
+            "rating": 5,
+            "name": "Emma T.",
+            "location": "Edinburgh",
+            "plan": "Voyager Plan",
+            "image_alt": "Premium ROAMSOME meal box"
+          }
+        }
+      },
+      "block_order": ["r1", "r2", "r3", "r4", "r5"],
       "settings": {
         "soft_background": true,
         "eyebrow": "Loved by subscribers",
