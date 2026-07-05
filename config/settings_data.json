@@ -74,14 +74,14 @@
         "disabled": false,
         "settings": {}
       },
-      "2252613488580418660": {
-        "type": "shopify://apps/dingdoong-delivery-date/blocks/app-embed-block./65ab0a55-83b7-43d0-839b-31ed27b3a16d",
+      "8660026769530893754": {
+        "type": "shopify://apps/s-estimated-delivery-date/blocks/omega-estimated-shipping-embed-app/054646a4-d5ab-4b85-b028-f3b169802e74",
         "disabled": false,
         "settings": {}
       },
-      "8660026769530893754": {
-        "type": "shopify://apps/s-estimated-delivery-date/blocks/omega-estimated-shipping-embed-app/054646a4-d5ab-4b85-b028-f3b169802e74",
-        "disabled": true,
+      "2252613488580418660": {
+        "type": "shopify://apps/dingdoong-delivery-date/blocks/app-embed-block./65ab0a55-83b7-43d0-839b-31ed27b3a16d",
+        "disabled": false,
         "settings": {}
       }
     }
