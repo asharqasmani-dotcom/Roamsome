@@ -1,0 +1,80 @@
+{%- comment -%}
+  ==========================================================================
+  ROAMSOME — Ad Landing: Final CTA (two buttons)
+  --------------------------------------------------------------------------
+  Reuses the theme's existing global .cta-banner styling (orange, image-backed
+  banner) so it matches the homepage final CTA exactly. The only difference is
+  it supports TWO buttons (Subscribe Now + Explore Past Boxes). The one small
+  outline-button style is scoped to .ad-final-cta so nothing global changes.
+  ==========================================================================
+{%- endcomment -%}
+
+<section class="section ad-final-cta">
+  <div class="container">
+    <div class="cta-banner">
+      <img
+        class="cta-banner-image"
+        src="{{ 'cta-banner-background.png' | asset_url }}"
+        alt=""
+        loading="lazy"
+      >
+      <div class="cta-banner-copy">
+        <div>
+          {%- if section.settings.eyebrow != blank -%}
+            <span class="eyebrow" style="background:rgba(255,255,255,0.16); color:#fff;">{{ section.settings.eyebrow }}</span>
+          {%- endif -%}
+          <h2>{{ section.settings.heading }}</h2>
+          <p>{{ section.settings.text }}</p>
+        </div>
+        <div class="actions">
+          {%- if section.settings.primary_button_label != blank -%}
+            <a class="btn-secondary" href="{{ section.settings.primary_button_link | default: routes.all_products_collection_url }}">{{ section.settings.primary_button_label }}</a>
+          {%- endif -%}
+          {%- if section.settings.secondary_button_label != blank -%}
+            <a class="ad-final-cta-outline" href="{{ section.settings.secondary_button_link | default: '/pages/destinations' }}">{{ section.settings.secondary_button_label }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ad-final-cta .ad-final-cta-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 54px;
+    padding: 0 24px;
+    border-radius: var(--radius-pill);
+    font-weight: 700;
+    color: var(--color-white);
+    background: rgba(255, 255, 255, 0.12);
+    border: 1.5px solid rgba(255, 255, 255, 0.7);
+    transition: transform 0.25s ease, background-color 0.25s ease;
+  }
+  .ad-final-cta .ad-final-cta-outline:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.22);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Final CTA (two buttons)",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Final CTA" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Start your food journey today" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Discover destination-inspired dinners, premium ingredients and a flexible weekly subscription designed for real UK households." },
+    { "type": "text", "id": "primary_button_label", "label": "Primary button label", "default": "Subscribe Now" },
+    { "type": "url", "id": "primary_button_link", "label": "Primary button link" },
+    { "type": "text", "id": "secondary_button_label", "label": "Secondary button label", "default": "Explore Past Boxes" },
+    { "type": "url", "id": "secondary_button_link", "label": "Secondary button link" }
+  ],
+  "presets": [
+    { "name": "Final CTA (two buttons)" }
+  ]
+}
+{% endschema %}

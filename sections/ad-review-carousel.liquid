@@ -1,0 +1,370 @@
+{%- comment -%}
+  ==========================================================================
+  ROAMSOME — Ad Landing: Review Carousel
+  --------------------------------------------------------------------------
+  REAL REVIEWS ONLY. This section renders nothing on the live storefront
+  until the client adds at least one real "Review" block in the theme editor.
+  No placeholder / fake reviews are ever shown to visitors.
+
+  To add a review: Customize > (this page) > Review carousel > Add block >
+  Review. Fill in quote, star rating, customer name and (optional)
+  location/plan, customer photo and meal photo.
+
+  Design tokens reused from the live theme (global): --color-primary,
+  --color-secondary, --radius-card, --shadow-soft, .section, .container,
+  .section-heading, .eyebrow, .rating. All custom CSS below is scoped to
+  the .ad-reviews wrapper so nothing leaks to other pages.
+  ==========================================================================
+{%- endcomment -%}
+
+{%- assign review_blocks = section.blocks | where: 'type', 'review' -%}
+{%- assign review_count = review_blocks | size -%}
+
+{%- if review_count > 0 -%}
+  <section
+    class="section{% if section.settings.soft_background %} section-soft{% endif %} ad-reviews"
+    aria-label="{{ section.settings.heading | escape }}"
+  >
+    <div class="container">
+      <div class="section-heading">
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+        {%- endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+        {%- if section.settings.text != blank -%}<p>{{ section.settings.text }}</p>{%- endif -%}
+      </div>
+
+      <div class="ad-reviews-carousel" data-ad-carousel id="ad-reviews-{{ section.id }}">
+        <button
+          class="ad-reviews-arrow ad-reviews-arrow--prev"
+          type="button"
+          data-ad-prev
+          aria-label="Show previous reviews"
+        >&#8592;</button>
+
+        <div class="ad-reviews-viewport" data-ad-viewport>
+          <div class="ad-reviews-track" data-ad-track>
+            {%- for block in review_blocks -%}
+              {%- assign rating = block.settings.rating | default: 5 -%}
+              <article class="ad-review-card" role="group" aria-roledescription="review" {{ block.shopify_attributes }}>
+                {%- if block.settings.meal_image != blank or block.settings.customer_image != blank -%}
+                  {%- assign card_image = block.settings.meal_image | default: block.settings.customer_image -%}
+                  <div class="ad-review-media">
+                    <img
+                      src="{{ card_image | image_url: width: 720 }}"
+                      alt="{{ block.settings.image_alt | escape }}"
+                      loading="lazy"
+                      width="720"
+                      height="480"
+                    >
+                  </div>
+                {%- endif -%}
+
+                <div class="ad-review-body">
+                  <div class="rating ad-review-rating" aria-label="{{ rating }} out of 5 stars">
+                    {%- for i in (1..5) -%}{% if i <= rating %}&#9733;{% else %}&#9734;{% endif %}{%- endfor -%}
+                  </div>
+
+                  {%- if block.settings.quote != blank -%}
+                    <p class="ad-review-quote">{{ block.settings.quote }}</p>
+                  {%- endif -%}
+
+                  <div class="ad-review-footer">
+                    {%- if block.settings.customer_image != blank and block.settings.meal_image != blank -%}
+                      <span class="ad-review-avatar">
+                        <img src="{{ block.settings.customer_image | image_url: width: 96 }}" alt="{{ block.settings.name | escape }}" loading="lazy" width="48" height="48">
+                      </span>
+                    {%- endif -%}
+                    <span class="ad-review-person">
+                      {%- if block.settings.name != blank -%}<strong>{{ block.settings.name }}</strong>{%- endif -%}
+                      {%- if block.settings.meta != blank -%}<span class="ad-review-meta">{{ block.settings.meta }}</span>{%- endif -%}
+                    </span>
+                  </div>
+                </div>
+              </article>
+            {%- endfor -%}
+          </div>
+        </div>
+
+        <button
+          class="ad-reviews-arrow ad-reviews-arrow--next"
+          type="button"
+          data-ad-next
+          aria-label="Show more reviews"
+        >&#8594;</button>
+      </div>
+
+      <div class="ad-reviews-dots" data-ad-dots role="tablist" aria-label="Review slides"></div>
+    </div>
+  </section>
+
+  <style>
+    #ad-reviews-{{ section.id }}.ad-reviews-carousel,
+    .ad-reviews .ad-reviews-carousel {
+      position: relative;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 12px;
+    }
+    .ad-reviews .ad-reviews-viewport {
+      overflow: hidden;
+    }
+    .ad-reviews .ad-reviews-track {
+      display: flex;
+      gap: 22px;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+    /* 3 per view on desktop, matching the theme's 22px grid gap */
+    .ad-reviews .ad-review-card {
+      flex: 0 0 calc((100% - 44px) / 3);
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border-radius: var(--radius-card);
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+    }
+    .ad-reviews .ad-review-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(253, 113, 60, 0.18);
+    }
+    .ad-reviews .ad-review-media {
+      aspect-ratio: var(--media-ratio);
+      overflow: hidden;
+    }
+    .ad-reviews .ad-review-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .ad-reviews .ad-review-body {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 28px;
+      flex: 1;
+    }
+    .ad-reviews .ad-review-rating {
+      font-size: 1.05rem;
+      letter-spacing: 0.14em;
+    }
+    .ad-reviews .ad-review-quote {
+      margin: 0;
+      color: var(--color-text);
+      font-size: 1rem;
+      line-height: 1.62;
+    }
+    .ad-reviews .ad-review-footer {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .ad-reviews .ad-review-avatar img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(253, 113, 60, 0.2);
+    }
+    .ad-reviews .ad-review-person {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.3;
+    }
+    .ad-reviews .ad-review-person strong {
+      color: var(--color-black);
+      font-weight: 700;
+    }
+    .ad-reviews .ad-review-meta {
+      font-size: 0.9rem;
+      color: var(--color-muted);
+    }
+    .ad-reviews .ad-reviews-arrow {
+      width: 48px;
+      height: 48px;
+      flex: 0 0 48px;
+      border-radius: var(--radius-pill);
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-soft);
+      color: var(--color-primary);
+      font-size: 1.2rem;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+    }
+    .ad-reviews .ad-reviews-arrow:hover:not(:disabled) {
+      background: var(--color-primary);
+      color: var(--color-white);
+      transform: translateY(-2px);
+    }
+    .ad-reviews .ad-reviews-arrow:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+    .ad-reviews .ad-reviews-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .ad-reviews .ad-reviews-dot {
+      width: 9px;
+      height: 9px;
+      padding: 0;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.18);
+      transition: background-color 0.25s ease, transform 0.25s ease;
+    }
+    .ad-reviews .ad-reviews-dot[aria-selected="true"] {
+      background: var(--color-primary);
+      transform: scale(1.25);
+    }
+    /* Tablet: 2 per view (matches theme 1080px breakpoint) */
+    @media (max-width: 1080px) {
+      .ad-reviews .ad-review-card { flex-basis: calc((100% - 22px) / 2); }
+    }
+    /* Mobile: 1 per view (matches theme 760px breakpoint) */
+    @media (max-width: 760px) {
+      .ad-reviews .ad-review-card { flex-basis: 100%; }
+      .ad-reviews .ad-reviews-carousel { grid-template-columns: 1fr; }
+      .ad-reviews .ad-reviews-arrow { display: none; }
+      .ad-reviews .ad-review-body { padding: 22px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .ad-reviews .ad-reviews-track { transition: none; }
+    }
+  </style>
+
+  <script>
+    (function () {
+      var root = document.getElementById('ad-reviews-{{ section.id }}');
+      if (!root || root.dataset.adInit === '1') return;
+      root.dataset.adInit = '1';
+
+      var track = root.querySelector('[data-ad-track]');
+      var cards = Array.prototype.slice.call(root.querySelectorAll('.ad-review-card'));
+      var prevBtn = root.querySelector('[data-ad-prev]');
+      var nextBtn = root.querySelector('[data-ad-next]');
+      var dotsWrap = root.parentNode.querySelector('[data-ad-dots]');
+      if (!track || !cards.length) return;
+
+      var page = 0;
+
+      function perView() {
+        if (window.matchMedia('(max-width: 760px)').matches) return 1;
+        if (window.matchMedia('(max-width: 1080px)').matches) return 2;
+        return 3;
+      }
+
+      function pageCount() {
+        return Math.max(1, Math.ceil(cards.length / perView()));
+      }
+
+      function buildDots() {
+        if (!dotsWrap) return;
+        dotsWrap.innerHTML = '';
+        var count = pageCount();
+        for (var i = 0; i < count; i++) {
+          var dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'ad-reviews-dot';
+          dot.setAttribute('role', 'tab');
+          dot.setAttribute('aria-label', 'Go to review slide ' + (i + 1));
+          (function (index) {
+            dot.addEventListener('click', function () { goTo(index); });
+          })(i);
+          dotsWrap.appendChild(dot);
+        }
+      }
+
+      function goTo(target) {
+        var count = pageCount();
+        page = Math.max(0, Math.min(target, count - 1));
+        var per = perView();
+        var gap = 22;
+        var cardWidth = cards[0].getBoundingClientRect().width + gap;
+        track.style.transform = 'translateX(' + (-(page * per * cardWidth)) + 'px)';
+        update();
+      }
+
+      function update() {
+        var count = pageCount();
+        if (prevBtn) prevBtn.disabled = page <= 0;
+        if (nextBtn) nextBtn.disabled = page >= count - 1;
+        if (dotsWrap) {
+          Array.prototype.forEach.call(dotsWrap.children, function (dot, i) {
+            dot.setAttribute('aria-selected', i === page ? 'true' : 'false');
+          });
+        }
+      }
+
+      if (prevBtn) prevBtn.addEventListener('click', function () { goTo(page - 1); });
+      if (nextBtn) nextBtn.addEventListener('click', function () { goTo(page + 1); });
+
+      var resizeTimer;
+      window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function () { buildDots(); goTo(0); }, 150);
+      });
+
+      buildDots();
+      goTo(0);
+    })();
+  </script>
+
+{%- elsif request.design_mode -%}
+  {%- comment -%} Editor-only prompt so the client knows where to add real reviews. Never shows on the live storefront. {%- endcomment -%}
+  <section class="section ad-reviews">
+    <div class="container">
+      <article class="summary-card" style="text-align:center;">
+        <h3>Review carousel is ready — add your first real review</h3>
+        <p>This section is intentionally hidden from visitors until you add at least one genuine review. Click <strong>Add block &rarr; Review</strong> in the theme editor to add real customer quotes, star ratings, names and optional customer/meal photos. No placeholder reviews are ever published.</p>
+      </article>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Review carousel",
+  "tag": "section",
+  "settings": [
+    { "type": "checkbox", "id": "soft_background", "label": "Use soft (cream) background", "default": true },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Loved by subscribers" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Real kitchens, real adventures" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Genuine words from ROAMSOME subscribers across the UK." },
+    {
+      "type": "paragraph",
+      "content": "Add a Review block for each REAL review. The section stays hidden on the live site until at least one review is added. Do not add fake reviews."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Review text", "info": "Use the customer's real words." },
+        { "type": "range", "id": "rating", "label": "Star rating", "min": 1, "max": 5, "step": 1, "default": 5 },
+        { "type": "text", "id": "name", "label": "Customer name" },
+        { "type": "text", "id": "meta", "label": "Location or plan (optional)", "info": "e.g. Leeds · Grand Tour subscriber" },
+        { "type": "image_picker", "id": "customer_image", "label": "Customer photo (optional)" },
+        { "type": "image_picker", "id": "meal_image", "label": "Meal / product photo (optional)" },
+        { "type": "text", "id": "image_alt", "label": "Image alt text", "default": "ROAMSOME subscriber meal" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Review carousel" }
+  ]
+}
+{% endschema %}

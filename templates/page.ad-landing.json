@@ -1,0 +1,152 @@
+{
+  "sections": {
+    "hero": {
+      "type": "home-hero",
+      "blocks": {
+        "chip1": { "type": "meta_chip", "settings": { "text": "Fresh ingredients" } },
+        "chip2": { "type": "meta_chip", "settings": { "text": "Chef-led recipes" } },
+        "chip3": { "type": "meta_chip", "settings": { "text": "Pause or cancel anytime" } },
+        "slide1": {
+          "type": "slide",
+          "settings": {
+            "alt": "A travel-inspired ROAMSOME meal prepared at home",
+            "title": "Premium ingredients, adventure at home",
+            "text": "Fresh produce, chef-led recipes and flexible UK delivery"
+          }
+        },
+        "slide2": {
+          "type": "slide",
+          "settings": {
+            "alt": "A premium ROAMSOME meal kit box opened on a clean kitchen worktop",
+            "title": "A surprise country in every box",
+            "text": "Destination revealed only when your box arrives"
+          }
+        }
+      },
+      "block_order": ["chip1", "chip2", "chip3", "slide1", "slide2"],
+      "settings": {
+        "eyebrow": "UK food subscription",
+        "heading": "Explore the world from your kitchen",
+        "text": "A surprise global meal kit delivered to your door — fresh ingredients, chef-led recipes and a new destination to discover every time.",
+        "primary_button_label": "Subscribe Now",
+        "primary_button_link": "/collections/food-boxes",
+        "secondary_button_label": "Explore Past Boxes",
+        "secondary_button_link": "/pages/destinations",
+        "urgency_text": "Limited weekly slots available"
+      }
+    },
+    "reviews": {
+      "type": "ad-review-carousel",
+      "blocks": {},
+      "block_order": [],
+      "settings": {
+        "soft_background": true,
+        "eyebrow": "Loved by subscribers",
+        "heading": "Real kitchens, real adventures",
+        "text": "Genuine words from ROAMSOME subscribers across the UK."
+      }
+    },
+    "features": {
+      "type": "icon-feature-grid",
+      "blocks": {
+        "one": {
+          "type": "feature",
+          "settings": {
+            "title": "Fresh, pre-portioned ingredients",
+            "text": "Premium produce and proteins, portioned for two or four people so there is less waste and less prep."
+          }
+        },
+        "two": {
+          "type": "feature",
+          "settings": {
+            "title": "Chef-led, destination recipes",
+            "text": "Every box is shaped by a surprise country, with chef-led recipe cards that make globally inspired cooking simple."
+          }
+        },
+        "three": {
+          "type": "feature",
+          "settings": {
+            "title": "Flexible subscription",
+            "text": "Free UK delivery, allergen and protein info in advance, and the freedom to skip, pause or cancel anytime."
+          }
+        }
+      },
+      "block_order": ["one", "two", "three"],
+      "settings": {
+        "soft_background": false,
+        "eyebrow": "Why ROAMSOME",
+        "heading": "What makes ROAMSOME different",
+        "text": "Premium enough to feel special, simple enough for a real weeknight."
+      }
+    },
+    "gallery": {
+      "type": "ad-image-gallery",
+      "blocks": {},
+      "block_order": [],
+      "settings": {
+        "soft_background": false,
+        "eyebrow": "Inside the box",
+        "heading": "Premium ingredients, beautifully prepared",
+        "text": "A look at the real ingredients, recipe cards and destination moments from ROAMSOME boxes."
+      }
+    },
+    "steps": {
+      "type": "home-steps",
+      "blocks": {
+        "one": { "type": "step", "settings": { "title": "Choose your plan", "text": "Pick the subscription rhythm that fits your household and let ROAMSOME handle the weekly surprise-country reveal." } },
+        "two": { "type": "step", "settings": { "title": "Receive your fresh ingredients", "text": "Pre-portioned ingredients, chef tips and recipe cards arrive chilled, with allergen and protein info shared in advance." } },
+        "three": { "type": "step", "settings": { "title": "Cook and discover the destination", "text": "Uncover the surprise country and cook a premium, globally inspired dinner in your own kitchen." } }
+      },
+      "block_order": ["one", "two", "three"],
+      "settings": {
+        "eyebrow": "How it works",
+        "heading": "Three simple steps to a more exciting weeknight",
+        "text": "From choosing your plan to revealing a surprise destination at home, ROAMSOME is designed to feel effortless."
+      }
+    },
+    "products": {
+      "type": "ad-live-products",
+      "settings": {
+        "soft_background": true,
+        "eyebrow": "Subscription plans",
+        "heading": "Choose the plan that fits your week",
+        "text": "Every subscription includes free UK delivery and the freedom to skip, pause or cancel anytime.",
+        "collection": "food-boxes",
+        "products_to_show": 3,
+        "empty_button_label": "View all boxes"
+      }
+    },
+    "destinations": {
+      "type": "cta-banner",
+      "settings": {
+        "eyebrow": "Previous destinations",
+        "heading": "Want to see where ROAMSOME has already travelled?",
+        "text": "Explore previous country experiences, plated moments and destination-led dishes from past boxes.",
+        "button_label": "Explore Past Boxes",
+        "button_link": "/pages/destinations"
+      }
+    },
+    "final": {
+      "type": "ad-final-cta",
+      "settings": {
+        "eyebrow": "Final CTA",
+        "heading": "Start your food journey today",
+        "text": "Discover destination-inspired dinners, premium ingredients and a flexible weekly subscription designed for real UK households.",
+        "primary_button_label": "Subscribe Now",
+        "primary_button_link": "/collections/food-boxes",
+        "secondary_button_label": "Explore Past Boxes",
+        "secondary_button_link": "/pages/destinations"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "reviews",
+    "features",
+    "gallery",
+    "steps",
+    "products",
+    "destinations",
+    "final"
+  ]
+}
