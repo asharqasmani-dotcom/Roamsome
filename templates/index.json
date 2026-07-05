@@ -283,6 +283,7 @@
         },
         "a1": {
           "type": "allergen",
+          "disabled": true,
           "settings": {
             "text": "Contains MILK"
           }
@@ -296,6 +297,7 @@
         },
         "a3": {
           "type": "allergen",
+          "disabled": true,
           "settings": {
             "text": "Contains WHEAT and GLUTEN"
           }
