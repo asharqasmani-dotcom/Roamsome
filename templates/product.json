@@ -23,7 +23,7 @@
         "delivery_text": "Free delivery every Friday with tracking included across mainland UK. <br><br>Order before Sunday each week to receive your box that Friday.",
         "related_eyebrow": "Previous Destinations",
         "related_heading": "",
-        "related_text": "Check out our previous destinations on the <a href=\"https://roamsome.co.uk/pages/destinations\">link below</a>."
+        "related_text": "Check out our previous destinations on the link below: <br><br>\n<a href=\"/pages/destinations\"><b>Previous Destinations</b></a>"
       }
     },
     "1777480651a5e0d93b": {
@@ -48,6 +48,7 @@
       "blocks": {
         "allergen_CAUV6E": {
           "type": "allergen",
+          "disabled": true,
           "settings": {
             "text": "May include milk"
           }
@@ -55,17 +56,19 @@
         "allergen_NMiRyU": {
           "type": "allergen",
           "settings": {
-            "text": "May include eggs"
+            "text": "Protein: Chicken"
           }
         },
         "allergen_VnMPNg": {
           "type": "allergen",
+          "disabled": true,
           "settings": {
             "text": "May include wheat and gluten"
           }
         },
         "allergen_GKqBfk": {
           "type": "allergen",
+          "disabled": true,
           "settings": {
             "text": "May include sesame"
           }
