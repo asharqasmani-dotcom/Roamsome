@@ -1,6 +1,79 @@
+{% doc %}
+  @prompt
+    Create a simple inline text block with a customisable link — including editable link text and a URL field — that can be added to the main product section. It should be styled to match the surrounding product page content and sit cleanly at the bottom of the product block.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-product-link-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: 16px 0;
+    margin-top: 20px;
+    border-top: 1px solid #e5e5e5;
+  }
+
+  .ai-product-link__text-{{ ai_gen_id }} {
+    color: #fd713c;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: opacity 0.2s ease;
+  }
+
+  .ai-product-link__text-{{ ai_gen_id }}:hover {
+    opacity: 0.7;
+  }
+
+  .ai-product-link__arrow-{{ ai_gen_id }} {
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+
+  .ai-product-link__text-{{ ai_gen_id }}:hover .ai-product-link__arrow-{{ ai_gen_id }} {
+    transform: translateX(4px);
+  }
+
+  .ai-product-link__empty-{{ ai_gen_id }} {
+    color: #6b6b6b;
+    font-size: 14px;
+    font-style: italic;
+  }
+{% endstyle %}
+
+<div class="ai-product-link-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  {% if block.settings.link_url != blank and block.settings.link_text != blank %}
+    <a href="{{ block.settings.link_url }}" class="ai-product-link__text-{{ ai_gen_id }}">
+      {{ block.settings.link_text }}
+      <span class="ai-product-link__arrow-{{ ai_gen_id }}">→</span>
+    </a>
+  {% else %}
+    <p class="ai-product-link__empty-{{ ai_gen_id }}">Add link text and URL to display</p>
+  {% endif %}
+</div>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Product link",
+  "settings": [
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link text",
+      "default": "View full details"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product link"
+    }
+  ]
+}
 {% endschema %}
