@@ -147,7 +147,6 @@
       "blocks": {
         "allergen_kmxWPn": {
           "type": "allergen",
-          "disabled": true,
           "settings": {
             "text": "Protein: Chicken"
           }
@@ -182,6 +181,7 @@
         },
         "allergen_xEW8TD": {
           "type": "allergen",
+          "disabled": true,
           "settings": {
             "text": "Contains MILK"
           }
