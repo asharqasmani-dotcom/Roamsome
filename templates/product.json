@@ -13,17 +13,17 @@
       "type": "main-product",
       "settings": {
         "eyebrow": "{{ product.title }}",
-        "heading": "Subscription plan overview",
-        "text": "Review what’s included, delivery details, previous destination examples and flexible subscription benefits before checkout.",
+        "heading": "Meal Kit Overview",
+        "text": "Review what’s included, delivery details and flexible subscription benefits before checkout.",
         "story_eyebrow": "Curated surprise",
         "story_heading": "Each week, a new country. No choices. Just discovery.",
         "story_text": "Every ROAMSOME box is a fully curated route. We keep the destination secret so the delivery feels like a reveal, not a menu decision.",
         "includes_heading": "What’s included",
         "delivery_heading": "Delivery details",
         "delivery_text": "Free delivery every Friday with tracking included across mainland UK. <br><br>Order before Sunday each week to receive your box that Friday.",
-        "related_eyebrow": "Related products",
-        "related_heading": "You may also like",
-        "related_text": "Explore other ROAMSOME subscription plans while you’re here."
+        "related_eyebrow": "Previous Destinations",
+        "related_heading": "",
+        "related_text": "Check out our previous destinations on the link below.\nhttps://roamsome.co.uk/pages/destinations"
       }
     },
     "1777480651a5e0d93b": {
@@ -32,31 +32,71 @@
         "essential_estimated_app_block_bJxBVM": {
           "type": "shopify://apps/essential-estimated/blocks/app-block/02a895dd-b5b5-4103-8966-c6914aa8309e",
           "settings": {}
-        },
-        "judge_me_reviews_review_widget_WJUXaH": {
-          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-            "review_data": "sample_data",
-            "max_width": 1200,
-            "show_shop_reviews": false,
-            "empty_state": "empty_widget"
-          }
         }
       },
       "block_order": [
-        "essential_estimated_app_block_bJxBVM",
-        "judge_me_reviews_review_widget_WJUXaH"
+        "essential_estimated_app_block_bJxBVM"
       ],
       "settings": {}
     },
     "1780401242c8fe88ef": {
       "type": "apps",
       "settings": {}
+    },
+    "upcoming_box_info_MEGbnx": {
+      "type": "upcoming-box-info",
+      "blocks": {
+        "allergen_CAUV6E": {
+          "type": "allergen",
+          "settings": {
+            "text": "May include milk"
+          }
+        },
+        "allergen_NMiRyU": {
+          "type": "allergen",
+          "settings": {
+            "text": "May include eggs"
+          }
+        },
+        "allergen_VnMPNg": {
+          "type": "allergen",
+          "settings": {
+            "text": "May include wheat and gluten"
+          }
+        },
+        "allergen_GKqBfk": {
+          "type": "allergen",
+          "settings": {
+            "text": "May include sesame"
+          }
+        },
+        "allergen_pdDt3B": {
+          "type": "allergen",
+          "settings": {
+            "text": "Prepared in a kitchen that handles nuts"
+          }
+        }
+      },
+      "block_order": [
+        "allergen_CAUV6E",
+        "allergen_NMiRyU",
+        "allergen_VnMPNg",
+        "allergen_GKqBfk",
+        "allergen_pdDt3B"
+      ],
+      "name": "Upcoming box info",
+      "settings": {
+        "eyebrow": "Upcoming Box Info",
+        "heading": "Upcoming Box Info - Friday 17th July",
+        "text": "We keep the next destination secret on purpose. For upcoming deliveries, we only share essential allergen guidance so the experience stays curated and surprising.",
+        "note": "Full destination and meal details are revealed when your box arrives."
+      }
     }
   },
   "order": [
     "main",
     "1777480651a5e0d93b",
-    "1780401242c8fe88ef"
+    "1780401242c8fe88ef",
+    "upcoming_box_info_MEGbnx"
   ]
 }

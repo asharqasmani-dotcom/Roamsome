@@ -416,6 +416,23 @@
         "heading": "Previous destinations that built the ritual",
         "text": "From bright Mediterranean tables to comfort-led city suppers, past ROAMSOME boxes show the kind of premium journeys subscribers have already experienced."
       }
+    },
+    "17837070620c846c94": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_81aee89_AHeihi": {
+          "type": "ai_gen_block_81aee89",
+          "settings": {
+            "link_text": "View full details",
+            "link_url": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_81aee89_AHeihi"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -429,6 +446,7 @@
     "upcoming",
     "blog_preview",
     "cta",
-    "destinations_archive_98WV7L"
+    "destinations_archive_98WV7L",
+    "17837070620c846c94"
   ]
 }
