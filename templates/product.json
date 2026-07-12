@@ -56,7 +56,7 @@
         "allergen_NMiRyU": {
           "type": "allergen",
           "settings": {
-            "text": "Protein: Chicken"
+            "text": "Protein: Beef"
           }
         },
         "allergen_VnMPNg": {
@@ -68,9 +68,8 @@
         },
         "allergen_GKqBfk": {
           "type": "allergen",
-          "disabled": true,
           "settings": {
-            "text": "May include sesame"
+            "text": "Contains WHEAT and GLUTEN"
           }
         },
         "allergen_pdDt3B": {
@@ -90,7 +89,7 @@
       "name": "Upcoming box info",
       "settings": {
         "eyebrow": "Upcoming Box Info",
-        "heading": "Upcoming Box Info - Friday 17th July",
+        "heading": "Upcoming Box Info - Friday 24th July",
         "text": "We keep the next destination secret on purpose. For upcoming deliveries, we only share essential allergen guidance so the experience stays curated and surprising.",
         "note": "Full destination and meal details are revealed when your box arrives."
       }

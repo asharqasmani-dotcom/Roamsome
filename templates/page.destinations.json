@@ -36,6 +36,7 @@
         "chip2",
         "chip3"
       ],
+      "disabled": true,
       "settings": {
         "eyebrow": "Previous destinations",
         "heading": "Curated routes from past ROAMSOME boxes",
