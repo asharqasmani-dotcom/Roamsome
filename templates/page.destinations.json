@@ -48,11 +48,11 @@
     "destinations": {
       "type": "destinations-archive",
       "blocks": {
-        "d1": {
+        "d2": {
           "type": "destination",
           "settings": {
             "image": "shopify://shop_images/49-_DSF9250.jpg",
-            "flag": "🇮🇹",
+            "flag": "🇯🇵",
             "country": "Japan",
             "title": "Chicken Teriyaki Donburi",
             "text": "A cozy Japanese donburi layered with fluffy rice, umami-rich sauce, and hearty toppings for a balanced one-bowl meal.",
@@ -61,17 +61,17 @@
             "tag_3": "Japanese comfort"
           }
         },
-        "d2": {
+        "destination_f3aPrE": {
           "type": "destination",
-          "disabled": true,
           "settings": {
-            "flag": "🇯🇵",
-            "country": "Japan",
-            "title": "Kyoto Comfort Club",
-            "text": "A calm, umami-rich route featuring noodles, miso depth and balanced textures for relaxed evening cooking.",
-            "tag_1": "Past box",
-            "tag_2": "Umami",
-            "tag_3": "Comfort cooking"
+            "image": "shopify://shop_images/Chicken_Picatta_40.jpg",
+            "flag": "🇮🇹",
+            "country": "Italy",
+            "title": "Italian Chicken Piccata",
+            "text": "Tender chicken in a zesty lemon, butter and caper sauce, served with garlic roasted potatoes and green beans. A fresh Italian classic bursting with bright Mediterranean flavours.",
+            "tag_1": "Lemon & capers",
+            "tag_2": "Bright & zesty",
+            "tag_3": "Classic Italian"
           }
         },
         "d3": {
@@ -128,8 +128,8 @@
         }
       },
       "block_order": [
-        "d1",
         "d2",
+        "destination_f3aPrE",
         "d3",
         "d4",
         "d5",
@@ -139,7 +139,7 @@
         "soft_background": false,
         "eyebrow": "Explore past boxes",
         "heading": "Previous destinations that built the ritual",
-        "text": "Our first ever box arrived at kitchens all over the UK this week! We can't wait to share more with you!"
+        "text": "Our 2nd ever box arrived at kitchens all over the UK this week! Check out our instagram and facebook to see images of what you cooked up at home!"
       }
     },
     "upcoming": {
@@ -148,7 +148,7 @@
         "allergen_kmxWPn": {
           "type": "allergen",
           "settings": {
-            "text": "Protein: Chicken"
+            "text": "Protein: Beef"
           }
         },
         "a1": {
@@ -174,7 +174,6 @@
         },
         "a4": {
           "type": "allergen",
-          "disabled": true,
           "settings": {
             "text": "Contains WHEAT and GLUTEN"
           }
@@ -204,7 +203,7 @@
       ],
       "settings": {
         "eyebrow": "Upcoming Box Info",
-        "heading": "Upcoming Box Info - July 17th",
+        "heading": "Upcoming Box Info - July 24th",
         "text": "We keep the next destination secret on purpose. For upcoming deliveries, we only share essential allergen guidance so the experience stays curated and surprising.",
         "note": "Full destination and meal details are revealed when your box arrives."
       }

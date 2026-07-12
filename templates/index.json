@@ -257,7 +257,7 @@
         "allergen_tjNtPe": {
           "type": "allergen",
           "settings": {
-            "text": "Protein: Contains chicken"
+            "text": "Protein: Beef"
           }
         },
         "allergen_awGDJ4": {
@@ -297,7 +297,6 @@
         },
         "a3": {
           "type": "allergen",
-          "disabled": true,
           "settings": {
             "text": "Contains WHEAT and GLUTEN"
           }
@@ -337,7 +336,7 @@
       ],
       "settings": {
         "eyebrow": "Upcoming Box Info",
-        "heading": "Upcoming Box Info - July 17th",
+        "heading": "Upcoming Box Info - July 24th",
         "text": "We keep the next destination secret on purpose. For upcoming deliveries, we only share essential allergen guidance so the experience stays curated and surprising.",
         "note": "Full destination and meal details are revealed when your box arrives."
       }
